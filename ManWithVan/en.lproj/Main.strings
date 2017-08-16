@@ -1,0 +1,66 @@
+
+/* Class = "UILabel"; text = "*Your phone number:"; ObjectID = "00X-DP-WdQ"; */
+"00X-DP-WdQ.text" = "*Your phone number:";
+
+/* Class = "UILabel"; text = "Please sign in with your email address or facebook account."; ObjectID = "4Tc-Ce-KwG"; */
+"4Tc-Ce-KwG.text" = "Please sign in with your email address or facebook account.";
+
+/* Class = "UILabel"; text = "VIPvan is small moving company located in the heart of Dublin that offers ‘Man with a Van’ to transport all your necessities from one place to another. Widely recognized as Man with a Van, this whole-heartedly friendly service eases the nightmare of moving loads around the city, collaborating with the latest tools and equipment to protect any damage or harm. "; ObjectID = "7sH-HM-bwh"; */
+"7sH-HM-bwh.text" = "VIPvan is small moving company located in the heart of Dublin that offers ‘Man with a Van’ to transport all your necessities from one place to another. Widely recognized as Man with a Van, this whole-heartedly friendly service eases the nightmare of moving loads around the city, collaborating with the latest tools and equipment to protect any damage or harm. ";
+
+/* Class = "UINavigationItem"; title = "VIPvan"; ObjectID = "HvU-mU-f9q"; */
+"HvU-mU-f9q.title" = "VIPvan";
+
+/* Class = "UINavigationItem"; title = "About Us"; ObjectID = "JYj-WP-Nx3"; */
+"JYj-WP-Nx3.title" = "About Us";
+
+/* Class = "UILabel"; text = "VIPvan is available for all type of removals collections and deliveries that cover Dublin 1, Dublin 2, Dublin 3, Dublin 4, Dublin 5, Dublin 6, Dublin 6W, Dublin 7, Dublin 8, Dublin 9, Dublin 10, Dublin 11, Dublin 12, Dublin 13, Dublin 14, Dublin 15, Dublin 16, Dublin 18, Dublin 20, Dublin 22, Dublin 24 and all the rest of Ireland in the lowest prices, and just one phone call away."; ObjectID = "NMa-SD-Vt0"; */
+"NMa-SD-Vt0.text" = "VIPvan is available for all type of removals collections and deliveries that cover Dublin 1, Dublin 2, Dublin 3, Dublin 4, Dublin 5, Dublin 6, Dublin 6W, Dublin 7, Dublin 8, Dublin 9, Dublin 10, Dublin 11, Dublin 12, Dublin 13, Dublin 14, Dublin 15, Dublin 16, Dublin 18, Dublin 20, Dublin 22, Dublin 24 and all the rest of Ireland in the lowest prices, and just one phone call away.";
+
+/* Class = "UILabel"; text = "Covered areas"; ObjectID = "Sh7-fg-tXv"; */
+"Sh7-fg-tXv.text" = "Covered areas";
+
+/* Class = "UIButton"; normalTitle = "Request a callback"; ObjectID = "TsA-Bc-mPr"; */
+"TsA-Bc-mPr.normalTitle" = "Request a callback";
+
+/* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "bLr-zW-jQu"; */
+"bLr-zW-jQu.normalTitle" = "Sign In";
+
+/* Class = "UILabel"; text = "Welcome to your account"; ObjectID = "eNz-dx-ypq"; */
+"eNz-dx-ypq.text" = "Welcome to your account";
+
+/* Class = "UINavigationItem"; title = "Sign In"; ObjectID = "egq-jv-5QE"; */
+"egq-jv-5QE.title" = "Sign In";
+
+/* Class = "UINavigationItem"; title = "Get a quote"; ObjectID = "gAW-Cz-6us"; */
+"gAW-Cz-6us.title" = "Get a quote";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "gSz-gB-DcC"; */
+"gSz-gB-DcC.placeholder" = "Password";
+
+/* Class = "UILabel"; text = "Should you have any queries, or you want to use our service, you can request a callback.  "; ObjectID = "lte-qu-kOU"; */
+"lte-qu-kOU.text" = "Should you have any queries, or you want to use our service, you can request a callback.  ";
+
+/* Class = "UIButton"; normalTitle = "Request a callback"; ObjectID = "n0t-eq-rg7"; */
+"n0t-eq-rg7.normalTitle" = "Request a callback";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "nck-bL-XwF"; */
+"nck-bL-XwF.placeholder" = "Email";
+
+/* Class = "UINavigationItem"; title = "Request a callback"; ObjectID = "r2e-ld-Z3b"; */
+"r2e-ld-Z3b.title" = "Request a callback";
+
+/* Class = "UILabel"; text = "Copyright © 2017 VipVan. All rights reserved."; ObjectID = "swb-vd-mHl"; */
+"swb-vd-mHl.text" = "Copyright © 2017 VipVan. All rights reserved.";
+
+/* Class = "UILabel"; text = "About"; ObjectID = "v3c-eX-Gx8"; */
+"v3c-eX-Gx8.text" = "About";
+
+/* Class = "UILabel"; text = "*Your name:"; ObjectID = "v7x-on-uDX"; */
+"v7x-on-uDX.text" = "*Your name:";
+
+/* Class = "UIButton"; normalTitle = "Get a free quote"; ObjectID = "xty-t4-VdL"; */
+"xty-t4-VdL.normalTitle" = "Get a free quote";
+
+/* Class = "UIButton"; normalTitle = "                 Sign out"; ObjectID = "yfz-qc-eTt"; */
+"yfz-qc-eTt.normalTitle" = "                 Sign out";
