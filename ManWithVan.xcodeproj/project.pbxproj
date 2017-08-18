@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		619ADF74C14846DCF0E26E94 /* libPods-ManWithVan.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E711842A4405FE2D4818D0 /* libPods-ManWithVan.a */; };
 		DC32C6861F43775E00009AD2 /* SMSocialLinksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC32C6851F43775E00009AD2 /* SMSocialLinksViewController.m */; };
 		DC6EA4F61F1F8C150067C851 /* SMPresentMenuAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6EA4EF1F1F8C150067C851 /* SMPresentMenuAnimator.m */; };
 		DC6EA4F71F1F8C150067C851 /* SMDismissMenuAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6EA4F11F1F8C150067C851 /* SMDismissMenuAnimator.m */; };
@@ -45,11 +46,20 @@
 		DCD208C21F3CC66F00548C36 /* SMAddPhotoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DCD208C11F3CC66F00548C36 /* SMAddPhotoViewCell.m */; };
 		DCD208C31F40A51D00548C36 /* SMDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6EA5031F1FBBC20067C851 /* SMDataManager.m */; };
 		DCD208C61F40C3D100548C36 /* SMCustomActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = DCD208C51F40C3D100548C36 /* SMCustomActivityIndicator.m */; };
+		DCE0DFBC1F44A88400AAB030 /* SMReviewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE0DFBB1F44A88400AAB030 /* SMReviewsModel.m */; };
+		DCE0DFBF1F44AC9700AAB030 /* SMReviewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE0DFBE1F44AC9700AAB030 /* SMReviewsViewController.m */; };
+		DCE0DFC21F44AFDB00AAB030 /* SMReviewsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE0DFC11F44AFDB00AAB030 /* SMReviewsViewCell.m */; };
+		DCE0DFC51F45D9F800AAB030 /* SMGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE0DFC41F45D9F800AAB030 /* SMGalleryViewController.m */; };
+		DCE0DFC81F45DAFE00AAB030 /* SMGalleryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE0DFC71F45DAFE00AAB030 /* SMGalleryViewCell.m */; };
+		DCE0DFCB1F4623C100AAB030 /* SMKeyboardHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE0DFCA1F4623C100AAB030 /* SMKeyboardHandler.m */; };
 		DCF9F8211F210C97001E790A /* SMCustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF9F8201F210C97001E790A /* SMCustomTextField.m */; };
 		DCF9F8241F21134A001E790A /* SMAboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF9F8231F21134A001E790A /* SMAboutUsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E327D297DFB6C5688BEA6F9 /* Pods-ManWithVan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ManWithVan.release.xcconfig"; path = "Pods/Target Support Files/Pods-ManWithVan/Pods-ManWithVan.release.xcconfig"; sourceTree = "<group>"; };
+		246BC91866446648B724B77E /* Pods-ManWithVan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ManWithVan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ManWithVan/Pods-ManWithVan.debug.xcconfig"; sourceTree = "<group>"; };
+		A4E711842A4405FE2D4818D0 /* libPods-ManWithVan.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ManWithVan.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC32C6841F43775E00009AD2 /* SMSocialLinksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSocialLinksViewController.h; sourceTree = "<group>"; };
 		DC32C6851F43775E00009AD2 /* SMSocialLinksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSocialLinksViewController.m; sourceTree = "<group>"; };
 		DC6EA4EE1F1F8C150067C851 /* SMPresentMenuAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPresentMenuAnimator.h; sourceTree = "<group>"; };
@@ -120,6 +130,18 @@
 		DCD208C11F3CC66F00548C36 /* SMAddPhotoViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddPhotoViewCell.m; sourceTree = "<group>"; };
 		DCD208C41F40C3D100548C36 /* SMCustomActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCustomActivityIndicator.h; sourceTree = "<group>"; };
 		DCD208C51F40C3D100548C36 /* SMCustomActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCustomActivityIndicator.m; sourceTree = "<group>"; };
+		DCE0DFBA1F44A88400AAB030 /* SMReviewsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMReviewsModel.h; sourceTree = "<group>"; };
+		DCE0DFBB1F44A88400AAB030 /* SMReviewsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMReviewsModel.m; sourceTree = "<group>"; };
+		DCE0DFBD1F44AC9700AAB030 /* SMReviewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMReviewsViewController.h; sourceTree = "<group>"; };
+		DCE0DFBE1F44AC9700AAB030 /* SMReviewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMReviewsViewController.m; sourceTree = "<group>"; };
+		DCE0DFC01F44AFDB00AAB030 /* SMReviewsViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMReviewsViewCell.h; sourceTree = "<group>"; };
+		DCE0DFC11F44AFDB00AAB030 /* SMReviewsViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMReviewsViewCell.m; sourceTree = "<group>"; };
+		DCE0DFC31F45D9F800AAB030 /* SMGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMGalleryViewController.h; sourceTree = "<group>"; };
+		DCE0DFC41F45D9F800AAB030 /* SMGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMGalleryViewController.m; sourceTree = "<group>"; };
+		DCE0DFC61F45DAFE00AAB030 /* SMGalleryViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMGalleryViewCell.h; sourceTree = "<group>"; };
+		DCE0DFC71F45DAFE00AAB030 /* SMGalleryViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMGalleryViewCell.m; sourceTree = "<group>"; };
+		DCE0DFC91F4623C100AAB030 /* SMKeyboardHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMKeyboardHandler.h; sourceTree = "<group>"; };
+		DCE0DFCA1F4623C100AAB030 /* SMKeyboardHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMKeyboardHandler.m; sourceTree = "<group>"; };
 		DCF9F81F1F210C97001E790A /* SMCustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCustomTextField.h; sourceTree = "<group>"; };
 		DCF9F8201F210C97001E790A /* SMCustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCustomTextField.m; sourceTree = "<group>"; };
 		DCF9F8221F21134A001E790A /* SMAboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAboutUsViewController.h; sourceTree = "<group>"; };
@@ -134,12 +156,22 @@
 				DC8527571F28F7C70057D92B /* MessageUI.framework in Frameworks */,
 				DC8527521F289AD10057D92B /* CoreLocation.framework in Frameworks */,
 				DC85273E1F2618DB0057D92B /* MapKit.framework in Frameworks */,
+				619ADF74C14846DCF0E26E94 /* libPods-ManWithVan.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1413710AE69849373072D112 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				246BC91866446648B724B77E /* Pods-ManWithVan.debug.xcconfig */,
+				0E327D297DFB6C5688BEA6F9 /* Pods-ManWithVan.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		DC6EA4ED1F1F8BFC0067C851 /* Animators */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +210,10 @@
 				DCD208C11F3CC66F00548C36 /* SMAddPhotoViewCell.m */,
 				DCD208C41F40C3D100548C36 /* SMCustomActivityIndicator.h */,
 				DCD208C51F40C3D100548C36 /* SMCustomActivityIndicator.m */,
+				DCE0DFC01F44AFDB00AAB030 /* SMReviewsViewCell.h */,
+				DCE0DFC11F44AFDB00AAB030 /* SMReviewsViewCell.m */,
+				DCE0DFC61F45DAFE00AAB030 /* SMGalleryViewCell.h */,
+				DCE0DFC71F45DAFE00AAB030 /* SMGalleryViewCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -195,6 +231,10 @@
 				DCD208921F2A015000548C36 /* SMPin.m */,
 				DCD208941F2A380A00548C36 /* SMLocationAddress.h */,
 				DCD208951F2A380A00548C36 /* SMLocationAddress.m */,
+				DCE0DFBA1F44A88400AAB030 /* SMReviewsModel.h */,
+				DCE0DFBB1F44A88400AAB030 /* SMReviewsModel.m */,
+				DCE0DFC91F4623C100AAB030 /* SMKeyboardHandler.h */,
+				DCE0DFCA1F4623C100AAB030 /* SMKeyboardHandler.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -215,6 +255,10 @@
 				DC6EA4F51F1F8C150067C851 /* SMSideMenuViewController.m */,
 				DC8527231F2226510057D92B /* SMRequestCallbackViewController.h */,
 				DC8527241F2226510057D92B /* SMRequestCallbackViewController.m */,
+				DCE0DFBD1F44AC9700AAB030 /* SMReviewsViewController.h */,
+				DCE0DFBE1F44AC9700AAB030 /* SMReviewsViewController.m */,
+				DCE0DFC31F45D9F800AAB030 /* SMGalleryViewController.h */,
+				DCE0DFC41F45D9F800AAB030 /* SMGalleryViewController.m */,
 				DC32C6841F43775E00009AD2 /* SMSocialLinksViewController.h */,
 				DC32C6851F43775E00009AD2 /* SMSocialLinksViewController.m */,
 				DC85272E1F222DE40057D92B /* SMGetQuoteViewController.h */,
@@ -237,6 +281,7 @@
 				DC8527561F28F7C70057D92B /* MessageUI.framework */,
 				DC8527511F289AD10057D92B /* CoreLocation.framework */,
 				DC85273D1F2618DB0057D92B /* MapKit.framework */,
+				A4E711842A4405FE2D4818D0 /* libPods-ManWithVan.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -247,6 +292,7 @@
 				DC8B27851F1E3589008710D1 /* ManWithVan */,
 				DC8B27841F1E3589008710D1 /* Products */,
 				DC85273C1F2618DB0057D92B /* Frameworks */,
+				1413710AE69849373072D112 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -291,9 +337,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DC8B279D1F1E3589008710D1 /* Build configuration list for PBXNativeTarget "ManWithVan" */;
 			buildPhases = (
+				F0E08AD58890CFEBD933F5A1 /* [CP] Check Pods Manifest.lock */,
 				DC8B277F1F1E3589008710D1 /* Sources */,
 				DC8B27801F1E3589008710D1 /* Frameworks */,
 				DC8B27811F1E3589008710D1 /* Resources */,
+				FD927D2C89232FE84AD58658 /* [CP] Embed Pods Frameworks */,
+				C8F3C093F941CDFC35539BED /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -351,6 +400,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		C8F3C093F941CDFC35539BED /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ManWithVan/Pods-ManWithVan-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F0E08AD58890CFEBD933F5A1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FD927D2C89232FE84AD58658 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ManWithVan/Pods-ManWithVan-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DC8B277F1F1E3589008710D1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -365,21 +462,27 @@
 				DC6EA5001F1FBA590067C851 /* SMCustomButton.m in Sources */,
 				DC6EA4F71F1F8C150067C851 /* SMDismissMenuAnimator.m in Sources */,
 				DC8527221F2220CB0057D92B /* SMSideMenusParentViewController.m in Sources */,
+				DCE0DFC81F45DAFE00AAB030 /* SMGalleryViewCell.m in Sources */,
 				DC8527441F263BC70057D92B /* SMSegueButton.m in Sources */,
 				DC6EA4F81F1F8C150067C851 /* SMMainViewController.m in Sources */,
 				DC85271F1F221C1A0057D92B /* SMCustomLabel.m in Sources */,
+				DCE0DFCB1F4623C100AAB030 /* SMKeyboardHandler.m in Sources */,
 				DCF9F8241F21134A001E790A /* SMAboutUsViewController.m in Sources */,
+				DCE0DFC51F45D9F800AAB030 /* SMGalleryViewController.m in Sources */,
 				DC8B27941F1E3589008710D1 /* ManWithVan.xcdatamodeld in Sources */,
 				DC8527551F28A0990057D92B /* SMSetUpLocationData.m in Sources */,
 				DC6EA5171F2107DD0067C851 /* SMCustomView.m in Sources */,
 				DC6EA4F61F1F8C150067C851 /* SMPresentMenuAnimator.m in Sources */,
 				DC8527501F2899640057D92B /* SMQuoteData.m in Sources */,
 				DC6EA4FD1F1F91150067C851 /* SMCustomNavigationBar.m in Sources */,
+				DCE0DFBC1F44A88400AAB030 /* SMReviewsModel.m in Sources */,
+				DCE0DFBF1F44AC9700AAB030 /* SMReviewsViewController.m in Sources */,
 				DC8527411F2632480057D92B /* SMSectionLabel.m in Sources */,
 				DCF9F8211F210C97001E790A /* SMCustomTextField.m in Sources */,
 				DCD208991F2B2F7100548C36 /* SMFloorPickerViewController.m in Sources */,
 				DCD208931F2A015000548C36 /* SMPin.m in Sources */,
 				DC6EA4F91F1F8C150067C851 /* SMSideMenuViewController.m in Sources */,
+				DCE0DFC21F44AFDB00AAB030 /* SMReviewsViewCell.m in Sources */,
 				DC6EA5071F1FDE770067C851 /* SMSideMenuViewCell.m in Sources */,
 				DCD208C61F40C3D100548C36 /* SMCustomActivityIndicator.m in Sources */,
 				DCD208961F2A380A00548C36 /* SMLocationAddress.m in Sources */,
@@ -509,6 +612,7 @@
 		};
 		DC8B279E1F1E3589008710D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 246BC91866446648B724B77E /* Pods-ManWithVan.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4PMQKT6K8N;
@@ -521,6 +625,7 @@
 		};
 		DC8B279F1F1E3589008710D1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E327D297DFB6C5688BEA6F9 /* Pods-ManWithVan.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4PMQKT6K8N;

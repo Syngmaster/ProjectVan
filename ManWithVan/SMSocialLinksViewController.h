@@ -11,5 +11,6 @@
 @interface SMSocialLinksViewController : SMSideMenusParentViewController
 
 - (IBAction)openMenu:(UIButton *)sender;
+- (IBAction)socialLinkAction:(UIButton *)sender;
 
 @end

@@ -29,6 +29,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.backBarButtonItem.title=@"";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,6 +40,12 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+
+    if (self.quote.isStartLocation) {
+        self.navigationItem.title = @"Set up start location";
+    } else {
+        self.navigationItem.title = @"Set up end location";
+    }
     
     if (!self.locationData) {
         

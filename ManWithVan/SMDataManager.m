@@ -10,8 +10,9 @@
 #import "SMSetUpLocationData.h"
 #import "SMQuoteData.h"
 
-@interface SMDataManager ()
+#import <AFNetworking/AFNetworking.h>
 
+@interface SMDataManager ()
 
 @end
 
@@ -29,26 +30,27 @@
         UIImage *placeHolder = [UIImage imageNamed:@"ImagePlaceholder.png"];
         sharedManager.placeHolder = placeHolder;
         
-        UIImage *image1 = [UIImage imageNamed:@"SignInIcon.png"];
-        UIImage *image2 = [UIImage imageNamed:@"about_us.png"];
-        UIImage *image3 = [UIImage imageNamed:@"callback-icon.png"];
-        UIImage *image4 = [UIImage imageNamed:@"reviews_icon.png"];
-        UIImage *image5 = [UIImage imageNamed:@"gallery.png"];
-        UIImage *image6 = [UIImage imageNamed:@"social_links.png"];
-        UIImage *image7 = [UIImage imageNamed:@"home_icon.png"];
+        UIImage *image1 = [UIImage imageNamed:@"home_icon.png"];
+        UIImage *image2 = [UIImage imageNamed:@"SignInIcon.png"];
+        UIImage *image3 = [UIImage imageNamed:@"about_us.png"];
+        UIImage *image4 = [UIImage imageNamed:@"callback-icon.png"];
+        UIImage *image5 = [UIImage imageNamed:@"reviews_icon.png"];
+        UIImage *image6 = [UIImage imageNamed:@"gallery.png"];
+        UIImage *image7 = [UIImage imageNamed:@"social_links.png"];
 
         
-        sharedManager.iconArray = @[image7, image1, image2, image3, image4, image5, image6];
+        sharedManager.iconArray = @[image1, image2, image3, image4, image5, image6, image7];
         
-        UIImage *image11 = [UIImage imageNamed:@"SignInIcon_pressed.png"];
-        UIImage *image21 = [UIImage imageNamed:@"about_us_pressed.png"];
-        UIImage *image31 = [UIImage imageNamed:@"callback-icon_pressed.png"];
-        UIImage *image41 = [UIImage imageNamed:@"reviews_icon_pressed.png"];
-        UIImage *image51 = [UIImage imageNamed:@"gallery_pressed.png"];
-        UIImage *image61 = [UIImage imageNamed:@"social_links_pressed.png"];
-        UIImage *image71 = [UIImage imageNamed:@"home_icon_pressed.png"];
+        UIImage *image11 = [UIImage imageNamed:@"home_icon_pressed.png"];
+        UIImage *image21 = [UIImage imageNamed:@"SignInIcon_pressed.png"];
+        UIImage *image31 = [UIImage imageNamed:@"about_us_pressed.png"];
+        UIImage *image41 = [UIImage imageNamed:@"callback-icon_pressed.png"];
+        UIImage *image51 = [UIImage imageNamed:@"reviews_icon_pressed.png"];
+        UIImage *image61 = [UIImage imageNamed:@"gallery_pressed.png"];
+        UIImage *image71 = [UIImage imageNamed:@"social_links_pressed.png"];
 
-        sharedManager.pressedIconArray = @[image71, image11, image21, image31, image41, image51, image61];
+        sharedManager.pressedIconArray = @[image11, image21, image31, image41, image51, image61, image71];
+        
         sharedManager.iconNameArray = @[@"Home",@"Sign in", @"About us", @"Callback", @"Reviews", @"Gallery", @"Social links"];
         
         sharedManager.centerDublinLocation = [[CLLocation alloc] initWithLatitude:53.338082 longitude:-6.259117];
@@ -57,6 +59,41 @@
     });
     
     return sharedManager;
+    
+}
+
+- (void)getPhotosFromGooglePlusAccountOnComplete:(void(^)(NSArray *array, NSError *error)) completionHandler {
+    NSString *url = @"https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJDVjn_zMMZ0gRrNRZRFz0UM8&key=AIzaSyCRh3rshLN9sWCL4Oy8HffknYOTTqu8puU";
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    [manager GET:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        if (responseObject) {
+            NSDictionary *result = responseObject[@"result"];
+            NSArray *photosArray = result[@"photos"];
+            NSMutableArray *resultArray = [NSMutableArray array];
+            
+            for (NSDictionary *dict in photosArray) {
+                
+                NSString *photoURL = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/photo?maxwidth=%@&photoreference=%@&key=AIzaSyCRh3rshLN9sWCL4Oy8HffknYOTTqu8puU", dict[@"width"], dict[@"photo_reference"]];
+                [resultArray addObject:photoURL];
+            }
+            
+            completionHandler(resultArray, nil);
+            
+        } else {
+            
+            NSError *error;
+            completionHandler(nil,error);
+            
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        completionHandler(nil, error);
+
+    }];
     
 }
 
@@ -126,9 +163,7 @@
                 
                 CLLocationCoordinate2D coordinates = kCLLocationCoordinate2DInvalid;
                 completionHandler(coordinates, error);
-                
             }
-            
             
         }];
  
@@ -139,9 +174,6 @@
         completionHandler(coordinates, error);
         
     }
-    
-    
-    
 }
 
 - (void)calculationOfQuote:(SMQuoteData *) quote onComplete:(void(^)(NSInteger price, NSError *error)) completionHandler {
@@ -383,7 +415,7 @@
         if (response) {
             
             MKRoute *shortestRoute = response.routes[0];
-            NSLog(@"Number of routes: %li", [response.routes count]);
+            NSLog(@"Number of routes: %u", [response.routes count]);
             
             for (MKRoute *route in response.routes) {
                 NSLog(@"Driving distance : %f", route.distance);

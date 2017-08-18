@@ -12,6 +12,8 @@
 #import "SMAboutUsViewController.h"
 #import "SMRequestCallbackViewController.h"
 #import "SMSocialLinksViewController.h"
+#import "SMReviewsViewController.h"
+#import "SMGalleryViewController.h"
 
 #import "SMPresentMenuAnimator.h"
 #import "SMDismissMenuAnimator.h"
@@ -88,7 +90,7 @@ typedef NS_ENUM(NSInteger, Direction) {
         [self.interactiveTransition updateInteractiveTransition:progress];
     }
     else if (sender.state == UIGestureRecognizerStateEnded) {
-        if (progress > 0.25) {
+        if (progress > 0.4) {
             [self.interactiveTransition finishInteractiveTransition];
             //self.interactiveTransition = nil;
         }
@@ -158,12 +160,14 @@ typedef NS_ENUM(NSInteger, Direction) {
         
     } else if (passedData == 4) {
         
-
+        SMReviewsViewController *reviewsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SMReviewsViewController"];
+        [self.navigationController pushViewController:reviewsVC animated:NO];
         
     } else if (passedData == 5) {
         
+        SMGalleryViewController *galleryVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SMGalleryViewController"];
+        [self.navigationController pushViewController:galleryVC animated:NO];
 
-        
     } else if (passedData == 6) {
         
         SMSocialLinksViewController *socialVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SMSocialLinksViewController"];

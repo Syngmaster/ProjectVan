@@ -17,6 +17,7 @@
     UIView *view = [[UIView alloc] initWithFrame:self.frame];
     view.backgroundColor = [SMDataManager sharedInstance].baseColor;
     self.selectedBackgroundView = view;
+    self.sideMenuLabel.highlightedTextColor = [UIColor whiteColor];
 
 }
 

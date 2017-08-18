@@ -8,11 +8,14 @@
 
 #import "SMSideMenusParentViewController.h"
 #import "SMSideMenuViewController.h"
+
+#import "SMMainViewController.h"
 #import "SMAboutUsViewController.h"
 #import "SMRequestCallbackViewController.h"
 #import "SMSignInViewController.h"
-#import "SMMainViewController.h"
 #import "SMSocialLinksViewController.h"
+#import "SMReviewsViewController.h"
+#import "SMGalleryViewController.h"
 
 #import "SMPresentMenuAnimator.h"
 #import "SMDismissMenuAnimator.h"
@@ -96,63 +99,52 @@
 #pragma mark - SMSideMenuDelegate
 
 - (void)viewController:(SMSideMenuViewController *)viewController isDismissedWithData:(NSInteger) passedData {
-    NSLog(@"parent1 - %i", (int)passedData);
-    NSLog(@"%@", viewController);
     
     if (passedData == 0) {
         
         SMMainViewController *mainInVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SMMainViewController"];
-        UINavigationController *navVC = (UINavigationController *)[UIApplication sharedApplication].windows.firstObject.rootViewController;
-        [self.navigationController popViewControllerAnimated:NO];
-        [navVC pushViewController:mainInVC animated:NO];
+        [self presentVC:mainInVC];
         
     } else if (passedData == 1) {
         
         SMSignInViewController *signInVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SMSignInViewController"];
-         UINavigationController *navVC = (UINavigationController *)[UIApplication sharedApplication].windows.firstObject.rootViewController;
-         [self.navigationController popViewControllerAnimated:NO];
-         [navVC pushViewController:signInVC animated:NO];
+        [self presentVC:signInVC];
         
     } else if (passedData == 2) {
         
         SMAboutUsViewController *aboutUs = [self.storyboard instantiateViewControllerWithIdentifier:@"SMAboutUsViewController"];
-        UINavigationController *navVC = (UINavigationController *)[UIApplication sharedApplication].windows.firstObject.rootViewController;
-        [self.navigationController popViewControllerAnimated:NO];
-        [navVC pushViewController: aboutUs animated:NO];
+        [self presentVC:aboutUs];
         
     } else if (passedData == 3) {
         
         SMRequestCallbackViewController *requestVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SMRequestCallbackViewController"];
-        UINavigationController *navVC = (UINavigationController *)[UIApplication sharedApplication].windows.firstObject.rootViewController;
-        [self.navigationController popViewControllerAnimated:NO];
-        [navVC pushViewController:requestVC animated:NO];
+        [self presentVC:requestVC];
         
     } else if (passedData == 4) {
         
-
+        SMReviewsViewController *reviewsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SMReviewsViewController"];
+        [self presentVC:reviewsVC];
         
     } else if (passedData == 5) {
         
-
+        SMGalleryViewController *galleryVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SMGalleryViewController"];
+        [self presentVC:galleryVC];
         
     } else if (passedData == 6) {
         
         SMSocialLinksViewController *socialVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SMSocialLinksViewController"];
-        UINavigationController *navVC = (UINavigationController *)[UIApplication sharedApplication].windows.firstObject.rootViewController;
-        [self.navigationController popViewControllerAnimated:NO];
-        [navVC pushViewController:socialVC animated:NO];
+        [self presentVC:socialVC];
         
     }
     
-    NSLog(@"parent2 - %i", (int)passedData);
-
-
-    
-    
-    
 }
 
-
+- (void)presentVC:(UIViewController *) viewController {
+    
+    UINavigationController *navVC = (UINavigationController *)[UIApplication sharedApplication].windows.firstObject.rootViewController;
+    [self.navigationController popViewControllerAnimated:NO];
+    [navVC pushViewController:viewController animated:NO];
+}
 
 
 

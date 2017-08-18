@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SMCustomActivityIndicator : UIViewController
+@interface SMCustomActivityIndicator : UIView
 
 
 @end

@@ -12,13 +12,18 @@
 #import "SMDataManager.h"
 #import "SMAddPhotoViewCell.h"
 #import "SMCustomActivityIndicator.h"
+#import "SMKeyboardHandler.h"
 
 #import <MessageUI/MessageUI.h>
+
+#define kOFFSET_FOR_KEYBOARD 80.0
 
 @interface SMGetQuoteViewController () <UITextFieldDelegate, SMStartEndLocationDelegate, MFMailComposeViewControllerDelegate, UIImagePickerControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) SMQuoteData *quote;
 @property (assign, nonatomic) BOOL hasAtSign;
+@property (assign, nonatomic) BOOL moveUp;
+@property (assign, nonatomic) CGFloat moveUpViewHeight;
 @property (strong, nonatomic) NSMutableArray *addPhotoArray;
 @property (strong, nonatomic) NSMutableArray *placeholderArray;
 
@@ -28,25 +33,77 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     SMQuoteData *quote = [[SMQuoteData alloc] init];
     quote.isSmallMoving = self.isSmallMoving;
     self.quote = quote;
     self.hasAtSign = YES;
-    //self.placeholderArray = [NSMutableArray array];
     self.addPhotoArray = [NSMutableArray array];
     
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem.title=@"";
+    UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, -20,[UIScreen mainScreen].bounds.size.width, 20)];
+    view.backgroundColor=[UIColor whiteColor];
+    [self.navigationController.navigationBar addSubview:view];
     
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self.photoCollectionView reloadData];
+
+}
+
+- (void)keyboardDidShow:(NSNotification *)notification
+{
+    // Assign new frame to your view
+    NSLog(@"%f", self.moveUpViewHeight);
+    
+    [self.view setFrame:CGRectMake(0,-self.moveUpViewHeight,CGRectGetWidth(self.view.frame),CGRectGetHeight(self.view.frame))];
+
+}
+
+-(void)keyboardDidHide:(NSNotification *)notification
+{
+    
+    [self.view setFrame:CGRectMake(0,0,CGRectGetWidth(self.view.frame),CGRectGetHeight(self.view.frame))];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    
+    self.moveUp = NO;
+    CGRect keyboardRect = CGRectMake(0, CGRectGetMaxY(self.view.bounds), CGRectGetWidth(self.view.bounds), -253);
+    CGRect rect = [self.view convertRect:textField.frame fromView:textField.superview];
+    
+    if (CGRectIntersectsRect(keyboardRect, rect)) {
+        NSLog(@"Intersects");
+        self.moveUp = YES;
+        CGRect intersection = CGRectMake(20, 20, 20, 20);
+        intersection.size.height = fabs(CGRectGetHeight(keyboardRect)) - (CGRectGetMaxY(self.view.bounds) - rect.origin.y) + CGRectGetHeight(textField.bounds) + 5;
+        self.moveUpViewHeight = CGRectGetHeight(intersection);
+        NSLog(@"%@", NSStringFromCGRect(intersection));
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+    }
+    
+    
+
+    
+    return YES;
+}
+
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    
+    if (self.moveUp) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
+    }
+
+    [self.view endEditing:YES];
+    return YES;
+}
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     
@@ -91,6 +148,8 @@
         
     return YES;
 }
+
+
 
 #pragma mark - Validation Check for TextField
 
@@ -190,7 +249,13 @@
         
     } else {
         
+        SMCustomActivityIndicator *ind = [[SMCustomActivityIndicator alloc] initWithFrame:self.view.frame];
+        
+        [self.view addSubview:ind];
+        
         [[SMDataManager sharedInstance] calculationOfQuote:self.quote onComplete:^(NSInteger price, NSError *error) {
+            
+            [ind removeFromSuperview];
             
             if (!error) {
                 
@@ -382,8 +447,6 @@
 }
 
 #pragma mark - UICollectionViewDelegate
-
-
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     

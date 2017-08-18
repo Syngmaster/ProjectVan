@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "E0F862A21D6F365F3F0623B0643B183A3A53B51E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "E0F862A21D6F365F3F0623B0643B183A3A53B51E" : 9223372036854775807,
+    "4CC4630F0121FE95107F963B54CAFA99EE5C29B8" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "F8094C09-6C9C-4719-91E5-11F9F4C7E646",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "E0F862A21D6F365F3F0623B0643B183A3A53B51E" : "ManWithVan\/",
+    "4CC4630F0121FE95107F963B54CAFA99EE5C29B8" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "ManWithVan",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ManWithVan.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:Syngmaster\/SketchProject.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4CC4630F0121FE95107F963B54CAFA99EE5C29B8"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:Syngmaster\/ProjectVan.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E0F862A21D6F365F3F0623B0643B183A3A53B51E"
+    }
+  ]
+}
