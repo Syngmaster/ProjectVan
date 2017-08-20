@@ -29,6 +29,7 @@
     self.window.rootViewController = navVC;
     self.navVC = navVC;
     
+    [UIApplication sharedApplication].windows.firstObject.backgroundColor = [UIColor whiteColor];
     
     return YES;
 }

@@ -22,10 +22,12 @@
 
 @property (strong, nonatomic) SMQuoteData *quote;
 @property (assign, nonatomic) BOOL hasAtSign;
-@property (assign, nonatomic) BOOL moveUp;
-@property (assign, nonatomic) CGFloat moveUpViewHeight;
+
 @property (strong, nonatomic) NSMutableArray *addPhotoArray;
 @property (strong, nonatomic) NSMutableArray *placeholderArray;
+
+@property (assign, nonatomic) BOOL moveUp;
+@property (assign, nonatomic) CGFloat moveUpViewHeight;
 
 @end
 
@@ -53,18 +55,18 @@
     [self.photoCollectionView reloadData];
 
 }
+#pragma mark - Keyboard Appearance methods
 
-- (void)keyboardDidShow:(NSNotification *)notification
-{
-    // Assign new frame to your view
+
+- (void)keyboardDidShow:(NSNotification *)notification {
+    
     NSLog(@"%f", self.moveUpViewHeight);
     
     [self.view setFrame:CGRectMake(0,-self.moveUpViewHeight,CGRectGetWidth(self.view.frame),CGRectGetHeight(self.view.frame))];
 
 }
 
--(void)keyboardDidHide:(NSNotification *)notification
-{
+-(void)keyboardDidHide:(NSNotification *)notification {
     
     [self.view setFrame:CGRectMake(0,0,CGRectGetWidth(self.view.frame),CGRectGetHeight(self.view.frame))];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -76,21 +78,18 @@
     
     self.moveUp = NO;
     CGRect keyboardRect = CGRectMake(0, CGRectGetMaxY(self.view.bounds), CGRectGetWidth(self.view.bounds), -253);
-    CGRect rect = [self.view convertRect:textField.frame fromView:textField.superview];
+    CGRect textFieldRect = [self.view convertRect:textField.frame fromView:textField.superview];
     
-    if (CGRectIntersectsRect(keyboardRect, rect)) {
+    if (CGRectIntersectsRect(keyboardRect, textFieldRect)) {
         NSLog(@"Intersects");
         self.moveUp = YES;
-        CGRect intersection = CGRectMake(20, 20, 20, 20);
-        intersection.size.height = fabs(CGRectGetHeight(keyboardRect)) - (CGRectGetMaxY(self.view.bounds) - rect.origin.y) + CGRectGetHeight(textField.bounds) + 5;
+        CGRect intersection = CGRectZero;
+        intersection.size.height = fabs(CGRectGetHeight(keyboardRect)) - (CGRectGetMaxY(self.view.bounds) - textFieldRect.origin.y) + CGRectGetHeight(textField.bounds) + 5;
         self.moveUpViewHeight = CGRectGetHeight(intersection);
         NSLog(@"%@", NSStringFromCGRect(intersection));
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
     }
-    
-    
 
-    
     return YES;
 }
 
@@ -261,6 +260,8 @@
                 
                 if (price != 0) {
                     
+                    self.quote.price = price;
+                    
                     UIAlertController *controller = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"Your quote is %i EUR \n(1 van load)", (int)price] message:@"Would you like to proceed with this quote?" preferredStyle:UIAlertControllerStyleAlert];
                     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
                     UIAlertAction *proceedAction = [UIAlertAction actionWithTitle:@"Proceed" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -340,10 +341,11 @@
         [mc setToRecipients:recipients];
         [mc setSubject:@"A new quote"];
         [mc setMessageBody:[NSString stringWithFormat:
-                            @"Name: %@\r\n Phone number: %@\r\n Email: %@\r\n\n Quote Details: \n\n Description: %@ \n Comments: %@ \n Two people required: %@ \n\n Moving from %@ %@ %@ %@ \r\n Building Type: %@ \n Pick up Floor: %@ \n Lift Available: %@ \r\n\n Moving to %@ %@ %@ %@ \r\n Building Type: %@ \n Pick up Floor: %@ \n Lift available: %@ \r\n\n ",
+                            @"Name: %@\r\n Phone number: %@\r\n Email: %@\r\n\n Quote Details: \n\n Price: %i EUR \n Description: %@ \n Comments: %@ \n Two people required: %@ \n\n Moving from: %@ %@ %@ %@ \r\n Building Type: %@ \n Pick up Floor: %@ \n Lift Available: %@ \r\n\n Moving to: %@ %@ %@ %@ \r\n Building Type: %@ \n Pick up Floor: %@ \n Lift available: %@ \r\n\n ",
                             self.quote.clientName,
                             self.quote.phoneNumber,
                             self.quote.clientEmail,
+                            (int)self.quote.price,
                             self.quote.descriptionText,
                             self.quote.addInfoText,
                             self.quote.twoPeople ? @"YES" : @"NO",

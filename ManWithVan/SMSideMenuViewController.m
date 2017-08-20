@@ -43,26 +43,23 @@
     progress = MIN(1.0, progress);
     
     if (sender.state == UIGestureRecognizerStateBegan) {
-        if (!self.interactiveTransition) {
-            //self.interactiveTransition = [[UIPercentDrivenInteractiveTransition alloc] init];
-        }
-        
+        self.interactor.hasStarted = YES;
         [self dismissViewControllerAnimated:YES completion:nil];
     }
     else if (sender.state == UIGestureRecognizerStateChanged) {
-        [self.interactiveTransition updateInteractiveTransition:progress];
+        [self.interactor updateInteractiveTransition:progress];
     }
     else if (sender.state == UIGestureRecognizerStateEnded) {
-        
-        if (progress > 0.1) {
-            [self.interactiveTransition finishInteractiveTransition];
+        self.interactor.hasStarted = NO;
+        if (progress > 0.4) {
+            [self.interactor finishInteractiveTransition];
         }
         else {
-            [self.interactiveTransition cancelInteractiveTransition];
+            [self.interactor cancelInteractiveTransition];
         }
-        self.interactiveTransition = nil;
     } else if (sender.state == UIGestureRecognizerStateCancelled) {
-        [self.interactiveTransition cancelInteractiveTransition];
+        self.interactor.hasStarted = NO;
+        [self.interactor cancelInteractiveTransition];
     }
 
     
@@ -71,7 +68,7 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 7;
+    return 6;
 }
 
 
@@ -132,13 +129,13 @@
             [self.delegate viewController:self isDismissedWithData:indexPath.row];
         }];
         
-    } else if (indexPath.row == 6) {
+    } /*else if (indexPath.row == 6) {
         
         [self dismissViewControllerAnimated:YES completion:^{
             [self.delegate viewController:self isDismissedWithData:indexPath.row];
         }];
         
-    }
+    }*/
 }
 
 @end

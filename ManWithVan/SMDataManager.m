@@ -31,7 +31,7 @@
         sharedManager.placeHolder = placeHolder;
         
         UIImage *image1 = [UIImage imageNamed:@"home_icon.png"];
-        UIImage *image2 = [UIImage imageNamed:@"SignInIcon.png"];
+        //UIImage *image2 = [UIImage imageNamed:@"SignInIcon.png"];
         UIImage *image3 = [UIImage imageNamed:@"about_us.png"];
         UIImage *image4 = [UIImage imageNamed:@"callback-icon.png"];
         UIImage *image5 = [UIImage imageNamed:@"reviews_icon.png"];
@@ -39,19 +39,19 @@
         UIImage *image7 = [UIImage imageNamed:@"social_links.png"];
 
         
-        sharedManager.iconArray = @[image1, image2, image3, image4, image5, image6, image7];
+        sharedManager.iconArray = @[image1, /*image2,*/ image3, image4, image5, image6, image7];
         
         UIImage *image11 = [UIImage imageNamed:@"home_icon_pressed.png"];
-        UIImage *image21 = [UIImage imageNamed:@"SignInIcon_pressed.png"];
+        //UIImage *image21 = [UIImage imageNamed:@"SignInIcon_pressed.png"];
         UIImage *image31 = [UIImage imageNamed:@"about_us_pressed.png"];
         UIImage *image41 = [UIImage imageNamed:@"callback-icon_pressed.png"];
         UIImage *image51 = [UIImage imageNamed:@"reviews_icon_pressed.png"];
         UIImage *image61 = [UIImage imageNamed:@"gallery_pressed.png"];
         UIImage *image71 = [UIImage imageNamed:@"social_links_pressed.png"];
 
-        sharedManager.pressedIconArray = @[image11, image21, image31, image41, image51, image61, image71];
+        sharedManager.pressedIconArray = @[image11, /*image21,*/ image31, image41, image51, image61, image71];
         
-        sharedManager.iconNameArray = @[@"Home",@"Sign in", @"About us", @"Callback", @"Reviews", @"Gallery", @"Social links"];
+        sharedManager.iconNameArray = @[@"Home",/*@"Sign in",*/ @"About us", @"Callback", @"Reviews", @"Gallery", @"Social links"];
         
         sharedManager.centerDublinLocation = [[CLLocation alloc] initWithLatitude:53.338082 longitude:-6.259117];
         sharedManager.officeDublinLocation = [[CLLocation alloc] initWithLatitude:53.349325 longitude:-6.290251];
@@ -415,7 +415,7 @@
         if (response) {
             
             MKRoute *shortestRoute = response.routes[0];
-            NSLog(@"Number of routes: %u", [response.routes count]);
+            NSLog(@"Number of routes: %lu", [response.routes count]);
             
             for (MKRoute *route in response.routes) {
                 NSLog(@"Driving distance : %f", route.distance);

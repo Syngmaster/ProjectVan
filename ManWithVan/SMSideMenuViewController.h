@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SMInteractor.h"
 
 @class SMSideMenuViewController;
 
@@ -20,7 +21,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) id <SMSideMenuDelegate> delegate;
-@property (strong, nonatomic) UIPercentDrivenInteractiveTransition *interactiveTransition;
+@property (strong, nonatomic) SMInteractor *interactor;
 
 - (IBAction)dismissAction:(UIButton *)sender;
 

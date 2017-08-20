@@ -19,10 +19,11 @@
 
 #import "SMPresentMenuAnimator.h"
 #import "SMDismissMenuAnimator.h"
+#import "SMInteractor.h"
 
 @interface SMSideMenusParentViewController () <UIViewControllerTransitioningDelegate, SMSideMenuDelegate>
 
-@property (strong, nonatomic) UIPercentDrivenInteractiveTransition *interactiveTransition;
+@property (strong, nonatomic) SMInteractor *interactor;
 
 @end
 
@@ -35,11 +36,7 @@
     UIScreenEdgePanGestureRecognizer *panRecognizer = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(edgePanGesture:)];
     panRecognizer.edges = UIRectEdgeLeft;
     [self.view addGestureRecognizer:panRecognizer];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    self.interactiveTransition = nil;
+    self.interactor = [[SMInteractor alloc] init];
 }
 
 - (void)showMenu {
@@ -47,7 +44,7 @@
     SMSideMenuViewController *sideMenuVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SMSideMenuViewController"];
     sideMenuVC.transitioningDelegate = self;
     sideMenuVC.delegate = self;
-    sideMenuVC.interactiveTransition = self.interactiveTransition;
+    sideMenuVC.interactor = self.interactor;
     [self presentViewController:sideMenuVC animated:YES completion:nil];
     
 }
@@ -57,22 +54,23 @@
     progress = MIN(1.0, MAX(0.0, progress));
     
     if (sender.state == UIGestureRecognizerStateBegan) {
-        self.interactiveTransition = [[UIPercentDrivenInteractiveTransition alloc] init];
+        self.interactor.hasStarted = YES;
         [self showMenu];
     }
     else if (sender.state == UIGestureRecognizerStateChanged) {
-        [self.interactiveTransition updateInteractiveTransition:progress];
+        [self.interactor updateInteractiveTransition:progress];
     }
     else if (sender.state == UIGestureRecognizerStateEnded) {
-        if (progress > 0.15) {
-            [self.interactiveTransition finishInteractiveTransition];
+        self.interactor.hasStarted = NO;
+        if (progress > 0.4) {
+            [self.interactor finishInteractiveTransition];
         }
         else {
-            [self.interactiveTransition cancelInteractiveTransition];
+            [self.interactor cancelInteractiveTransition];
         }
-        //self.interactiveTransition = nil;
     } else if (sender.state == UIGestureRecognizerStateCancelled) {
-        [self.interactiveTransition cancelInteractiveTransition];
+        self.interactor.hasStarted = NO;
+        [self.interactor cancelInteractiveTransition];
     }
 }
 
@@ -88,11 +86,11 @@
 }
 
 - (nullable id <UIViewControllerInteractiveTransitioning>)interactionControllerForPresentation:(id <UIViewControllerAnimatedTransitioning>)animator {
-    return self.interactiveTransition;
+    return self.interactor.hasStarted ? self.interactor : nil;
 }
 
 - (nullable id <UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id <UIViewControllerAnimatedTransitioning>)animator {
-    return self.interactiveTransition;
+    return self.interactor.hasStarted ? self.interactor : nil;
 }
 
 
@@ -105,32 +103,32 @@
         SMMainViewController *mainInVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SMMainViewController"];
         [self presentVC:mainInVC];
         
-    } else if (passedData == 1) {
+    } /*else if (passedData == 1) {
         
         SMSignInViewController *signInVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SMSignInViewController"];
         [self presentVC:signInVC];
         
-    } else if (passedData == 2) {
+    }*/ else if (passedData == 1) {
         
         SMAboutUsViewController *aboutUs = [self.storyboard instantiateViewControllerWithIdentifier:@"SMAboutUsViewController"];
         [self presentVC:aboutUs];
         
-    } else if (passedData == 3) {
+    } else if (passedData == 2) {
         
         SMRequestCallbackViewController *requestVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SMRequestCallbackViewController"];
         [self presentVC:requestVC];
         
-    } else if (passedData == 4) {
+    } else if (passedData == 3) {
         
         SMReviewsViewController *reviewsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SMReviewsViewController"];
         [self presentVC:reviewsVC];
         
-    } else if (passedData == 5) {
+    } else if (passedData == 4) {
         
         SMGalleryViewController *galleryVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SMGalleryViewController"];
         [self presentVC:galleryVC];
         
-    } else if (passedData == 6) {
+    } else if (passedData == 5) {
         
         SMSocialLinksViewController *socialVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SMSocialLinksViewController"];
         [self presentVC:socialVC];

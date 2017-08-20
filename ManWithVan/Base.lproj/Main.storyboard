@@ -85,7 +85,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="l1j-P6-hzC">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yfz-qc-eTt">
-                                <rect key="frame" x="202" y="7" width="102" height="30"/>
+                                <rect key="frame" x="257" y="7" width="102" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
                                 <state key="normal" title="                 Sign out">
@@ -117,14 +117,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eXD-Bt-hJy" customClass="SMCustomView">
                                 <rect key="frame" x="20" y="84" width="335" height="563"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="i1a-Zf-BEP">
-                                        <rect key="frame" x="30" y="50" width="275" height="393"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="i1a-Zf-BEP">
+                                        <rect key="frame" x="30" y="40" width="275" height="378"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qvC-Ug-jL8" customClass="SMCustomView">
-                                                <rect key="frame" x="0.0" y="0.0" width="275" height="176.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="275" height="174"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*Your name:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7x-on-uDX" customClass="SMCustomLabel">
-                                                        <rect key="frame" x="85.5" y="38.5" width="104" height="20"/>
+                                                        <rect key="frame" x="85.5" y="38" width="104" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="5w3-M8-iU8"/>
                                                         </constraints>
@@ -133,7 +133,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qgv-GW-bpJ" customClass="SMCustomTextField">
-                                                        <rect key="frame" x="30" y="73.5" width="215" height="30"/>
+                                                        <rect key="frame" x="30" y="73" width="215" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
@@ -153,10 +153,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9BS-yL-iC9" customClass="SMCustomView">
-                                                <rect key="frame" x="0.0" y="216.5" width="275" height="176.5"/>
+                                                <rect key="frame" x="0.0" y="204" width="275" height="174"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*Your phone number:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="00X-DP-WdQ" customClass="SMCustomLabel">
-                                                        <rect key="frame" x="46.5" y="39" width="182" height="20"/>
+                                                        <rect key="frame" x="46.5" y="37.5" width="182" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="qZN-QX-rY9"/>
                                                         </constraints>
@@ -165,7 +165,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ssK-Cz-rmz" customClass="SMCustomTextField">
-                                                        <rect key="frame" x="30" y="74" width="215" height="30"/>
+                                                        <rect key="frame" x="30" y="72.5" width="215" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
@@ -204,9 +204,9 @@
                                     <constraint firstAttribute="bottom" secondItem="n0t-eq-rg7" secondAttribute="bottom" constant="20" id="5Mg-Dz-rQI"/>
                                     <constraint firstAttribute="trailing" secondItem="i1a-Zf-BEP" secondAttribute="trailing" constant="30" id="SGa-m3-Zgw"/>
                                     <constraint firstItem="i1a-Zf-BEP" firstAttribute="leading" secondItem="eXD-Bt-hJy" secondAttribute="leading" constant="30" id="Vc5-ez-wQQ"/>
-                                    <constraint firstItem="i1a-Zf-BEP" firstAttribute="top" secondItem="eXD-Bt-hJy" secondAttribute="top" constant="50" id="aPK-ak-b32"/>
+                                    <constraint firstItem="i1a-Zf-BEP" firstAttribute="top" secondItem="eXD-Bt-hJy" secondAttribute="top" constant="40" id="aPK-ak-b32"/>
                                     <constraint firstItem="i1a-Zf-BEP" firstAttribute="centerX" secondItem="eXD-Bt-hJy" secondAttribute="centerX" id="oFn-9X-Z9P"/>
-                                    <constraint firstItem="n0t-eq-rg7" firstAttribute="top" secondItem="i1a-Zf-BEP" secondAttribute="bottom" constant="60" id="z9z-fA-ugm"/>
+                                    <constraint firstItem="n0t-eq-rg7" firstAttribute="top" secondItem="i1a-Zf-BEP" secondAttribute="bottom" constant="85" id="z9z-fA-ugm"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -318,13 +318,6 @@
                                 <connections>
                                     <action selector="openMenuAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ykq-Wh-JLK"/>
                                 </connections>
-                            </button>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="QUm-kP-bK4">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vhz-0R-xqS">
-                                <rect key="frame" x="328" y="3" width="31" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="CallUsButton"/>
                             </button>
                         </barButtonItem>
                     </navigationItem>
@@ -1224,7 +1217,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HQ2-1j-jzo" customClass="SMCustomTableView">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HQ2-1j-jzo" customClass="SMCustomTableView">
                                 <rect key="frame" x="0.0" y="0.0" width="225" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -1428,7 +1421,7 @@
                                                 <color key="textColor" red="0.99607843137254903" green="0.28235294117647058" blue="0.023529411764705882" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7sH-HM-bwh" customClass="SMCustomLabel">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="7sH-HM-bwh" customClass="SMCustomLabel">
                                                 <rect key="frame" x="0.0" y="23.5" width="305" height="173.5"/>
                                                 <string key="text">VIPvan is small moving company located in the heart of Dublin that offers ‘Man with a Van’ to transport all your necessities from one place to another. Widely recognized as Man with a Van, this whole-heartedly friendly service eases the nightmare of moving loads around the city, collaborating with the latest tools and equipment to protect any damage or harm. </string>
                                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
@@ -1649,10 +1642,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="x42-4t-PVi">
-                                                <rect key="frame" x="0.0" y="94.5" width="261" height="84.5"/>
+                                                <rect key="frame" x="0.0" y="94.5" width="260" height="84.5"/>
                                                 <subviews>
                                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WSU-yQ-P38">
-                                                        <rect key="frame" x="0.0" y="0.0" width="85.5" height="84.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="84.5" height="84.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="WSU-yQ-P38" secondAttribute="height" multiplier="1:1" id="Blo-ug-VzX"/>
                                                         </constraints>
@@ -1662,7 +1655,7 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Follow us on Twitter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ueD-rg-tmS">
-                                                        <rect key="frame" x="90.5" y="0.0" width="170.5" height="84.5"/>
+                                                        <rect key="frame" x="89.5" y="0.0" width="170.5" height="84.5"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -1670,10 +1663,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="AsP-co-a6l">
-                                                <rect key="frame" x="0.0" y="189" width="282" height="85"/>
+                                                <rect key="frame" x="0.0" y="189" width="282.5" height="85"/>
                                                 <subviews>
                                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qoa-W6-xSL">
-                                                        <rect key="frame" x="0.0" y="0.0" width="84" height="85"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="84.5" height="85"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="qoa-W6-xSL" secondAttribute="height" multiplier="1:1" id="uwm-I8-3Nq"/>
                                                         </constraints>
@@ -1683,7 +1676,7 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add us on Google Plus" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zOt-fv-lI0">
-                                                        <rect key="frame" x="89" y="0.0" width="193" height="85"/>
+                                                        <rect key="frame" x="89.5" y="0.0" width="193" height="85"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -1691,10 +1684,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ZYz-yX-HU5">
-                                                <rect key="frame" x="0.0" y="284" width="283" height="84.5"/>
+                                                <rect key="frame" x="0.0" y="284" width="282" height="84.5"/>
                                                 <subviews>
                                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cSY-kk-rPf">
-                                                        <rect key="frame" x="0.0" y="0.0" width="85.5" height="84.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="84.5" height="84.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="cSY-kk-rPf" secondAttribute="height" multiplier="1:1" id="NCD-fs-gNa"/>
                                                         </constraints>
@@ -1704,7 +1697,7 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subscribe to us on Youtube" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="PLH-Zt-Z3I">
-                                                        <rect key="frame" x="90.5" y="0.0" width="192.5" height="84.5"/>
+                                                        <rect key="frame" x="89.5" y="0.0" width="192.5" height="84.5"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -1799,7 +1792,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CPW-FE-f7E" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="176-gF-jYx" customClass="SMCustomNavigationBar">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="176-gF-jYx" customClass="SMCustomNavBarWithoutRightBtn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1836,16 +1829,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p0j-PA-zBm" customClass="SMCustomView">
-                                                    <rect key="frame" x="5" y="10" width="364" height="87.5"/>
+                                                    <rect key="frame" x="5" y="10" width="325" height="87.5"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="st0-Ms-RJo">
-                                                            <rect key="frame" x="15" y="10" width="334" height="67.5"/>
+                                                            <rect key="frame" x="15" y="10" width="295" height="67.5"/>
                                                             <subviews>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="kXZ-Oh-Rso">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="334" height="30"/>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kXZ-Oh-Rso">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="295" height="30"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QOM-jA-YQX">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="167" height="30"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="184.5" height="30"/>
                                                                             <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="14"/>
                                                                             <color key="textColor" red="0.99607843139999996" green="0.28235294119999998" blue="0.023529411760000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
@@ -1853,15 +1846,16 @@
                                                                             <size key="shadowOffset" width="1" height="0.0"/>
                                                                         </label>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Stars" translatesAutoresizingMaskIntoConstraints="NO" id="xLr-lf-Tcw">
-                                                                            <rect key="frame" x="167" y="0.0" width="167" height="30"/>
+                                                                            <rect key="frame" x="184.5" y="0.0" width="110.5" height="30"/>
                                                                         </imageView>
                                                                     </subviews>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="30" id="DmO-8i-tZg"/>
+                                                                        <constraint firstItem="xLr-lf-Tcw" firstAttribute="width" secondItem="QOM-jA-YQX" secondAttribute="width" multiplier="0.6" id="yEO-mb-Hh3"/>
                                                                     </constraints>
                                                                 </stackView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P20-9c-Hp7">
-                                                                    <rect key="frame" x="0.0" y="30" width="334" height="37.5"/>
+                                                                    <rect key="frame" x="0.0" y="30" width="295" height="37.5"/>
                                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -1970,7 +1964,7 @@
                                         <rect key="frame" x="29.5" y="0.0" width="296" height="300"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="297" height="300"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="296" height="300"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vFk-4H-njc" customClass="SMCustomView">
@@ -2028,7 +2022,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="SRT-kd-b5c">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Op4-dL-Uxt">
-                                <rect key="frame" x="273" y="3" width="31" height="38"/>
+                                <rect key="frame" x="328" y="3" width="31" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="CallUsButton"/>
                             </button>
@@ -2115,7 +2109,7 @@
         <image name="youtube_social" width="118" height="122"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cJm-us-3Tz"/>
+        <segue reference="tbx-pq-sLe"/>
         <segue reference="IUB-hc-o55"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -22,7 +22,7 @@
     if (self) {
         CGRect backgroundFrame = frame;
         backgroundFrame.size.width = frame.size.width - 50;
-        backgroundFrame.size.height = frame.size.height - 350;
+        backgroundFrame.size.height = frame.size.height - 400;
         
         UIView *backgroundView = [[UIView alloc] initWithFrame:backgroundFrame];
         backgroundView.backgroundColor = [UIColor grayColor];

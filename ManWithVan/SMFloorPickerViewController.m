@@ -23,7 +23,7 @@
     self.pickerData = array;
     
     self.navigationItem.title = @"Select a floor";
-    
+
     UIImage *cancelImage = [[UIImage imageNamed:@"Cancel_icon.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithImage:cancelImage style:UIBarButtonItemStylePlain target:self action:@selector(cancelAction:)];

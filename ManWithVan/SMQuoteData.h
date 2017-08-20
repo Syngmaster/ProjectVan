@@ -21,7 +21,7 @@
 @property (strong, nonatomic) NSMutableArray *photosArray;
 @property (strong, nonatomic) NSString *addInfoText;
 @property (assign, nonatomic) BOOL twoPeople;
-
+@property (assign, nonatomic) NSInteger price;
 
 @property (assign, nonatomic) BOOL isStartLocation;
 @property (strong, nonatomic) SMSetUpLocationData *startLocation;

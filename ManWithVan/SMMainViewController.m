@@ -18,6 +18,7 @@
 #import "SMPresentMenuAnimator.h"
 #import "SMDismissMenuAnimator.h"
 #import "SMCustomNavigationBar.h"
+#import "SMInteractor.h"
 
 
 typedef NS_ENUM(NSInteger, Direction) {
@@ -32,8 +33,7 @@ typedef NS_ENUM(NSInteger, Direction) {
 
 @interface SMMainViewController () <UIViewControllerTransitioningDelegate, SMSideMenuDelegate, UINavigationControllerDelegate>
 
-@property (strong, nonatomic) UIPercentDrivenInteractiveTransition *interactiveTransition;
-
+@property (strong, nonatomic) SMInteractor *interactor;
 
 @end
 
@@ -43,7 +43,6 @@ typedef NS_ENUM(NSInteger, Direction) {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.navigationController.delegate = self;
-
     UIScreenEdgePanGestureRecognizer *panRecognizer = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(edgePanGesture:)];
     panRecognizer.edges = UIRectEdgeLeft;
     [self.view addGestureRecognizer:panRecognizer];
@@ -51,13 +50,9 @@ typedef NS_ENUM(NSInteger, Direction) {
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem.title=@"";
 
+    self.interactor = [[SMInteractor alloc] init];
+    
 }
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    self.interactiveTransition = nil;
-}
-
 
 - (IBAction)openMenuAction:(UIButton *)sender {
     
@@ -72,8 +67,7 @@ typedef NS_ENUM(NSInteger, Direction) {
         SMSideMenuViewController *menuVC = segue.destinationViewController;
         menuVC.transitioningDelegate = self;
         menuVC.delegate = self;
-        menuVC.interactiveTransition = self.interactiveTransition;
-        
+        menuVC.interactor = self.interactor;
     }
 
 }
@@ -83,30 +77,30 @@ typedef NS_ENUM(NSInteger, Direction) {
     progress = MIN(1.0, MAX(0.0, progress));
     
     if (sender.state == UIGestureRecognizerStateBegan) {
-        self.interactiveTransition = [[UIPercentDrivenInteractiveTransition alloc] init];
+        self.interactor.hasStarted = YES;
         [self performSegueWithIdentifier:@"showMenu" sender:nil];
     }
     else if (sender.state == UIGestureRecognizerStateChanged) {
-        [self.interactiveTransition updateInteractiveTransition:progress];
+        [self.interactor updateInteractiveTransition:progress];
     }
     else if (sender.state == UIGestureRecognizerStateEnded) {
+        self.interactor.hasStarted = NO;
         if (progress > 0.4) {
-            [self.interactiveTransition finishInteractiveTransition];
-            //self.interactiveTransition = nil;
+            [self.interactor finishInteractiveTransition];
         }
         else {
-            [self.interactiveTransition cancelInteractiveTransition];
+            [self.interactor cancelInteractiveTransition];
         }
-        //self.interactiveTransition = nil;
     } else if (sender.state == UIGestureRecognizerStateCancelled) {
-        [self.interactiveTransition cancelInteractiveTransition];
+        self.interactor.hasStarted = NO;
+        [self.interactor cancelInteractiveTransition];
     }
 }
 
 
 #pragma mark - UINavigationControllerDelegate
 
-
+/*
 - (nullable id <UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation
                                                          fromViewController:(UIViewController *)fromVC
                                                            toViewController:(UIViewController *)toVC {
@@ -117,7 +111,7 @@ typedef NS_ENUM(NSInteger, Direction) {
     }
     return nil;
 }
-
+*/
 #pragma mark - UIViewControllerTransitioningDelegate
 
 - (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
@@ -129,46 +123,43 @@ typedef NS_ENUM(NSInteger, Direction) {
 }
 
 - (nullable id <UIViewControllerInteractiveTransitioning>)interactionControllerForPresentation:(id <UIViewControllerAnimatedTransitioning>)animator {
-    return self.interactiveTransition;
+    return self.interactor.hasStarted ? self.interactor : nil;
 }
 
 - (nullable id <UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id <UIViewControllerAnimatedTransitioning>)animator {
-    return self.interactiveTransition;
+    return self.interactor.hasStarted ? self.interactor : nil;
 }
 
 #pragma mark - SMSideMenuDelegate
 
 - (void)viewController:(SMSideMenuViewController *)viewController isDismissedWithData:(NSInteger) passedData {
     NSLog(@"%i", (int)passedData);
-    if (passedData == 0) {
-        
-        
-    } else if (passedData == 1) {
+    /*if (passedData == 1) {
         
         SMSignInViewController *signVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SMSignInViewController"];
         [self.navigationController pushViewController:signVC animated:NO];
         
-    } else if (passedData == 2) {
+    } else*/ if (passedData == 1) {
         
         SMAboutUsViewController *aboutUs = [self.storyboard instantiateViewControllerWithIdentifier:@"SMAboutUsViewController"];
         [self.navigationController pushViewController:aboutUs animated:NO];
         
-    } else if (passedData == 3) {
+    } else if (passedData == 2) {
         
         SMRequestCallbackViewController *requestVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SMRequestCallbackViewController"];
         [self.navigationController pushViewController:requestVC animated:NO];
         
-    } else if (passedData == 4) {
+    } else if (passedData == 3) {
         
         SMReviewsViewController *reviewsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SMReviewsViewController"];
         [self.navigationController pushViewController:reviewsVC animated:NO];
         
-    } else if (passedData == 5) {
+    } else if (passedData == 4) {
         
         SMGalleryViewController *galleryVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SMGalleryViewController"];
         [self.navigationController pushViewController:galleryVC animated:NO];
 
-    } else if (passedData == 6) {
+    } else if (passedData == 5) {
         
         SMSocialLinksViewController *socialVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SMSocialLinksViewController"];
         [self.navigationController pushViewController:socialVC animated:NO];
