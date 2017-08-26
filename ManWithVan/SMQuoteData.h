@@ -12,7 +12,7 @@
 
 @interface SMQuoteData : NSObject
 
-@property (assign,nonatomic) BOOL isSmallMoving;
+@property (assign,nonatomic) NSInteger movingType;
 
 @property (strong, nonatomic) NSString *clientName;
 @property (strong, nonatomic) NSString *phoneNumber;

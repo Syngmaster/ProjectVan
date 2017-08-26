@@ -19,7 +19,7 @@
     
     UIFont *font = [UIFont fontWithName:@"Avenir-Heavy" size:fontSize];
     
-    self.layer.cornerRadius = CGRectGetHeight(self.frame)/8;
+    self.layer.cornerRadius = CGRectGetHeight(self.frame)/7;
     self.layer.borderColor = [UIColor blackColor].CGColor;
     self.layer.borderWidth = 0.75;
     

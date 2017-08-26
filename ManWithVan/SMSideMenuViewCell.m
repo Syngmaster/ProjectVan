@@ -52,6 +52,10 @@
     self.sideMenuImageView.image = [[SMDataManager sharedInstance].iconArray objectAtIndex:indexPath.row];
     self.sideMenuImageView.highlightedImage = [[SMDataManager sharedInstance].pressedIconArray objectAtIndex:indexPath.row];
     self.sideMenuLabel.text = [[SMDataManager sharedInstance].iconNameArray objectAtIndex:indexPath.row];
+    
+    if (indexPath.row == 6) {
+        self.sideMenuLabel.textColor = [UIColor colorWithRed:254.0/255.0 green:72.0/255.0 blue:6.0/255.0 alpha:1.0];
+    }
 }
 
 @end

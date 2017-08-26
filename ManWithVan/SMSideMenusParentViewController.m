@@ -16,6 +16,7 @@
 #import "SMSocialLinksViewController.h"
 #import "SMReviewsViewController.h"
 #import "SMGalleryViewController.h"
+#import "SMMovingTypeViewController.h"
 
 #import "SMPresentMenuAnimator.h"
 #import "SMDismissMenuAnimator.h"
@@ -133,6 +134,10 @@
         SMSocialLinksViewController *socialVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SMSocialLinksViewController"];
         [self presentVC:socialVC];
         
+    } else if (passedData == 6) {
+        
+        SMMovingTypeViewController *movingTypeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SMMovingTypeViewController"];
+        [self presentVC:movingTypeVC];
     }
     
 }

@@ -37,9 +37,9 @@
         UIImage *image5 = [UIImage imageNamed:@"reviews_icon.png"];
         UIImage *image6 = [UIImage imageNamed:@"gallery.png"];
         UIImage *image7 = [UIImage imageNamed:@"social_links.png"];
-
+        UIImage *image8 = [UIImage imageNamed:@"quote_icon.png"];
         
-        sharedManager.iconArray = @[image1, /*image2,*/ image3, image4, image5, image6, image7];
+        sharedManager.iconArray = @[image1, /*image2,*/ image3, image4, image5, image6, image7, image8];
         
         UIImage *image11 = [UIImage imageNamed:@"home_icon_pressed.png"];
         //UIImage *image21 = [UIImage imageNamed:@"SignInIcon_pressed.png"];
@@ -48,10 +48,11 @@
         UIImage *image51 = [UIImage imageNamed:@"reviews_icon_pressed.png"];
         UIImage *image61 = [UIImage imageNamed:@"gallery_pressed.png"];
         UIImage *image71 = [UIImage imageNamed:@"social_links_pressed.png"];
+        UIImage *image81 = [UIImage imageNamed:@"quote_icon_pressed.png"];
 
-        sharedManager.pressedIconArray = @[image11, /*image21,*/ image31, image41, image51, image61, image71];
+        sharedManager.pressedIconArray = @[image11, /*image21,*/ image31, image41, image51, image61, image71, image81];
         
-        sharedManager.iconNameArray = @[@"Home",/*@"Sign in",*/ @"About us", @"Callback", @"Reviews", @"Gallery", @"Social links"];
+        sharedManager.iconNameArray = @[@"Home",/*@"Sign in",*/ @"About us", @"Callback", @"Reviews", @"Gallery", @"Social links", @"Quote"];
         
         sharedManager.centerDublinLocation = [[CLLocation alloc] initWithLatitude:53.338082 longitude:-6.259117];
         sharedManager.officeDublinLocation = [[CLLocation alloc] initWithLatitude:53.349325 longitude:-6.290251];
@@ -180,21 +181,21 @@
     
     __block NSInteger price = 0;
     
-    if (quote.isSmallMoving) {
+    if (quote.movingType == MovingTypeSmall || quote.movingType == MovingTypeHeavy) {
         
         if ([quote.startLocation.buildingType isEqualToString:@"House"] && [quote.endLocation.buildingType isEqualToString:@"House"]) {
             
-            price = 40;
+            (quote.movingType == MovingTypeSmall) ? (price = 50) : (price = 130);
             
         } else if ([quote.startLocation.buildingType isEqualToString:@"Apartment"] && [quote.endLocation.buildingType isEqualToString:@"Apartment"]) {
             
             if (quote.startLocation.liftAvailable && quote.endLocation.liftAvailable) {
                 
-                price = 50;
+                (quote.movingType == MovingTypeSmall) ? (price = 60) : (price = 140);
 
             } else {
                 
-                price = 40;
+                (quote.movingType == MovingTypeSmall) ? (price = 50) : (price = 130);
                 
                 if (!quote.startLocation.liftAvailable) {
                     price = [self updatePrice:price ofQuote:quote withPickUpFloor:quote.startLocation];
@@ -207,12 +208,13 @@
             }
             
         } else {
-            price = 40;
+            
+            (quote.movingType == MovingTypeSmall) ? (price = 50) : (price = 130);
             
             if ([quote.startLocation.buildingType isEqualToString:@"Apartment"] || [quote.startLocation.buildingType isEqualToString:@"Other"]) {
                 
                 if (quote.startLocation.liftAvailable) {
-                    price = 50;
+                    (quote.movingType == MovingTypeSmall) ? (price = 60) : (price = 140);
                 } else {
                     price = [self updatePrice:price ofQuote:quote withPickUpFloor:quote.startLocation];
                 }
@@ -222,7 +224,7 @@
             if ([quote.endLocation.buildingType isEqualToString:@"Apartment"] || [quote.endLocation.buildingType isEqualToString:@"Other"]) {
                 
                 if (quote.endLocation.liftAvailable) {
-                    price = 50;
+                    price = 60;
                 } else {
                     price = [self updatePrice:price ofQuote:quote withPickUpFloor:quote.endLocation];
                 }
@@ -288,7 +290,7 @@
                     
                     CLLocationCoordinate2D endPoint = coordinates;
                     
-                    if (quote.isSmallMoving) {
+                    if (quote.movingType == MovingTypeSmall || quote.movingType == MovingTypeHeavy) {
                         
                         if (quote.startLocation && quote.endLocation) {
                             
@@ -370,9 +372,9 @@
         
         if (estHoursOfWork > 1) {
             float roundedResult = ceil(estHoursOfWork / 0.5) * 0.5;
-            price = price + roundedResult * 20;
+            price = price + roundedResult * 30;
         } else {
-            price = price + 20;
+            price = price + 30;
         }
         
     }

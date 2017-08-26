@@ -37,7 +37,7 @@
     [super viewDidLoad];
     
     SMQuoteData *quote = [[SMQuoteData alloc] init];
-    quote.isSmallMoving = self.isSmallMoving;
+    quote.movingType = self.movingType;
     self.quote = quote;
     self.hasAtSign = YES;
     self.addPhotoArray = [NSMutableArray array];
@@ -55,8 +55,8 @@
     [self.photoCollectionView reloadData];
 
 }
-#pragma mark - Keyboard Appearance methods
 
+#pragma mark - Keyboard Appearance methods
 
 - (void)keyboardDidShow:(NSNotification *)notification {
     

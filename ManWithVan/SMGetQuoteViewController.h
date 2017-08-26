@@ -10,7 +10,7 @@
 
 @interface SMGetQuoteViewController : UIViewController
 
-@property (assign, nonatomic) BOOL isSmallMoving;
+@property (assign, nonatomic) NSInteger movingType;
 
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumberTextField;

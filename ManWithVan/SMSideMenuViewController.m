@@ -68,7 +68,7 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 6;
+    return 7;
 }
 
 
@@ -129,13 +129,13 @@
             [self.delegate viewController:self isDismissedWithData:indexPath.row];
         }];
         
-    } /*else if (indexPath.row == 6) {
+    } else if (indexPath.row == 6) {
         
         [self dismissViewControllerAnimated:YES completion:^{
             [self.delegate viewController:self isDismissedWithData:indexPath.row];
         }];
         
-    }*/
+    }
 }
 
 @end

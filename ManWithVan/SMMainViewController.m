@@ -14,6 +14,7 @@
 #import "SMSocialLinksViewController.h"
 #import "SMReviewsViewController.h"
 #import "SMGalleryViewController.h"
+#import "SMMovingTypeViewController.h"
 
 #import "SMPresentMenuAnimator.h"
 #import "SMDismissMenuAnimator.h"
@@ -97,21 +98,6 @@ typedef NS_ENUM(NSInteger, Direction) {
     }
 }
 
-
-#pragma mark - UINavigationControllerDelegate
-
-/*
-- (nullable id <UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation
-                                                         fromViewController:(UIViewController *)fromVC
-                                                           toViewController:(UIViewController *)toVC {
-    if (operation == UINavigationControllerOperationPush) {
-        return  [[SMPresentMenuAnimator alloc] init];
-    } else if (operation == UINavigationControllerOperationPop) {
-        return  [[SMDismissMenuAnimator alloc] init];
-    }
-    return nil;
-}
-*/
 #pragma mark - UIViewControllerTransitioningDelegate
 
 - (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
@@ -164,6 +150,10 @@ typedef NS_ENUM(NSInteger, Direction) {
         SMSocialLinksViewController *socialVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SMSocialLinksViewController"];
         [self.navigationController pushViewController:socialVC animated:NO];
         
+    } else if (passedData == 6) {
+        
+        SMMovingTypeViewController *movingTypeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SMMovingTypeViewController"];
+        [self.navigationController pushViewController:movingTypeVC animated:NO];
     }
 }
 

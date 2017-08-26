@@ -13,7 +13,8 @@
 typedef NS_ENUM (NSInteger, MovingType) {
  
     MovingTypeSmall,
-    MovingTypeBig
+    MovingTypeBig,
+    MovingTypeHeavy
     
 };
 
@@ -39,16 +40,19 @@ typedef NS_ENUM (NSInteger, MovingType) {
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UIButton *)sender {
     
-    if (sender.tag == MovingTypeSmall) {
-        if ([segue.identifier isEqualToString:@"small"]) {
-            SMGetQuoteViewController *dvc = segue.destinationViewController;
-            dvc.isSmallMoving = YES;
-        }
-    } else {
-        if ([segue.identifier isEqualToString:@"big"]) {
-            SMGetQuoteViewController *dvc = segue.destinationViewController;
-            dvc.isSmallMoving = NO;
-        }
+    SMGetQuoteViewController *dvc = segue.destinationViewController;
+
+    switch (sender.tag) {
+        case MovingTypeSmall:
+            dvc.movingType = MovingTypeSmall;
+            break;
+        case MovingTypeBig:
+            dvc.movingType = MovingTypeBig;
+            break;
+        case MovingTypeHeavy:
+            dvc.movingType = MovingTypeHeavy;
+            break;
+
     }
     
 }

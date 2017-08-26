@@ -9,6 +9,14 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
+typedef NS_ENUM (NSInteger, MovingType) {
+    
+    MovingTypeSmall,
+    MovingTypeBig,
+    MovingTypeHeavy
+    
+};
+
 @class SMSetUpLocationData, SMQuoteData;
 
 @interface SMDataManager : NSObject
