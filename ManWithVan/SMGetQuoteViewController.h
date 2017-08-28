@@ -12,19 +12,11 @@
 
 @property (assign, nonatomic) NSInteger movingType;
 
-@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
-@property (weak, nonatomic) IBOutlet UITextField *phoneNumberTextField;
-@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
-@property (weak, nonatomic) IBOutlet UITextField *descriptionTextField;
-@property (weak, nonatomic) IBOutlet UITextField *addInformationTextField;
-@property (weak, nonatomic) IBOutlet UIImageView *tickImageView;
 @property (weak, nonatomic) IBOutlet UICollectionView *photoCollectionView;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-- (IBAction)twoPeopleAction:(UIButton *)sender;
-- (IBAction)addPhotoAction:(UIButton *)sender;
-- (IBAction)startLocationAction:(UIButton *)sender;
-- (IBAction)endLocationButton:(UIButton *)sender;
-- (IBAction)getQuoteAction:(UIButton *)sender;
+- (IBAction)nextAction:(UIButton *)sender;
+- (IBAction)cancelAction:(UIButton *)sender;
+
 
 @end

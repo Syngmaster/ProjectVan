@@ -8,8 +8,14 @@
 
 
 #import "SMStartEndLocationViewController.h"
-#import "SMFloorPickerViewController.h"
+#import "SMLocationSettingsViewController.h"
 #import "SMMapViewController.h"
+#import "SMDataManager.h"
+#import "SMCustomActivityIndicator.h"
+#import "SMYourQuoteViewController.h"
+#import "SMRequestCallbackViewController.h"
+
+#import <MessageUI/MessageUI.h>
 
 #import "SMQuoteData.h"
 #import "SMSetUpLocationData.h"
@@ -18,7 +24,7 @@
 #import "SMCustomNavBarWithoutBtn.h"
 
 
-@interface SMStartEndLocationViewController () <UITextFieldDelegate, UIPopoverPresentationControllerDelegate, SMFloorPickerDelegate, SMMapViewDelegate>
+@interface SMStartEndLocationViewController () <UITextFieldDelegate, SMLocationSettingsDelegate, SMMapViewDelegate, MFMailComposeViewControllerDelegate>
 
 @property (strong, nonatomic) SMSetUpLocationData *locationData;
 @property (strong, nonatomic) SMLocationAddress *address;
@@ -35,6 +41,14 @@
     
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem.title=@"";
+    self.navigationItem.title = @"Set up location";
+
+    SMSetUpLocationData *startLocationData = [[SMSetUpLocationData alloc] init];
+    SMSetUpLocationData *endLocationData = [[SMSetUpLocationData alloc] init];
+
+    self.quote.startLocation = startLocationData;
+    self.quote.endLocation = endLocationData;
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,209 +60,43 @@
     [super viewDidAppear:animated];
 
     if (self.quote.isStartLocation) {
-        self.navigationItem.title = @"Set up start location";
+        self.locationFromTextField.text = self.quote.startLocation.fullAddress;
     } else {
-        self.navigationItem.title = @"Set up end location";
+        self.locationToTextField.text = self.quote.endLocation.fullAddress;
     }
     
-    if (!self.locationData) {
-        
-        if ((!self.quote.startLocation && self.quote.isStartLocation) || (!self.quote.endLocation && !self.quote.isStartLocation)) {
-            
-            SMSetUpLocationData *locationData = [[SMSetUpLocationData alloc] init];
-            self.locationData = locationData;
-            self.pickUpFloorTextField.text = locationData.pickUpFloor;
-            
-        } else {
-            
-            if (self.quote.startLocation && self.quote.isStartLocation) {
-                
-                [self setUpViewWith:self.quote.startLocation];
-
-            } else if (self.quote.endLocation && !self.quote.isStartLocation) {
-                
-                [self setUpViewWith:self.quote.endLocation];
-            }
-        }
-        
-    } else {
-        
-        if (self.address) {
-            
-            self.houseApartmentTextField.text = self.address.houseApartmentNumber;
-            self.streetTextField.text = self.address.streetName;
-            self.cityTextField.text = self.address.cityName;
-            self.countyTextField.text = self.address.countyName;
-            
-        } else {
-            
-            [self updateTextFieldsWithData:self.locationData];
-        }
-    }
-}
-
-- (void)setUpViewWith:(SMSetUpLocationData *) data {
-    
-    SMSetUpLocationData *locationData = [[SMSetUpLocationData alloc] init];
-    self.locationData = locationData;
-    [self updateTextFieldsWithData:data];
-    
-    UIImage *tickActive = [UIImage imageNamed:@"Tick.png"];
-    UIImage *tickInactive = [UIImage imageNamed:@"Tick_inactive.png"];
-    
-    if ([data.buildingType isEqualToString:@"House"]) {
-        
-        self.houseImageView.image = tickActive;
-        self.apartmentImageView.image = tickInactive;
-        self.otherImageView.image = tickInactive;
-        
-    } else if ([data.buildingType isEqualToString:@"Apartment"]) {
-        
-        self.houseImageView.image = tickInactive;
-        self.apartmentImageView.image = tickActive;
-        self.otherImageView.image = tickInactive;
-        
-    } else {
-        
-        self.houseImageView.image = tickInactive;
-        self.apartmentImageView.image = tickInactive;
-        self.otherImageView.image = tickActive;
-    }
-    
-    if (data.liftAvailable) {
-        self.liftImageView.image = tickActive;
-    } else {
-        self.liftImageView.image = tickInactive;
-    }
-    
-    self.pickUpFloorTextField.text = data.pickUpFloor;
-    
-}
-
-- (void)updateTextFieldsWithData:(SMSetUpLocationData *) locationData {
-    
-    self.houseApartmentTextField.text = locationData.houseApartmentNumber;
-    self.streetTextField.text = locationData.streetName;
-    self.cityTextField.text = locationData.cityName;
-    self.countyTextField.text = locationData.countyName;
-    
-}
-
-#pragma mark - Keyboard Appearance methods
-
-- (void)keyboardDidShow:(NSNotification *)notification {
-    
-    NSLog(@"%f", self.moveUpViewHeight);
-    
-    [self.view setFrame:CGRectMake(0,-self.moveUpViewHeight,CGRectGetWidth(self.view.frame),CGRectGetHeight(self.view.frame))];
-    
-}
-
--(void)keyboardDidHide:(NSNotification *)notification {
-    
-    [self.view setFrame:CGRectMake(0,0,CGRectGetWidth(self.view.frame),CGRectGetHeight(self.view.frame))];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     
+    if ([textField isEqual:self.locationFromTextField]) {
+        self.quote.startLocation.fullAddress = textField.text;
+    } else if ([textField isEqual:self.locationToTextField]) {
+        self.quote.endLocation.fullAddress = textField.text;
+    }
+    
     return YES;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField  {
     
-    if ([textField isEqual:self.houseApartmentTextField]) {
-        [self.streetTextField becomeFirstResponder];
-        
-    } else if ([textField isEqual:self.streetTextField]) {
+    [textField resignFirstResponder];
 
-        [self.cityTextField becomeFirstResponder];
-        
-    } else if ([textField isEqual:self.cityTextField]) {
-
-        [self.countyTextField becomeFirstResponder];
-        
-    } else if ([textField isEqual:self.countyTextField]) {
-
-        [textField resignFirstResponder];
-        
-    }
-    
     return YES;
 }
 
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
-    
-    if (self.moveUp) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
-    }
-    
-    [self.view endEditing:YES];
-    return YES;
-}
+#pragma mark - SMLocationSettingsDelegate
 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    
-    
-    if ([textField isEqual:self.pickUpFloorTextField]) {
-        
-        SMFloorPickerViewController *pickerVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SMFloorPickerViewController"];
-        pickerVC.delegate = self;
-        pickerVC.chosenFloor = textField.text;
-
-        UINavigationController *navVC = [[UINavigationController alloc] initWithNavigationBarClass:[SMCustomNavBarWithoutBtn class] toolbarClass:nil];
-        [navVC setViewControllers:@[pickerVC]];
-
-        navVC.preferredContentSize = CGSizeMake(CGRectGetWidth(self.view.frame) * 0.8, 200);
-        navVC.modalPresentationStyle = UIModalPresentationPopover;
-        UIPopoverPresentationController *popVC = [navVC popoverPresentationController];
-        popVC.permittedArrowDirections = 0;
-        popVC.sourceView = self.view;
-        popVC.sourceRect = self.view.frame;
-        popVC.delegate = self;
-        
-        [self presentViewController:navVC animated:NO completion:nil];
-
-        return NO;
-        
+- (void)viewController:(SMLocationSettingsViewController *)viewController dismissedWithLocationData:(SMSetUpLocationData *)locationData {
+     
+    if (self.quote.isStartLocation == YES) {
+        self.quote.startLocation = locationData;
     } else {
-        
-        self.moveUp = NO;
-        CGRect keyboardRect = CGRectMake(0, CGRectGetMaxY(self.view.bounds), CGRectGetWidth(self.view.bounds), -253);
-        CGRect textFieldRect = [self.view convertRect:textField.frame fromView:textField.superview];
-        
-        if (CGRectIntersectsRect(keyboardRect, textFieldRect)) {
-            NSLog(@"Intersects");
-            self.moveUp = YES;
-            CGRect intersection = CGRectZero;
-            intersection.size.height = fabs(CGRectGetHeight(keyboardRect)) - (CGRectGetMaxY(self.view.bounds) - textFieldRect.origin.y) + CGRectGetHeight(textField.bounds) + 5;
-            self.moveUpViewHeight = CGRectGetHeight(intersection);
-            NSLog(@"%@", NSStringFromCGRect(intersection));
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
-        }
+        self.quote.endLocation = locationData;
     }
-    
-    return YES;
 }
-
-#pragma mark - UIPopoverPresentationControllerDelegate
-
-- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller {
-    
-    return UIModalPresentationNone;
-    
-}
-
-#pragma mark - SMFloorPickerDelegate
-
-- (void)viewController:(SMFloorPickerViewController *)viewController dismissedWithFloor:(NSString *)data {
- 
-    self.pickUpFloorTextField.text = data;
-    
-}
-
 
 #pragma mark - SMMapViewDelegate
 
@@ -256,6 +104,13 @@
     
     if (data) {
         self.address = data;
+        
+        if (self.quote.isStartLocation) {
+            self.quote.startLocation.fullAddress = data.fullAddress;
+        } else {
+            self.quote.endLocation.fullAddress = data.fullAddress;
+        }
+        
     } else {
         [self noConnectionAlert];
     }
@@ -282,87 +137,147 @@
 
 #pragma mark - Actions
 
-- (IBAction)mapLocationAction:(UIButton *)sender {
+- (IBAction)showMapAction:(UIButton *)sender {
     
-    [self performSegueWithIdentifier:@"map" sender:nil];
+    if (sender.tag == 0) {
+        self.quote.isStartLocation = YES;
+    } else {
+        self.quote.isStartLocation = NO;
+    }
+    [self performSegueWithIdentifier:@"showMap" sender:nil];
     
 }
 
-- (IBAction)buildingTypeAction:(UIButton *)sender {
+- (IBAction)showSettingsAction:(UIButton *)sender {
     
-    UIImage *tickActive = [UIImage imageNamed:@"Tick.png"];
-    UIImage *tickInactive = [UIImage imageNamed:@"Tick_inactive.png"];
-    
-    switch (sender.tag) {
-        case BuildingTypeHouse:
-            
-            self.locationData.buildingType = @"House";
-            self.houseImageView.image = tickActive;
-            self.apartmentImageView.image = tickInactive;
-            self.otherImageView.image = tickInactive;
-            break;
-            
-        case BuildingTypeApartment:
-            
-            self.locationData.buildingType = @"Apartment";
-            self.houseImageView.image = tickInactive;
-            self.apartmentImageView.image = tickActive;
-            self.otherImageView.image = tickInactive;
-            break;
-            
-        case BuildingTypeOther:
-            
-            self.locationData.buildingType = @"Other";
-            self.houseImageView.image = tickInactive;
-            self.apartmentImageView.image = tickInactive;
-            self.otherImageView.image = tickActive;
-            break;
+    if (sender.tag == 0) {
+        self.quote.isStartLocation = YES;
+    } else {
+        self.quote.isStartLocation = NO;
     }
+    
+    SMLocationSettingsViewController *locationSettingsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SMLocationSettingsViewController"];
+    locationSettingsVC.delegate = self;
+    if (sender.tag == 0) {
+        locationSettingsVC.locationData = self.quote.startLocation;
+    } else {
+        locationSettingsVC.locationData = self.quote.endLocation;
+    }
+    
+    UINavigationController *navVC = [[UINavigationController alloc] initWithNavigationBarClass:[SMCustomNavBarWithoutBtn class] toolbarClass:nil];
+    [navVC setViewControllers:@[locationSettingsVC]];
+    
+    [self presentViewController:navVC animated:YES completion:nil];
     
 }
 
-- (IBAction)saveAction:(UIButton *)sender {
+- (IBAction)twoPeopleAction:(UIButton *)sender {
     
-    UIImage *tickActive = [UIImage imageNamed:@"Tick.png"];
-    
-    self.locationData.houseApartmentNumber = self.houseApartmentTextField.text;
-    self.locationData.streetName = self.streetTextField.text;
-    self.locationData.cityName = self.cityTextField.text;
-    self.locationData.countyName = self.countyTextField.text;
-    self.locationData.pickUpFloor = self.pickUpFloorTextField.text;
-    
-    if ([self.houseImageView.image isEqual:tickActive]) {
-        self.locationData.buildingType = @"House";
-    } else if ([self.apartmentImageView.image isEqual:tickActive]) {
-        self.locationData.buildingType = @"Apartment";
-    } else if ([self.otherImageView.image isEqual:tickActive]) {
-        self.locationData.buildingType = @"Other";
-    }
-    
-    if ([self.liftImageView.image isEqual:tickActive]) {
-        self.locationData.liftAvailable = YES;
-    }
-
-    
-    [self.delegate viewController:self dismisssedWithData:self.locationData];
-    [self.navigationController popViewControllerAnimated:YES];
+    if (!self.quote.twoPeople) {
         
-}
-
-
-
-- (IBAction)liftAvailableAction:(UIButton *)sender {
-    
-    if (!self.locationData.liftAvailable) {
-        
-        self.locationData.liftAvailable = YES;
-        self.liftImageView.image = [UIImage imageNamed:@"Tick.png"];
+        self.quote.twoPeople = YES;
+        self.tickImageView.image = [UIImage imageNamed:@"Tick.png"];
         
     } else {
         
-        self.locationData.liftAvailable = NO;
-        self.liftImageView.image = [UIImage imageNamed:@"Tick_inactive.png"];
+        self.quote.twoPeople = NO;
+        self.tickImageView.image = [UIImage imageNamed:@"Tick_inactive.png"];
     }
+    
 }
+
+- (void)raiseAlertWithTitle:(NSString *) title message:(NSString *) message andErrorCode:(NSInteger) errorCode  {
+    
+    if (errorCode == 2 || errorCode == 8) {
+        
+        UIAlertController *controller = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *callbackAction = [UIAlertAction actionWithTitle:@"Callback" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+            SMRequestCallbackViewController *requestVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SMRequestCallbackViewController"];
+            UINavigationController *navVC = (UINavigationController *)[UIApplication sharedApplication].windows.firstObject.rootViewController;
+            [self.navigationController popViewControllerAnimated:NO];
+            [navVC pushViewController:requestVC animated:NO];
+            
+        }];
+        UIAlertAction *callUsAction = [UIAlertAction actionWithTitle:@"Call Us" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://0851119555"] options:@{} completionHandler:nil];
+        }];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
+        [controller addAction:cancelAction];
+        [controller addAction:callUsAction];
+        [controller addAction:callbackAction];
+        [self presentViewController:controller animated:YES completion:nil];
+        
+    } else {
+        
+        UIAlertController *controller = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
+        [controller addAction:cancelAction];
+        [self presentViewController:controller animated:YES completion:nil];
+        
+    }
+    
+    
+    
+}
+
+
+
+- (IBAction)calculateQuoteAction:(UIButton *)sender {
+    
+    self.quote.startLocation.fullAddress = self.locationFromTextField.text;
+    self.quote.endLocation.fullAddress = self.locationToTextField.text;
+    self.quote.addInfoText = self.addInfoTextField.text;
+    
+    SMCustomActivityIndicator *ind = [[SMCustomActivityIndicator alloc] initWithFrame:self.view.frame];
+    
+    [self.view addSubview:ind];
+    
+    [[SMDataManager sharedInstance] calculationOfQuote:self.quote onComplete:^(NSInteger price, NSError *error) {
+        
+        [ind removeFromSuperview];
+        
+        if (!error) {
+            
+            if (price != 0) {
+                
+                self.quote.price = price;
+                
+                SMYourQuoteViewController *yourQuoteVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SMYourQuoteViewController"];
+                yourQuoteVC.quote = self.quote;
+                
+                [self presentViewController:yourQuoteVC animated:YES completion:nil];
+                
+            } else {
+                
+                NSString *alertTitle = @"Warning!";
+                NSString *alertMessage = @"Please set up start and end location";
+                [self raiseAlertWithTitle:alertTitle message:alertMessage andErrorCode:0];
+                
+            }
+            
+        } else {
+            
+            if (error.code == 8 || error.code == 4) {
+                
+                NSString *alertTitle = @"Warning!";
+                NSString *alertMessage = @"Sorry, \nWe are unable to calculate the quote. \nPlease check your location address. \nAlternatively you can either request a callback or call us directly";
+                [self raiseAlertWithTitle:alertTitle message:alertMessage andErrorCode:error.code];
+                
+            } else {
+                
+                NSString *alertTitle = @"Error";
+                NSString *alertMessage = @"Sorry, we unable to calculate the quote. \n Please check your internet connection. \n Alternatively you can either request a callback or call us directly";
+                [self raiseAlertWithTitle:alertTitle message:alertMessage andErrorCode:error.code];
+                
+            }
+            
+            
+        }
+        
+    }];
+    
+}
+
 
 @end

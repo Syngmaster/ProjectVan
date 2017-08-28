@@ -12,13 +12,15 @@
 #import "SMDataManager.h"
 #import "SMAddPhotoViewCell.h"
 #import "SMCustomActivityIndicator.h"
-#import "SMKeyboardHandler.h"
-
+#import "SMProfileViewCell.h"
+#import "SMSectionLabel.h"
+#import "SMCustomLabel.h"
+#import "SMDescriptionViewCell.h"
 #import <MessageUI/MessageUI.h>
 
 #define kOFFSET_FOR_KEYBOARD 80.0
 
-@interface SMGetQuoteViewController () <UITextFieldDelegate, SMStartEndLocationDelegate, MFMailComposeViewControllerDelegate, UIImagePickerControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UINavigationControllerDelegate>
+@interface SMGetQuoteViewController () <UITextFieldDelegate, MFMailComposeViewControllerDelegate, UIImagePickerControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) SMQuoteData *quote;
 @property (assign, nonatomic) BOOL hasAtSign;
@@ -48,6 +50,7 @@
     view.backgroundColor=[UIColor whiteColor];
     [self.navigationController.navigationBar addSubview:view];
     
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -56,64 +59,89 @@
 
 }
 
-#pragma mark - Keyboard Appearance methods
 
-- (void)keyboardDidShow:(NSNotification *)notification {
-    
-    NSLog(@"%f", self.moveUpViewHeight);
-    
-    [self.view setFrame:CGRectMake(0,-self.moveUpViewHeight,CGRectGetWidth(self.view.frame),CGRectGetHeight(self.view.frame))];
+#pragma mark - UITableViewDataSource
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    if (section == 0) {
+        return 3;
+    } else {
+        return 1;
+    }
 }
 
--(void)keyboardDidHide:(NSNotification *)notification {
-    
-    [self.view setFrame:CGRectMake(0,0,CGRectGetWidth(self.view.frame),CGRectGetHeight(self.view.frame))];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
 }
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *identifier1 = @"profileCell";
+    static NSString *identifier2 = @"descriptionCell";
+    
+    if (indexPath.section == 0) {
+        
+        SMProfileViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier1];
+
+        if (!cell) {
+            cell = [[SMProfileViewCell alloc] init];
+        }
+        
+        [cell configureCellAtIndexPath:indexPath];
+        
+        return cell;
+        
+    } else {
+        
+        SMProfileViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier2];
+        
+        if (!cell) {
+            cell = [[SMProfileViewCell alloc] init];
+        }
+        
+        return cell;
+    }
+}
+
+#pragma mark - UITableViewDelegate 
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 28.0;
+}
+
+- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
+    CGRect headerFrame = CGRectMake(0, 0, tableView.frame.size.width, 28);
+
+    UIView *headerView = [[UIView alloc] initWithFrame:headerFrame];
+    
+    headerView.backgroundColor = [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0];
+    
+    SMSectionLabel *headerTextLabel = [[SMSectionLabel alloc] initWithFrame:headerFrame];
+    headerTextLabel.textAlignment = NSTextAlignmentLeft;
+    [headerView addSubview:headerTextLabel];
+    
+    (section == 0) ? (headerTextLabel.text = @"Personal details") : (headerTextLabel.text = @"Description");
+    
+    return headerView;
+    
+}
+
 
 #pragma mark - UITextFieldDelegate
 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    
-    self.moveUp = NO;
-    CGRect keyboardRect = CGRectMake(0, CGRectGetMaxY(self.view.bounds), CGRectGetWidth(self.view.bounds), -253);
-    CGRect textFieldRect = [self.view convertRect:textField.frame fromView:textField.superview];
-    
-    if (CGRectIntersectsRect(keyboardRect, textFieldRect)) {
-        NSLog(@"Intersects");
-        self.moveUp = YES;
-        CGRect intersection = CGRectZero;
-        intersection.size.height = fabs(CGRectGetHeight(keyboardRect)) - (CGRectGetMaxY(self.view.bounds) - textFieldRect.origin.y) + CGRectGetHeight(textField.bounds) + 5;
-        self.moveUpViewHeight = CGRectGetHeight(intersection);
-        NSLog(@"%@", NSStringFromCGRect(intersection));
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
-    }
-
-    return YES;
-}
-
-
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
-    
-    if (self.moveUp) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
-    }
-
-    [self.view endEditing:YES];
-    return YES;
-}
-
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     
-    if ([textField
-         isEqual:self.phoneNumberTextField]) {
-        
-        return [self validationCheckOfCharactersAgeFieldFrom:textField inString:string];
+    
+    SMProfileViewCell *phoneNumberCell = self.tableView.visibleCells[1];
+    SMProfileViewCell *emailCell = self.tableView.visibleCells[2];
+
+    if ([phoneNumberCell.profileTextField isEqual:textField]) {
+        return [self validationCheckOfNumberCharactersFieldFrom:textField inString:string];
     }
     
-    if ([textField isEqual:self.emailTextField]) {
-        
+    if ([emailCell.profileTextField isEqual:textField]) {
         return [self validationCheckOfCharactersEmailFieldFrom:textField string:string inRange:range];
     }
     
@@ -122,28 +150,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     
-    if ([textField isEqual:self.nameTextField]) {
-        
-        [self.phoneNumberTextField becomeFirstResponder];
-        
-    } else if ([textField isEqual:self.phoneNumberTextField]) {
-        
-        [self.emailTextField becomeFirstResponder];
-        
-    } else if ([textField isEqual:self.emailTextField]) {
-        
-        [textField resignFirstResponder];
-    }
-    
-    if ([textField isEqual:self.descriptionTextField]) {
-        
-        [textField resignFirstResponder];
-    }
-    
-    if ([textField isEqual:self.addInformationTextField]) {
-        
-        [textField resignFirstResponder];
-    }
+    [textField resignFirstResponder];
         
     return YES;
 }
@@ -152,7 +159,7 @@
 
 #pragma mark - Validation Check for TextField
 
-- (BOOL)validationCheckOfCharactersAgeFieldFrom:(UITextField *) textField inString:(NSString *) string {
+- (BOOL)validationCheckOfNumberCharactersFieldFrom:(UITextField *) textField inString:(NSString *) string {
     
     NSCharacterSet *set = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
     NSArray *words = [string componentsSeparatedByCharactersInSet:set];
@@ -202,44 +209,20 @@
 
 #pragma mark - Actions
 
-
-- (IBAction)twoPeopleAction:(UIButton *)sender {
-
-    if (!self.quote.twoPeople) {
+- (IBAction)nextAction:(UIButton *)sender {
+    
+    BOOL isEmpty = NO;
+    
+    for (SMProfileViewCell *cell in self.tableView.visibleCells) {
         
-        self.quote.twoPeople = YES;
-        self.tickImageView.image = [UIImage imageNamed:@"Tick.png"];
-        
-    } else {
-        
-        self.quote.twoPeople = NO;
-        self.tickImageView.image = [UIImage imageNamed:@"Tick_inactive.png"];
+        if ([cell.reuseIdentifier isEqualToString:@"profileCell"]) {
+            if ([cell.profileTextField.text isEqualToString:@""]) {
+                isEmpty = YES;
+            }
+        }
     }
     
-}
-
-- (IBAction)startLocationAction:(UIButton *)sender {
-    
-    [self performSegueWithIdentifier:@"startLocation" sender:sender];
-    
-}
-
-- (IBAction)endLocationButton:(UIButton *)sender {
-    
-    [self performSegueWithIdentifier:@"endLocation" sender:sender];
-
-}
-
-
-- (IBAction)getQuoteAction:(UIButton *)sender {
-    
-    self.quote.clientName = self.nameTextField.text;
-    self.quote.phoneNumber = self.phoneNumberTextField.text;
-    self.quote.clientEmail = self.emailTextField.text;
-    self.quote.descriptionText = self.descriptionTextField.text;
-    self.quote.addInfoText = self.addInformationTextField.text;
-    
-    if ([self.nameTextField.text isEqualToString:@""] || [self.phoneNumberTextField.text isEqualToString:@""] ||[self.emailTextField.text isEqualToString:@""]) {
+    if (isEmpty) {
         
         NSString *alertTitle = @"Warning!";
         NSString *alertMessage = @"Please enter your name, phone number and email address";
@@ -248,62 +231,46 @@
         
     } else {
         
-        SMCustomActivityIndicator *ind = [[SMCustomActivityIndicator alloc] initWithFrame:self.view.frame];
-        
-        [self.view addSubview:ind];
-        
-        [[SMDataManager sharedInstance] calculationOfQuote:self.quote onComplete:^(NSInteger price, NSError *error) {
+        for (UITableViewCell *cell in self.tableView.visibleCells)  {
+            [self fillQuoteData:self.quote withDataFromCell:cell];
+        }
             
-            [ind removeFromSuperview];
-            
-            if (!error) {
-                
-                if (price != 0) {
-                    
-                    self.quote.price = price;
-                    
-                    UIAlertController *controller = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"Your quote is %i EUR \n(1 van load)", (int)price] message:@"Would you like to proceed with this quote?" preferredStyle:UIAlertControllerStyleAlert];
-                    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
-                    UIAlertAction *proceedAction = [UIAlertAction actionWithTitle:@"Proceed" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                        
-                        [self sendEmail];
-                        
-                    }];
-                    
-                    [controller addAction:proceedAction];
-                    [controller addAction:cancelAction];
-                    [self presentViewController:controller animated:YES completion:nil];
+        [self performSegueWithIdentifier:@"location" sender:sender];
 
-                } else {
-                    
-                    NSString *alertTitle = @"Warning!";
-                    NSString *alertMessage = @"Please set up start and end location";
-                    [self raiseAlertWithTitle:alertTitle message:alertMessage andErrorCode:0];
-                    
-                }
-                
-            } else {
-                
-                if (error.code == 8 || error.code == 4) {
-                    
-                    NSString *alertTitle = @"Warning!";
-                    NSString *alertMessage = @"Please set up start and end location";
-                    [self raiseAlertWithTitle:alertTitle message:alertMessage andErrorCode:error.code];
-                    
-                } else {
-                    
-                    NSString *alertTitle = @"Error";
-                    NSString *alertMessage = @"Sorry, we unable to calculate the quote. \n Please check your internet connection. \n Alternatively you can either request a callback or call us directly";
-                    [self raiseAlertWithTitle:alertTitle message:alertMessage andErrorCode:error.code];
-                    
-                }
-                
-
-            }
-
-        }];
     }
+    
 }
+
+- (void)fillQuoteData:(SMQuoteData *)quoteData withDataFromCell:(UITableViewCell *)cell {
+    
+    if ([cell isMemberOfClass:[SMProfileViewCell class]]) {
+        
+        SMProfileViewCell *profileCell = (SMProfileViewCell *)cell;
+        
+        if ([profileCell.profileLabel.text isEqualToString:@"*Your name:"]) {
+            quoteData.clientName = profileCell.profileTextField.text;
+        }
+        if ([profileCell.profileLabel.text isEqualToString:@"*Your phone number:"]) {
+            quoteData.phoneNumber = profileCell.profileTextField.text;
+        }
+        if ([profileCell.profileLabel.text isEqualToString:@"*Your email address:"]) {
+            quoteData.clientEmail = profileCell.profileTextField.text;
+        }
+        
+    } else if ([cell isMemberOfClass:[SMDescriptionViewCell class]]) {
+        
+        SMDescriptionViewCell *descriptionCell = (SMDescriptionViewCell *)cell;
+        quoteData.descriptionText = descriptionCell.descriptionTextField.text;
+    }
+
+}
+
+- (IBAction)cancelAction:(UIButton *)sender {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
+
 
 - (void)raiseAlertWithTitle:(NSString *) title message:(NSString *) message andErrorCode:(NSInteger) errorCode  {
     
@@ -331,51 +298,59 @@
     
 }
 
-- (void)sendEmail {
+
+#pragma mark - UIImagePickerControllerDelegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
-    if ([MFMailComposeViewController canSendMail]) {
-        
-        NSArray *recipients = [NSArray arrayWithObject:@"max6361@mail.ru"];
-        MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
-        mc.mailComposeDelegate = self;
-        [mc setToRecipients:recipients];
-        [mc setSubject:@"A new quote"];
-        [mc setMessageBody:[NSString stringWithFormat:
-                            @"Name: %@\r\n Phone number: %@\r\n Email: %@\r\n\n Quote Details: \n\n Price: %i EUR \n Description: %@ \n Comments: %@ \n Two people required: %@ \n\n Moving from: %@ %@ %@ %@ \r\n Building Type: %@ \n Pick up Floor: %@ \n Lift Available: %@ \r\n\n Moving to: %@ %@ %@ %@ \r\n Building Type: %@ \n Pick up Floor: %@ \n Lift available: %@ \r\n\n ",
-                            self.quote.clientName,
-                            self.quote.phoneNumber,
-                            self.quote.clientEmail,
-                            (int)self.quote.price,
-                            self.quote.descriptionText,
-                            self.quote.addInfoText,
-                            self.quote.twoPeople ? @"YES" : @"NO",
-                            self.quote.startLocation.houseApartmentNumber,
-                            self.quote.startLocation.streetName,
-                            self.quote.startLocation.cityName,
-                            self.quote.startLocation.countyName,
-                            self.quote.startLocation.buildingType,
-                            self.quote.startLocation.pickUpFloor,
-                            self.quote.startLocation.liftAvailable? @"YES": @"NO",
-                            self.quote.endLocation.houseApartmentNumber,
-                            self.quote.endLocation.streetName,
-                            self.quote.endLocation.cityName,
-                            self.quote.endLocation.countyName,
-                            self.quote.endLocation.buildingType,
-                            self.quote.endLocation.pickUpFloor,
-                            self.quote.endLocation.liftAvailable? @"YES": @"NO"]
-                    isHTML: NO];
-        
-        for (UIImage *image in self.addPhotoArray) {
-            NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
-            [mc addAttachmentData:imageData mimeType:@"image/jpeg" fileName:@"imageName"];
-        }
-        
-        [self presentViewController:mc animated:YES completion:nil];
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+
+    [self.addPhotoArray addObject:image];
+    [self.quote.photosArray addObject:image];
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    
+}
+
+#pragma mark - UICollectionViewDataSource
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return [self.addPhotoArray count] + 1;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *identifier = @"Cell";
+    
+    SMAddPhotoViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+    if (!cell) {
+        cell = [[SMAddPhotoViewCell alloc] init];
+    }
+    
+    [cell configureCellWith:self.addPhotoArray atIndexPath:indexPath.row];
+
+    return cell;
+    
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return CGSizeMake(CGRectGetHeight(collectionView.bounds)* 0.8, CGRectGetHeight(collectionView.bounds) * 0.8);
+    
+}
+
+#pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (indexPath.row == 0) {
+        [self addPhoto];
+    } else {
+        [self removePhotoAtIndexPath:indexPath];
     }
 }
 
-- (IBAction)addPhotoAction:(UIButton *)sender {
-    
+- (void)addPhoto {
     
     UIAlertController *controller = [UIAlertController alertControllerWithTitle:nil message:@"Add a photo" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *cameraAction = [UIAlertAction actionWithTitle:@"Camera" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -404,61 +379,17 @@
     [controller addAction:cameraAction];
     
     [self presentViewController:controller animated:YES completion:nil];
-    
 }
 
-#pragma mark - UIImagePickerControllerDelegate
-
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+- (void)removePhotoAtIndexPath:(NSIndexPath *)indexPath {
     
-    UIImage *image = info[UIImagePickerControllerOriginalImage];
-
-    [self.addPhotoArray addObject:image];
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
-    
-}
-
-#pragma mark - UICollectionViewDataSource
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 4;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    static NSString *identifier = @"Cell";
-    
-    SMAddPhotoViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
-    if (!cell) {
-        cell = [[SMAddPhotoViewCell alloc] init];
-    }
-    
-    [cell configureCellWith:self.addPhotoArray atIndexPath:indexPath.row];
-
-    return cell;
-    
-}
-
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    return CGSizeMake(CGRectGetWidth(collectionView.bounds)/5.5, CGRectGetWidth(collectionView.bounds)/5.5);
-    
-}
-
-#pragma mark - UICollectionViewDelegate
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    
-    if (indexPath.row < [self.addPhotoArray count]) {
+    if (indexPath.row < [self.addPhotoArray count] + 1) {
         
         UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Info" message:@"Remove photo?" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Remove" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
-            [self.addPhotoArray removeObjectAtIndex:indexPath.row];
+            [self.addPhotoArray removeObjectAtIndex:indexPath.row - 1];
             [self.photoCollectionView reloadData];
             
         }];
@@ -469,62 +400,21 @@
         [self presentViewController:controller animated:YES completion:nil];
         
     }
-    
 }
 
-
-
-#pragma mark - MFMailComposeViewControllerDelegate
-
-- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-
-    if (result == MFMailComposeResultSent) {
-        
-        UIAlertController *contr = [UIAlertController alertControllerWithTitle:@"Success!" message:@"Thanks for your quote!" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            
-            [self dismissViewControllerAnimated:YES completion:nil];
-            
-        }];
-        [contr addAction:cancel];
-        [self presentViewController:contr animated:YES completion:nil];
-        
-    }
-    
-
-    
-}
 
 #pragma mark - prepare for segue methods
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    if ([segue.identifier isEqualToString:@"startLocation"]) {
+    if ([segue.identifier isEqualToString:@"location"]) {
         
         SMStartEndLocationViewController *dvc = segue.destinationViewController;
-        self.quote.isStartLocation = YES;
-        dvc.delegate = self;
         dvc.quote = self.quote;
         
-    } else if ([segue.identifier isEqualToString:@"endLocation"]) {
-        
-        SMStartEndLocationViewController *dvc = segue.destinationViewController;
-        self.quote.isStartLocation = NO;
-        dvc.delegate = self;
-        dvc.quote = self.quote;
     }
-    
 }
 
-#pragma mark - SMStartEndLocationDelegate
-
-- (void)viewController:(SMStartEndLocationViewController *)viewController dismisssedWithData:(SMSetUpLocationData *)data {
-    
-    self.quote.isStartLocation ? (self.quote.startLocation = data) : (self.quote.endLocation = data);
-    
-}
 
 
 @end

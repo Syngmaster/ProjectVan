@@ -8,7 +8,7 @@
 
 #import "SMCustomNavigationBar.h"
 #import "SMMapViewController.h"
-#import "SMFloorPickerViewController.h"
+#import "SMLocationSettingsViewController.h"
 
 @implementation SMCustomNavigationBar
 

@@ -146,10 +146,12 @@
             [self.geoCoder cancelGeocode];
         }
         
-        NSString *locationAddress = [NSString stringWithFormat:@"%@ %@ %@ %@", address.houseApartmentNumber, address.streetName, address.cityName, address.countyName];
+        //NSString *locationAddress = [NSString stringWithFormat:@"%@ %@ %@ %@", address.houseApartmentNumber, address.streetName, address.cityName, address.countyName];
         
-        [self.geoCoder geocodeAddressString:locationAddress completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+        [self.geoCoder geocodeAddressString:address.fullAddress completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
             
+            NSLog(@"fullAddress : %@", address.fullAddress);
+
             if (placemarks) {
                 
                 CLPlacemark* placemark = [placemarks firstObject];
@@ -157,7 +159,6 @@
                 coordinates.latitude = placemark.location.coordinate.latitude;
                 coordinates.longitude = placemark.location.coordinate.longitude;
                 
-                NSLog(@"Country : %@", placemark.country);
                 completionHandler(coordinates, nil);
                 
             } else {
@@ -183,11 +184,11 @@
     
     if (quote.movingType == MovingTypeSmall || quote.movingType == MovingTypeHeavy) {
         
-        if ([quote.startLocation.buildingType isEqualToString:@"House"] && [quote.endLocation.buildingType isEqualToString:@"House"]) {
+        if (quote.startLocation.buildingType == 0 && quote.endLocation.buildingType == 0) {
             
             (quote.movingType == MovingTypeSmall) ? (price = 50) : (price = 130);
             
-        } else if ([quote.startLocation.buildingType isEqualToString:@"Apartment"] && [quote.endLocation.buildingType isEqualToString:@"Apartment"]) {
+        } else if (quote.startLocation.buildingType == 1 && quote.endLocation.buildingType == 1) {
             
             if (quote.startLocation.liftAvailable && quote.endLocation.liftAvailable) {
                 
@@ -211,7 +212,7 @@
             
             (quote.movingType == MovingTypeSmall) ? (price = 50) : (price = 130);
             
-            if ([quote.startLocation.buildingType isEqualToString:@"Apartment"] || [quote.startLocation.buildingType isEqualToString:@"Other"]) {
+            if (quote.startLocation.buildingType == 1 || quote.startLocation.buildingType == 2) {
                 
                 if (quote.startLocation.liftAvailable) {
                     (quote.movingType == MovingTypeSmall) ? (price = 60) : (price = 140);
@@ -221,7 +222,7 @@
                 
             }
             
-            if ([quote.endLocation.buildingType isEqualToString:@"Apartment"] || [quote.endLocation.buildingType isEqualToString:@"Other"]) {
+            if (quote.endLocation.buildingType == 1 || quote.endLocation.buildingType == 2) {
                 
                 if (quote.endLocation.liftAvailable) {
                     price = 60;
@@ -235,7 +236,7 @@
         
         quote.startLocation.loadingTime = quote.endLocation.loadingTime = 0.5;
 
-        if ([quote.startLocation.buildingType isEqualToString:@"Apartment"] && [quote.endLocation.buildingType isEqualToString:@"Apartment"]) {
+        if (quote.startLocation.buildingType == 1 && quote.endLocation.buildingType == 1) {
             
             if (!quote.startLocation.liftAvailable) {
                 price = [self updatePrice:price ofQuote:quote withPickUpFloor:quote.startLocation];
@@ -251,7 +252,7 @@
             
         } else {
             
-            if ([quote.startLocation.buildingType isEqualToString:@"Apartment"] || [quote.startLocation.buildingType isEqualToString:@"Other"]) {
+            if (quote.startLocation.buildingType == 1 || quote.startLocation.buildingType == 2) {
                 
                 if (!quote.startLocation.liftAvailable) {
                     price = [self updatePrice:price ofQuote:quote withPickUpFloor:quote.startLocation];
@@ -261,7 +262,7 @@
                 
             }
             
-            if ([quote.endLocation.buildingType isEqualToString:@"Apartment"] || [quote.endLocation.buildingType isEqualToString:@"Other"]) {
+            if (quote.endLocation.buildingType == 1 || quote.endLocation.buildingType == 2) {
                 
                 if (!quote.endLocation.liftAvailable) {
                     price = [self updatePrice:price ofQuote:quote withPickUpFloor:quote.endLocation];
@@ -275,8 +276,6 @@
         }
         
     }
-    
-    NSLog(@"Price is %i", (int)price);
     
     [self getCoordinatesFromAddress:quote.startLocation onComplete:^(CLLocationCoordinate2D coordinates, NSError *error) {
         
@@ -297,11 +296,13 @@
                             price = [self updatePrice:price ofQuote:quote basedOnStartCoordinates:startPoint andEndCoordinates:endPoint];
                             
                             completionHandler(price, nil);
-                            
+                            [self.geoCoder cancelGeocode];
+
                         } else {
                             
                             completionHandler(0, nil);
-                            
+                            [self.geoCoder cancelGeocode];
+
                         }
                         
                     } else {
@@ -314,11 +315,13 @@
                                 finalPrice = finalPrice + price;
                                 
                                 completionHandler(finalPrice, nil);
+                                [self.geoCoder cancelGeocode];
                                 
                             } else {
                                 
                                 completionHandler(0, error);
-                                
+                                [self.geoCoder cancelGeocode];
+
                             }
                             
                         }];
@@ -327,6 +330,8 @@
                 } else {
                     
                     completionHandler(0, error);
+                    [self.geoCoder cancelGeocode];
+
 
                 }
                 
@@ -335,6 +340,7 @@
         } else {
             
             completionHandler(0, error);
+            [self.geoCoder cancelGeocode];
 
         }
         
@@ -355,7 +361,7 @@
     float estHoursOfWork = 0.0;
     estHoursOfWork = estHoursOfWork + workingDistance/(60000);
     
-    NSLog(@"Working distance hours : %f", workingDistance/(60.0*1000));
+    //NSLog(@"Working distance hours : %f", workingDistance/(60.0*1000));
     
     if (distanceFromOfficeToStartPoint > 9000) {
         
@@ -365,7 +371,7 @@
         estHoursOfWork = estHoursOfWork + result/60.0;
     }
     
-    NSLog(@"Hours :  %f", estHoursOfWork);
+    //NSLog(@"Hours :  %f", estHoursOfWork);
 
     
     if (quote.twoPeople) {
@@ -387,7 +393,7 @@
         result = biggerDistance/1000;
         result = result - 9;
         price = price + result;
-        NSLog(@"Price is %i", (int)price);
+        //NSLog(@"Price is %i", (int)price);
     }
     
     NSInteger roundedResult = ceil((float)price / 5) * 5;
@@ -417,11 +423,11 @@
         if (response) {
             
             MKRoute *shortestRoute = response.routes[0];
-            NSLog(@"Number of routes: %lu", [response.routes count]);
+            //NSLog(@"Number of routes: %u", [response.routes count]);
             
             for (MKRoute *route in response.routes) {
-                NSLog(@"Driving distance : %f", route.distance);
-                NSLog(@"Travel time : %f", route.expectedTravelTime);
+                //NSLog(@"Driving distance : %f", route.distance);
+                //NSLog(@"Travel time : %f", route.expectedTravelTime);
                 
                 if (shortestRoute.expectedTravelTime > route.expectedTravelTime) {
                     shortestRoute = route;
@@ -441,29 +447,15 @@
 
 - (NSInteger)updatePrice:(NSInteger) price ofQuote:(SMQuoteData *) quote withPickUpFloor:(SMSetUpLocationData *)loadingPoint {
     
+    NSInteger multiplier = loadingPoint.pickUpFloor;
+
     if ([quote.startLocation isEqual:loadingPoint]) {
         
-        if ([loadingPoint.pickUpFloor isEqualToString:@"First"]) {
-            loadingPoint.loadingTime = loadingPoint.loadingTime + 0.5;
-        } else if ([loadingPoint.pickUpFloor isEqualToString:@"Second"]) {
-            loadingPoint.loadingTime = loadingPoint.loadingTime + 1.0;
-        } else if ([loadingPoint.pickUpFloor isEqualToString:@"Third"]) {
-            loadingPoint.loadingTime = loadingPoint.loadingTime + 1.5;
-        } else if ([loadingPoint.pickUpFloor isEqualToString:@"Over third"]) {
-            loadingPoint.loadingTime = loadingPoint.loadingTime + 2.5;
-        }
-        
+        loadingPoint.loadingTime = loadingPoint.loadingTime + 0.5 * multiplier;
     }
     
-    if ([loadingPoint.pickUpFloor isEqualToString:@"First"]) {
-        price = price + 5;
-    } else if ([loadingPoint.pickUpFloor isEqualToString:@"Second"]) {
-        price = price + 10;
-    } else if ([loadingPoint.pickUpFloor isEqualToString:@"Third"]) {
-        price = price + 15;
-    } else if ([loadingPoint.pickUpFloor isEqualToString:@"Over third"]) {
-        price = price + 25;
-    }
+    price = price + 5 * multiplier;
+
     return price;
 }
 

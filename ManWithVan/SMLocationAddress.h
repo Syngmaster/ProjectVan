@@ -16,6 +16,10 @@
 @property (strong, nonatomic) NSString *cityName;
 @property (strong, nonatomic) NSString *countyName;
 
+// new!!!
+
+@property (strong, nonatomic) NSString *fullAddress;
+
 - (instancetype)initWithPlacemark:(CLPlacemark *)placemark;
 
 @end

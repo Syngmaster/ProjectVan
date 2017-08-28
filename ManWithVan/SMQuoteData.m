@@ -15,6 +15,7 @@
     self = [super init];
     if (self) {
         self.twoPeople = NO;
+        self.photosArray = [NSMutableArray array];
     }
     return self;
 }

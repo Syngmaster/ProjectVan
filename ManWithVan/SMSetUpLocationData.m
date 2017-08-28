@@ -14,9 +14,9 @@
 {
     self = [super init];
     if (self) {
-        self.buildingType = @"House";
+        self.buildingType = 0;
         self.liftAvailable = NO;
-        self.pickUpFloor = @"Ground";
+        self.pickUpFloor = 0;
     }
     return self;
 }

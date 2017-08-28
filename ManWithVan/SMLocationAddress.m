@@ -20,6 +20,12 @@
         self.cityName = placemark.locality;
         self.countyName = placemark.administrativeArea;
         
+        self.fullAddress = [NSString stringWithFormat:@"%@ %@ %@ %@",
+                            placemark.subThoroughfare    ? placemark.subThoroughfare : @"",
+                            placemark.thoroughfare       ? placemark.thoroughfare : @"",
+                            placemark.locality           ? placemark.locality : @"",
+                            placemark.administrativeArea ? placemark.administrativeArea : @""];
+        
     }
     return self;
 }

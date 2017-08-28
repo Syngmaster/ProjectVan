@@ -19,14 +19,12 @@ typedef NS_ENUM(NSInteger, BuildingType) {
 
 @interface SMSetUpLocationData : NSObject
 
-@property (strong, nonatomic) NSString *houseApartmentNumber;
-@property (strong, nonatomic) NSString *streetName;
-@property (strong, nonatomic) NSString *cityName;
-@property (strong, nonatomic) NSString *countyName;
+@property (strong, nonatomic) NSString *fullAddress;
 @property (assign, nonatomic) CLLocationCoordinate2D location;
-@property (assign, nonatomic) NSString *buildingType;
-@property (strong, nonatomic) NSString *pickUpFloor;
+@property (assign, nonatomic) NSInteger buildingType;
+@property (assign, nonatomic) NSInteger pickUpFloor;
 @property (assign, nonatomic) float loadingTime;
 @property (assign, nonatomic) BOOL liftAvailable;
+
 
 @end

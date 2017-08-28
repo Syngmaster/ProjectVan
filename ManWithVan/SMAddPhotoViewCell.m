@@ -14,25 +14,25 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.layer.borderColor = [UIColor blackColor].CGColor;
+    self.layer.borderColor = [SMDataManager sharedInstance].baseColor.CGColor;
     self.layer.borderWidth = 1.0;
+    self.layer.cornerRadius = CGRectGetHeight(self.frame)*0.2;
 
 }
 
 - (void)configureCellWith:(NSMutableArray *) photos atIndexPath:(NSInteger) row {
     
-    if ([photos count] == 0) {
-        self.imageView.image = [SMDataManager sharedInstance].placeHolder;
-    } if ([photos count] > 0) {
+    if (row == 0) {
         
-        NSInteger i = [photos count];
-        if (i > row) {
-            self.imageView.image = photos[row];
-        } else {
-            self.imageView.image = [SMDataManager sharedInstance].placeHolder;
-        }
+        self.imageView.image = [UIImage imageNamed:@"add_photo.png"];
+        
+    } else {
+        
+        self.imageView.image = photos[row - 1];
         
     }
+    
+
     
 }
 

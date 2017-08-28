@@ -10,18 +10,22 @@
 
 @implementation SMSectionLabel
 
-- (void)drawRect:(CGRect)rect {
-    [super drawRect:rect];
+- (void)layoutSubviews {
+    [super layoutSubviews];
     
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetLineWidth(context, 3);
+    self.layer.borderWidth = 1.0;
+    self.layer.borderColor = [UIColor colorWithRed:239.0/255.0 green:239.0/255.0 blue:244.0/255.0 alpha:1.0].CGColor;
     
-    CGContextMoveToPoint(context, CGRectGetMinX(rect), CGRectGetMaxY(rect));
-    CGContextAddLineToPoint(context, CGRectGetMaxX(rect), CGRectGetMaxY(rect));
-    CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:185.0/255.0 alpha:1.0].CGColor);
-    CGContextStrokePath(context);
+    CGFloat fontSize = 16;
     
+    UIFont *font = [UIFont fontWithName:@"Avenir-Heavy" size:fontSize];
     
+    UIColor *textColor = [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:185.0/255.0 alpha:1.0];
+    NSDictionary *attributes = @{NSForegroundColorAttributeName : textColor, NSFontAttributeName : font};
+    
+    NSAttributedString *attr = [[NSAttributedString alloc] initWithString:self.text attributes:attributes];
+    
+    self.attributedText = attr;
 }
 
 - (void)drawTextInRect:(CGRect)rect {
