@@ -39,6 +39,7 @@
                 self.profileTextField.returnKeyType = UIReturnKeyDone;
                 self.profileTextField.keyboardType = UIKeyboardTypeEmailAddress;
                 self.profileTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+                self.profileTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
 
             break;
     }

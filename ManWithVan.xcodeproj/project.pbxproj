@@ -22,6 +22,7 @@
 		DC8513DE1F52B6AD005A0007 /* SMProfileViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8513DD1F52B6AD005A0007 /* SMProfileViewCell.m */; };
 		DC8513E11F52D656005A0007 /* SMDescriptionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8513E01F52D656005A0007 /* SMDescriptionViewCell.m */; };
 		DC8513E41F5491A9005A0007 /* SMYourQuoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8513E31F5491A9005A0007 /* SMYourQuoteViewController.m */; };
+		DC8513E71F570380005A0007 /* SMMapButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8513E61F570380005A0007 /* SMMapButton.m */; };
 		DC85271F1F221C1A0057D92B /* SMCustomLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = DC85271E1F221C1A0057D92B /* SMCustomLabel.m */; };
 		DC8527221F2220CB0057D92B /* SMSideMenusParentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8527211F2220CB0057D92B /* SMSideMenusParentViewController.m */; };
 		DC8527251F2226510057D92B /* SMRequestCallbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8527241F2226510057D92B /* SMRequestCallbackViewController.m */; };
@@ -95,6 +96,8 @@
 		DC8513E01F52D656005A0007 /* SMDescriptionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDescriptionViewCell.m; sourceTree = "<group>"; };
 		DC8513E21F5491A9005A0007 /* SMYourQuoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMYourQuoteViewController.h; sourceTree = "<group>"; };
 		DC8513E31F5491A9005A0007 /* SMYourQuoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMYourQuoteViewController.m; sourceTree = "<group>"; };
+		DC8513E51F570380005A0007 /* SMMapButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMapButton.h; sourceTree = "<group>"; };
+		DC8513E61F570380005A0007 /* SMMapButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMapButton.m; sourceTree = "<group>"; };
 		DC85271D1F221C1A0057D92B /* SMCustomLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCustomLabel.h; sourceTree = "<group>"; };
 		DC85271E1F221C1A0057D92B /* SMCustomLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCustomLabel.m; sourceTree = "<group>"; };
 		DC8527201F2220CB0057D92B /* SMSideMenusParentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSideMenusParentViewController.h; sourceTree = "<group>"; };
@@ -226,6 +229,8 @@
 				DC8527431F263BC70057D92B /* SMSegueButton.m */,
 				DCD208C41F40C3D100548C36 /* SMCustomActivityIndicator.h */,
 				DCD208C51F40C3D100548C36 /* SMCustomActivityIndicator.m */,
+				DC8513E51F570380005A0007 /* SMMapButton.h */,
+				DC8513E61F570380005A0007 /* SMMapButton.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -514,6 +519,7 @@
 				DCE0DFBF1F44AC9700AAB030 /* SMReviewsViewController.m in Sources */,
 				DC8513E41F5491A9005A0007 /* SMYourQuoteViewController.m in Sources */,
 				DC8527411F2632480057D92B /* SMSectionLabel.m in Sources */,
+				DC8513E71F570380005A0007 /* SMMapButton.m in Sources */,
 				DCF9F8211F210C97001E790A /* SMCustomTextField.m in Sources */,
 				DCD208991F2B2F7100548C36 /* SMLocationSettingsViewController.m in Sources */,
 				DCD208931F2A015000548C36 /* SMPin.m in Sources */,

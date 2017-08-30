@@ -190,7 +190,7 @@
     
     if (errorCode == 2 || errorCode == 8) {
         
-        UIAlertController *controller = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *controller = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleActionSheet];
         UIAlertAction *callbackAction = [UIAlertAction actionWithTitle:@"Callback" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
             SMRequestCallbackViewController *requestVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SMRequestCallbackViewController"];
@@ -261,7 +261,7 @@
             if (error.code == 8 || error.code == 4) {
                 
                 NSString *alertTitle = @"Warning!";
-                NSString *alertMessage = @"Sorry, \nWe are unable to calculate the quote. \nPlease check your location address. \nAlternatively you can either request a callback or call us directly";
+                NSString *alertMessage = @"Sorry, we are unable to calculate the quote at the moment. \nPlease check your location addresses.";
                 [self raiseAlertWithTitle:alertTitle message:alertMessage andErrorCode:error.code];
                 
             } else {

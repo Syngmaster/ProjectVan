@@ -11,13 +11,6 @@
 
 @interface SMLocationAddress : NSObject
 
-@property (strong, nonatomic) NSString *houseApartmentNumber;
-@property (strong, nonatomic) NSString *streetName;
-@property (strong, nonatomic) NSString *cityName;
-@property (strong, nonatomic) NSString *countyName;
-
-// new!!!
-
 @property (strong, nonatomic) NSString *fullAddress;
 
 - (instancetype)initWithPlacemark:(CLPlacemark *)placemark;

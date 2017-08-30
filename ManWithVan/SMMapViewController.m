@@ -11,6 +11,8 @@
 #import "SMLocationAddress.h"
 #import "SMDataManager.h"
 
+#import <CoreLocation/CoreLocation.h>
+
 
 @interface SMMapViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
 
@@ -25,35 +27,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneAction:)];
-    UIBarButtonItem *zoomButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(zoomInLocation:)];
-    self.navigationItem.rightBarButtonItems = @[doneButton, zoomButton];
     self.mapView.delegate = self;
     self.mapView.showsUserLocation = YES;
+    
+    self.manager = [[CLLocationManager alloc] init];
+    self.manager.delegate = self;
+    [self.manager startUpdatingLocation];
+    [self.manager requestWhenInUseAuthorization];
+
     
     UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressAction:)];
     [self.view addGestureRecognizer:longPress];
 
-}
-
-- (void)zoomInLocation:(UIBarButtonItem *) sender {
-    
-    MKMapRect zoomRect = MKMapRectNull;
-    
-    for (id <MKAnnotation> annotation in self.mapView.annotations) {
-        
-        CLLocationCoordinate2D coordinate = annotation.coordinate;
-        MKMapPoint center = MKMapPointForCoordinate(coordinate);
-        
-        static double delta = 30000;
-        MKMapRect rect = MKMapRectMake(center.x - delta, center.y - delta, 2 * delta, 2 * delta);
-        
-        zoomRect = MKMapRectUnion(rect, zoomRect);
-        
-        [self.mapView setVisibleMapRect:zoomRect
-                            edgePadding:UIEdgeInsetsMake(10, 10, 10, 10)
-                               animated:YES];
-    }
 }
 
 
@@ -79,29 +64,17 @@
     
 }
 
-- (void)doneAction:(UIBarButtonItem *) sender {
-    
-    [[SMDataManager sharedInstance] getAddressFromCoordinates:self.coordinates onComplete:^(CLPlacemark *placemark, NSString *error) {
-        
-        if (!error) {
-            
-            SMLocationAddress *address = [[SMLocationAddress alloc] initWithPlacemark:placemark];
-            [self.delegate viewController:self dismissedWithData:address];
-            [self.navigationController popViewControllerAnimated:YES];
-            
-        } else {
-        
-            [self.delegate viewController:self dismissedWithData:nil];
-            [self.navigationController popViewControllerAnimated:YES];
-        }
-        
-    }];
-
-}
-
 - (void)dealloc {
     self.mapView.delegate = nil;
     [[SMDataManager sharedInstance].geoCoder cancelGeocode];
+}
+
+#pragma mark - CLLocationManagerDelegate
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+    
+    [self.manager stopUpdatingLocation];
+    
 }
 
 #pragma mark - MKMapViewDelegate
@@ -131,24 +104,40 @@
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
     
+    
+    __weak SMMapViewController *weakSelf = self;
+    
     for (id <MKAnnotation> annotation in self.mapView.annotations) {
         
         if ([annotation isKindOfClass:[MKUserLocation class]]) {
-
-            [[SMDataManager sharedInstance] getAddressFromCoordinates:annotation.coordinate onComplete:^(CLPlacemark *placemark, NSString *error) {
+            
+            
+            UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Info" message:@"Would you like to use your location as a location point?" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 
-                if (!error) {
+                [[SMDataManager sharedInstance] getAddressFromCoordinates:annotation.coordinate onComplete:^(CLPlacemark *placemark, NSString *error) {
                     
-                    SMLocationAddress *address = [[SMLocationAddress alloc] initWithPlacemark:placemark];
-                    [self.delegate viewController:self dismissedWithData:address];
-                    [self.navigationController popViewControllerAnimated:YES];
-                    
-                } else {
-                    
-                    [self.delegate viewController:self dismissedWithData:nil];
-                    [self.navigationController popViewControllerAnimated:YES];
-                }
+                    if (!error) {
+                        
+                        SMLocationAddress *address = [[SMLocationAddress alloc] initWithPlacemark:placemark];
+                        [weakSelf.delegate viewController:weakSelf dismissedWithData:address];
+                        [weakSelf dismissViewControllerAnimated:YES completion:nil];
+                        
+                    } else {
+                        
+                        [weakSelf.delegate viewController:self dismissedWithData:nil];
+                        [weakSelf dismissViewControllerAnimated:YES completion:nil];
+                    }
+                }];
+                
             }];
+            
+            [controller addAction:cancelAction];
+            [controller addAction:okAction];
+
+            [self presentViewController:controller animated:YES completion:nil];
+
         }
     }
 }
@@ -190,4 +179,78 @@
 }
 
 
+- (IBAction)backButtonAction:(UIButton *)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+- (IBAction)zoomInAction:(UIButton *)sender {
+    
+    MKMapRect zoomRect = MKMapRectNull;
+    
+    for (id <MKAnnotation> annotation in self.mapView.annotations) {
+        
+        if (![annotation isMemberOfClass:[MKUserLocation class]]) {
+            
+            CLLocationCoordinate2D coordinate = annotation.coordinate;
+            MKMapPoint center = MKMapPointForCoordinate(coordinate);
+            
+            static double delta = 15000;
+            MKMapRect rect = MKMapRectMake(center.x - delta, center.y - delta, 2 * delta, 2 * delta);
+            
+            zoomRect = MKMapRectUnion(rect, zoomRect);
+            
+            [self.mapView setVisibleMapRect:zoomRect
+                                edgePadding:UIEdgeInsetsMake(10, 10, 10, 10)
+                                   animated:YES];
+            
+        }
+    }
+}
+
+- (IBAction)zoomOutAction:(UIButton *)sender {
+    
+    MKMapRect zoomRect = MKMapRectNull;
+    
+    for (id <MKAnnotation> annotation in self.mapView.annotations) {
+        
+        if (![annotation isMemberOfClass:[MKUserLocation class]]) {
+            
+            CLLocationCoordinate2D coordinate = annotation.coordinate;
+            MKMapPoint center = MKMapPointForCoordinate(coordinate);
+            
+            static double delta = 500000;
+            MKMapRect rect = MKMapRectMake(center.x - delta, center.y - delta, 2 * delta, 2 * delta);
+            
+            zoomRect = MKMapRectUnion(rect, zoomRect);
+            
+            [self.mapView setVisibleMapRect:zoomRect
+                                edgePadding:UIEdgeInsetsMake(10, 10, 10, 10)
+                                   animated:YES];
+            
+        }
+    }
+    
+}
+
+- (IBAction)doneAction:(UIButton *)sender {
+    
+    [[SMDataManager sharedInstance] getAddressFromCoordinates:self.coordinates onComplete:^(CLPlacemark *placemark, NSString *error) {
+        
+        if (!error) {
+            
+            SMLocationAddress *address = [[SMLocationAddress alloc] initWithPlacemark:placemark];
+            [self.delegate viewController:self dismissedWithData:address];
+            [self dismissViewControllerAnimated:YES completion:nil];
+            
+        } else {
+            
+            [self.delegate viewController:self dismissedWithData:nil];
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+        
+    }];
+    
+}
 @end

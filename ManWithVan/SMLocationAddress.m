@@ -15,16 +15,19 @@
     self = [super init];
     if (self) {
         
-        self.houseApartmentNumber = placemark.subThoroughfare;
-        self.streetName = placemark.thoroughfare;
-        self.cityName = placemark.locality;
-        self.countyName = placemark.administrativeArea;
+        self.fullAddress = [NSString stringWithFormat:@"%@%@%@%@",
+                            placemark.subThoroughfare    ?
+                            [NSString stringWithFormat:@"%@ ", placemark.subThoroughfare] : @"",
+                            
+                            placemark.thoroughfare       ?
+                            [NSString stringWithFormat:@"%@ ", placemark.thoroughfare] : @"",
+                            
+                            placemark.locality           ?
+                            [NSString stringWithFormat:@"%@ ", placemark.locality] : @"",
+                            
+                            placemark.administrativeArea ?
+                            [NSString stringWithFormat:@"%@ ", placemark.administrativeArea] : @""];
         
-        self.fullAddress = [NSString stringWithFormat:@"%@ %@ %@ %@",
-                            placemark.subThoroughfare    ? placemark.subThoroughfare : @"",
-                            placemark.thoroughfare       ? placemark.thoroughfare : @"",
-                            placemark.locality           ? placemark.locality : @"",
-                            placemark.administrativeArea ? placemark.administrativeArea : @""];
         
     }
     return self;

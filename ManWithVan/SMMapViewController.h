@@ -22,4 +22,10 @@
 @property (weak, nonatomic) id <SMMapViewDelegate> delegate;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
+- (IBAction)backButtonAction:(UIButton *)sender;
+- (IBAction)zoomInAction:(UIButton *)sender;
+- (IBAction)zoomOutAction:(UIButton *)sender;
+
+- (IBAction)doneAction:(UIButton *)sender;
+
 @end

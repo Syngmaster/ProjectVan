@@ -10,8 +10,9 @@
 #import "SMSideMenuViewController.h"
 #import "SMSignInViewController.h"
 #import "SMAboutUsViewController.h"
+#import <MessageUI/MessageUI.h>
 
-@interface SMRequestCallbackViewController () <UITextFieldDelegate>
+@interface SMRequestCallbackViewController () <UITextFieldDelegate, MFMailComposeViewControllerDelegate>
 
 @end
 
@@ -48,16 +49,7 @@
     } else {
         
         //send data to the administrator email address
-        
-        
-        //present an alert to inform user that request was sent successfully
-        UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Success!" message:@"Thank you for the request! We will call you back in a moment." preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            self.nameTextField.text = @"";
-            self.phoneTextField.text = @"";
-        }];
-        [controller addAction:okAction];
-        [self presentViewController:controller animated:YES completion:nil];
+        [self sendCallBackWithName:self.nameTextField.text andPhoneNumber:self.phoneTextField.text];
         
     }
 
@@ -103,6 +95,46 @@
     }
     
     return YES;
+    
+}
+
+- (void)sendCallBackWithName:(NSString *) name andPhoneNumber:(NSString *) phoneNumber {
+    
+    if ([MFMailComposeViewController canSendMail]) {
+        
+        NSArray *recipients = [NSArray arrayWithObject:@"max6361@mail.ru"];
+        MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
+        mc.mailComposeDelegate = self;
+        [mc setToRecipients:recipients];
+        [mc setSubject:@"VIPvan callback request"];
+        [mc setMessageBody:[NSString stringWithFormat:
+                            @"Hello. \n My name is %@. \n Please call me back - %@ \n Thank you.",
+                            name,
+                            phoneNumber]
+                    isHTML: NO];
+        
+        [self presentViewController:mc animated:YES completion:nil];
+    }
+}
+
+#pragma mark - MFMailComposeViewControllerDelegate
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    if (result == MFMailComposeResultSent) {
+        
+        //present an alert to inform user that request was sent successfully
+        UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Success!" message:@"Thank you for the request! We will call you back in a moment." preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            self.nameTextField.text = @"";
+            self.phoneTextField.text = @"";
+        }];
+        [controller addAction:okAction];
+        [self presentViewController:controller animated:YES completion:nil];
+        
+    }
     
 }
 
