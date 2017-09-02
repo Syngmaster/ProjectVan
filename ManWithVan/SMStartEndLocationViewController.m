@@ -6,20 +6,20 @@
 //  Copyright © 2017 Syngmaster. All rights reserved.
 //
 
+#import <MessageUI/MessageUI.h>
 
 #import "SMStartEndLocationViewController.h"
 #import "SMLocationSettingsViewController.h"
 #import "SMMapViewController.h"
-#import "SMDataManager.h"
-#import "SMCustomActivityIndicator.h"
 #import "SMYourQuoteViewController.h"
 #import "SMRequestCallbackViewController.h"
 
-#import <MessageUI/MessageUI.h>
-
+#import "SMDataManager.h"
 #import "SMQuoteData.h"
 #import "SMSetUpLocationData.h"
 #import "SMLocationAddress.h"
+
+#import "SMCustomActivityIndicator.h"
 #import "SMCustomNavigationBar.h"
 #import "SMCustomNavBarWithoutBtn.h"
 
@@ -28,9 +28,6 @@
 
 @property (strong, nonatomic) SMSetUpLocationData *locationData;
 @property (strong, nonatomic) SMLocationAddress *address;
-
-@property (assign, nonatomic) BOOL moveUp;
-@property (assign, nonatomic) CGFloat moveUpViewHeight;
 
 @end
 
@@ -186,43 +183,6 @@
     
 }
 
-- (void)raiseAlertWithTitle:(NSString *) title message:(NSString *) message andErrorCode:(NSInteger) errorCode  {
-    
-    if (errorCode == 2 || errorCode == 8) {
-        
-        UIAlertController *controller = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleActionSheet];
-        UIAlertAction *callbackAction = [UIAlertAction actionWithTitle:@"Callback" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
-            SMRequestCallbackViewController *requestVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SMRequestCallbackViewController"];
-            UINavigationController *navVC = (UINavigationController *)[UIApplication sharedApplication].windows.firstObject.rootViewController;
-            [self.navigationController popViewControllerAnimated:NO];
-            [navVC pushViewController:requestVC animated:NO];
-            
-        }];
-        UIAlertAction *callUsAction = [UIAlertAction actionWithTitle:@"Call Us" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://0851119555"] options:@{} completionHandler:nil];
-        }];
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
-        [controller addAction:cancelAction];
-        [controller addAction:callUsAction];
-        [controller addAction:callbackAction];
-        [self presentViewController:controller animated:YES completion:nil];
-        
-    } else {
-        
-        UIAlertController *controller = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
-        [controller addAction:cancelAction];
-        [self presentViewController:controller animated:YES completion:nil];
-        
-    }
-    
-    
-    
-}
-
-
-
 - (IBAction)calculateQuoteAction:(UIButton *)sender {
     
     self.quote.startLocation.fullAddress = self.locationFromTextField.text;
@@ -271,13 +231,42 @@
                 [self raiseAlertWithTitle:alertTitle message:alertMessage andErrorCode:error.code];
                 
             }
-            
-            
         }
         
     }];
     
 }
 
+- (void)raiseAlertWithTitle:(NSString *) title message:(NSString *) message andErrorCode:(NSInteger) errorCode  {
+    
+    if (errorCode == 2 || errorCode == 8) {
+        
+        UIAlertController *controller = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleActionSheet];
+        UIAlertAction *callbackAction = [UIAlertAction actionWithTitle:@"Callback" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+            SMRequestCallbackViewController *requestVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SMRequestCallbackViewController"];
+            UINavigationController *navVC = (UINavigationController *)[UIApplication sharedApplication].windows.firstObject.rootViewController;
+            [self.navigationController popViewControllerAnimated:NO];
+            [navVC pushViewController:requestVC animated:NO];
+            
+        }];
+        UIAlertAction *callUsAction = [UIAlertAction actionWithTitle:@"Call Us" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://0851119555"] options:@{} completionHandler:nil];
+        }];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
+        [controller addAction:cancelAction];
+        [controller addAction:callUsAction];
+        [controller addAction:callbackAction];
+        [self presentViewController:controller animated:YES completion:nil];
+        
+    } else {
+        
+        UIAlertController *controller = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
+        [controller addAction:cancelAction];
+        [self presentViewController:controller animated:YES completion:nil];
+        
+    }
+}
 
 @end

@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "SMCustomNavigationBar.h"
+#import <Firebase.h>
 
 
 @interface AppDelegate ()
@@ -22,14 +23,15 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    /*UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *startingVC = [storyboard instantiateViewControllerWithIdentifier:@"SMMainViewController"];
     UINavigationController *navVC = [[UINavigationController alloc] initWithNavigationBarClass:[SMCustomNavigationBar class] toolbarClass:nil];
     [navVC setViewControllers:@[startingVC]];
     self.window.rootViewController = navVC;
-    self.navVC = navVC;
+    self.navVC = navVC;*/
     
-    [UIApplication sharedApplication].windows.firstObject.backgroundColor = [UIColor whiteColor];
+    [FIRApp configure];
+
     
     return YES;
 }

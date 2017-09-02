@@ -6,12 +6,13 @@
 //  Copyright © 2017 Syngmaster. All rights reserved.
 //
 
+#import <CoreLocation/CoreLocation.h>
+
 #import "SMMapViewController.h"
 #import "SMPin.h"
 #import "SMLocationAddress.h"
 #import "SMDataManager.h"
 
-#import <CoreLocation/CoreLocation.h>
 
 
 @interface SMMapViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
@@ -34,7 +35,6 @@
     self.manager.delegate = self;
     [self.manager startUpdatingLocation];
     [self.manager requestWhenInUseAuthorization];
-
     
     UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressAction:)];
     [self.view addGestureRecognizer:longPress];
@@ -104,13 +104,11 @@
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
     
-    
     __weak SMMapViewController *weakSelf = self;
     
     for (id <MKAnnotation> annotation in self.mapView.annotations) {
         
         if ([annotation isKindOfClass:[MKUserLocation class]]) {
-            
             
             UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Info" message:@"Would you like to use your location as a location point?" preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
@@ -178,6 +176,8 @@
     
 }
 
+#pragma mark - Actions
+
 
 - (IBAction)backButtonAction:(UIButton *)sender {
     
@@ -236,18 +236,20 @@
 
 - (IBAction)doneAction:(UIButton *)sender {
     
+    __weak SMMapViewController *weakSelf = self;
+    
     [[SMDataManager sharedInstance] getAddressFromCoordinates:self.coordinates onComplete:^(CLPlacemark *placemark, NSString *error) {
         
         if (!error) {
             
             SMLocationAddress *address = [[SMLocationAddress alloc] initWithPlacemark:placemark];
-            [self.delegate viewController:self dismissedWithData:address];
-            [self dismissViewControllerAnimated:YES completion:nil];
+            [weakSelf.delegate viewController:weakSelf dismissedWithData:address];
+            [weakSelf dismissViewControllerAnimated:YES completion:nil];
             
         } else {
             
-            [self.delegate viewController:self dismissedWithData:nil];
-            [self dismissViewControllerAnimated:YES completion:nil];
+            [weakSelf.delegate viewController:weakSelf dismissedWithData:nil];
+            [weakSelf dismissViewControllerAnimated:YES completion:nil];
         }
         
     }];

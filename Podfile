@@ -5,6 +5,8 @@ target 'ManWithVan' do
   # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
   # use_frameworks!
 pod 'AFNetworking', '~> 3.0'
+pod 'Firebase/Core'
+pod 'Firebase/Database'
   # Pods for ManWithVan
 
 end

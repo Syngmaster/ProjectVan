@@ -6,10 +6,12 @@
 //  Copyright © 2017 Syngmaster. All rights reserved.
 //
 
+#import <MessageUI/MessageUI.h>
+
 #import "SMYourQuoteViewController.h"
 #import "SMQuoteData.h"
+#import "SMDataManager.h"
 
-#import <MessageUI/MessageUI.h>
 
 @interface SMYourQuoteViewController () <MFMailComposeViewControllerDelegate>
 
@@ -48,7 +50,7 @@
     
     if ([MFMailComposeViewController canSendMail]) {
         
-        NSArray *recipients = [NSArray arrayWithObject:@"max6361@mail.ru"];
+        NSArray *recipients = [NSArray arrayWithObject:@"info@vipvan.ie"];
         MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
         mc.mailComposeDelegate = self;
         [mc setToRecipients:recipients];
@@ -92,6 +94,8 @@
     
     if (result == MFMailComposeResultSent) {
         
+        [[SMDataManager sharedInstance] saveQuoteToFIRDatabase:self.quote];
+
         UIAlertController *contr = [UIAlertController alertControllerWithTitle:@"Success!" message:@"Thanks for your quote! \n We will contact you in moment." preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
             

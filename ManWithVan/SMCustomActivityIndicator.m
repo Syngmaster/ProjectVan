@@ -60,10 +60,7 @@
     [UIView animateWithDuration:0.8 delay:0 options:UIViewAnimationOptionRepeat | UIViewAnimationOptionCurveLinear animations:^{
         CGPoint imageCenter = CGPointMake(CGRectGetMidX(self.frame) * 1.5, CGRectGetMidY(self.frame)*1.2);
         imageView.center = imageCenter;
-    } completion:^(BOOL finished) {
-        
-        
-    }];
+    } completion:nil];
     
 }
 

@@ -10,7 +10,6 @@
 #import "SMReviewsViewCell.h"
 #import "SMReviewsModel.h"
 
-
 @interface SMReviewsViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @end
@@ -58,7 +57,5 @@
     return cell;
     
 }
-
-
 
 @end

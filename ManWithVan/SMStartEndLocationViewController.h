@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class SMStartEndLocationViewController, SMQuoteData;
+@class SMQuoteData;
 
 @interface SMStartEndLocationViewController : UIViewController
 

@@ -9,6 +9,7 @@
 #import "SMSideMenusParentViewController.h"
 
 @interface SMGalleryViewController : SMSideMenusParentViewController
+
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 

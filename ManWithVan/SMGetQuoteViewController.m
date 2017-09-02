@@ -7,29 +7,22 @@
 //
 
 #import "SMGetQuoteViewController.h"
-#import "SMQuoteData.h"
 #import "SMStartEndLocationViewController.h"
-#import "SMDataManager.h"
+
 #import "SMAddPhotoViewCell.h"
-#import "SMCustomActivityIndicator.h"
+#import "SMDescriptionViewCell.h"
 #import "SMProfileViewCell.h"
+#import "SMCustomActivityIndicator.h"
 #import "SMSectionLabel.h"
 #import "SMCustomLabel.h"
-#import "SMDescriptionViewCell.h"
-#import <MessageUI/MessageUI.h>
 
-#define kOFFSET_FOR_KEYBOARD 80.0
+#import "SMQuoteData.h"
+#import "SMDataManager.h"
 
-@interface SMGetQuoteViewController () <UITextFieldDelegate, MFMailComposeViewControllerDelegate, UIImagePickerControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface SMGetQuoteViewController () <UITextFieldDelegate, UIImagePickerControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) SMQuoteData *quote;
 @property (assign, nonatomic) BOOL hasAtSign;
-
-@property (strong, nonatomic) NSMutableArray *addPhotoArray;
-@property (strong, nonatomic) NSMutableArray *placeholderArray;
-
-@property (assign, nonatomic) BOOL moveUp;
-@property (assign, nonatomic) CGFloat moveUpViewHeight;
 
 @end
 
@@ -42,14 +35,9 @@
     quote.movingType = self.movingType;
     self.quote = quote;
     self.hasAtSign = YES;
-    self.addPhotoArray = [NSMutableArray array];
     
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem.title=@"";
-    UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, -20,[UIScreen mainScreen].bounds.size.width, 20)];
-    view.backgroundColor=[UIColor whiteColor];
-    [self.navigationController.navigationBar addSubview:view];
-    
     
 }
 
@@ -132,7 +120,6 @@
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    
     
     SMProfileViewCell *phoneNumberCell = self.tableView.visibleCells[1];
     SMProfileViewCell *emailCell = self.tableView.visibleCells[2];
@@ -227,7 +214,7 @@
         NSString *alertTitle = @"Warning!";
         NSString *alertMessage = @"Please enter your name, phone number and email address";
         
-        [self raiseAlertWithTitle:alertTitle message:alertMessage andErrorCode:0];
+        [self raiseAlertWithTitle:alertTitle andMessage:alertMessage];
         
     } else {
         
@@ -262,8 +249,16 @@
         SMDescriptionViewCell *descriptionCell = (SMDescriptionViewCell *)cell;
         quoteData.descriptionText = descriptionCell.descriptionTextField.text;
     }
-
 }
+
+- (void)raiseAlertWithTitle:(NSString *) title andMessage:(NSString *) message {
+    
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
+    [controller addAction:cancelAction];
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
 
 - (IBAction)cancelAction:(UIButton *)sender {
     
@@ -271,51 +266,21 @@
     
 }
 
-
-- (void)raiseAlertWithTitle:(NSString *) title message:(NSString *) message andErrorCode:(NSInteger) errorCode  {
-    
-    if (errorCode == 2) {
-        
-        UIAlertController *controller = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleActionSheet];
-        UIAlertAction *callbackAction = [UIAlertAction actionWithTitle:@"Callback" style:UIAlertActionStyleDefault handler:nil];
-        UIAlertAction *callUsAction = [UIAlertAction actionWithTitle:@"Call Us" style:UIAlertActionStyleDefault handler:nil];
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
-        [controller addAction:cancelAction];
-        [controller addAction:callUsAction];
-        [controller addAction:callbackAction];
-        [self presentViewController:controller animated:YES completion:nil];
-
-    } else {
-        
-        UIAlertController *controller = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
-        [controller addAction:cancelAction];
-        [self presentViewController:controller animated:YES completion:nil];
-
-    }
-    
-
-    
-}
-
-
 #pragma mark - UIImagePickerControllerDelegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
     UIImage *image = info[UIImagePickerControllerEditedImage];
 
-    [self.addPhotoArray addObject:image];
     [self.quote.photosArray addObject:image];
     [self dismissViewControllerAnimated:YES completion:nil];
-    
     
 }
 
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [self.addPhotoArray count] + 1;
+    return [self.quote.photosArray count] + 1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -327,7 +292,7 @@
         cell = [[SMAddPhotoViewCell alloc] init];
     }
     
-    [cell configureCellWith:self.addPhotoArray atIndexPath:indexPath.row];
+    [cell configureCellWith:self.quote.photosArray atIndexPath:indexPath.row];
 
     return cell;
     
@@ -383,13 +348,13 @@
 
 - (void)removePhotoAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.row < [self.addPhotoArray count] + 1) {
+    if (indexPath.row < [self.quote.photosArray count] + 1) {
         
         UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Info" message:@"Remove photo?" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Remove" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
-            [self.addPhotoArray removeObjectAtIndex:indexPath.row - 1];
+            [self.quote.photosArray removeObjectAtIndex:indexPath.row - 1];
             [self.photoCollectionView reloadData];
             
         }];
@@ -414,7 +379,5 @@
         
     }
 }
-
-
 
 @end

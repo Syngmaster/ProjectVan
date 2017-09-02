@@ -14,9 +14,6 @@
     [super layoutSubviews];
     
     self.backgroundColor = [UIColor clearColor];
-    //self.layer.cornerRadius = CGRectGetHeight(self.frame)/2;
-    //self.layer.borderColor = [UIColor blackColor].CGColor;
-    //self.layer.borderWidth = 1.0;
     
     self.layer.shadowColor = [UIColor blackColor].CGColor;
     self.layer.shadowOffset = CGSizeMake(1.0, 1.0);

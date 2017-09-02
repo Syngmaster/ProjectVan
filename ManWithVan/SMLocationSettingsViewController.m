@@ -110,7 +110,6 @@
             i = i - 1;
             self.locationData.pickUpFloor = i;
             self.floorLabel.text = [NSString stringWithFormat:@"%i", (int)self.locationData.pickUpFloor];
-
         }
         
     } else {
@@ -120,7 +119,6 @@
             i = i + 1;
             self.locationData.pickUpFloor = i;
             self.floorLabel.text = [NSString stringWithFormat:@"%i", (int)self.locationData.pickUpFloor];
-
         }
     }
     

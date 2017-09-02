@@ -119,7 +119,7 @@ typedef NS_ENUM(NSInteger, Direction) {
 #pragma mark - SMSideMenuDelegate
 
 - (void)viewController:(SMSideMenuViewController *)viewController isDismissedWithData:(NSInteger) passedData {
-    NSLog(@"%i", (int)passedData);
+    
     /*if (passedData == 1) {
         
         SMSignInViewController *signVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SMSignInViewController"];

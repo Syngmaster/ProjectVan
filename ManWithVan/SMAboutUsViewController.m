@@ -8,10 +8,9 @@
 
 #import "SMAboutUsViewController.h"
 #import "SMSideMenuViewController.h"
-#import "SMPresentMenuAnimator.h"
-#import "SMDismissMenuAnimator.h"
-#import "SMSignInViewController.h"
 #import "SMRequestCallbackViewController.h"
+#import "SMSignInViewController.h"
+
 
 @interface SMAboutUsViewController ()
 

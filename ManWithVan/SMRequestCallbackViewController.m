@@ -6,11 +6,13 @@
 //  Copyright © 2017 Syngmaster. All rights reserved.
 //
 
+#import <MessageUI/MessageUI.h>
+
 #import "SMRequestCallbackViewController.h"
 #import "SMSideMenuViewController.h"
 #import "SMSignInViewController.h"
 #import "SMAboutUsViewController.h"
-#import <MessageUI/MessageUI.h>
+
 
 @interface SMRequestCallbackViewController () <UITextFieldDelegate, MFMailComposeViewControllerDelegate>
 
@@ -98,11 +100,13 @@
     
 }
 
+#pragma mark - Send Email Method
+
 - (void)sendCallBackWithName:(NSString *) name andPhoneNumber:(NSString *) phoneNumber {
     
     if ([MFMailComposeViewController canSendMail]) {
         
-        NSArray *recipients = [NSArray arrayWithObject:@"max6361@mail.ru"];
+        NSArray *recipients = [NSArray arrayWithObject:@"info@vipvan.ie"];
         MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
         mc.mailComposeDelegate = self;
         [mc setToRecipients:recipients];
@@ -135,7 +139,6 @@
         [self presentViewController:controller animated:YES completion:nil];
         
     }
-    
 }
 
 @end

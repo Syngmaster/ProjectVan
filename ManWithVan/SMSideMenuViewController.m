@@ -9,9 +9,6 @@
 #import "SMSideMenuViewController.h"
 #import "SMSideMenuViewCell.h"
 
-#import "SMPresentMenuAnimator.h"
-#import "SMDismissMenuAnimator.h"
-
 @interface SMSideMenuViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @end

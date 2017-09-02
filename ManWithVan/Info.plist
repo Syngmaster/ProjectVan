@@ -2,19 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-	</dict>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>User location</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>User location</string>
-	<key>NSLocationUsageDescription</key>
-	<string>Show user location</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Take a photo</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -30,11 +17,24 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.0.2</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Take a photo</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>User location</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Show user location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>User location</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Choose a photo</string>
 	<key>UILaunchStoryboardName</key>

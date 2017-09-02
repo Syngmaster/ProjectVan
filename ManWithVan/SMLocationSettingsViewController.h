@@ -20,6 +20,7 @@
 
 @property (weak, nonatomic) id <SMLocationSettingsDelegate> delegate;
 @property (strong, nonatomic) SMSetUpLocationData *locationData;
+
 @property (weak, nonatomic) IBOutlet UISegmentedControl *buildingTypeSegment;
 @property (weak, nonatomic) IBOutlet UIImageView *tickImageView;
 @property (weak, nonatomic) IBOutlet UILabel *floorLabel;

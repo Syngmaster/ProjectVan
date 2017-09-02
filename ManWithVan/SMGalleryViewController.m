@@ -31,10 +31,12 @@
     [[SMDataManager sharedInstance] getPhotosFromGooglePlusAccountOnComplete:^(NSArray *array, NSError *error) {
         
         if (array) {
+            
             self.photosArray = array;
             [self.activityIndicator stopAnimating];
             [self.activityIndicator hidesWhenStopped];
             [self updateTableData];
+            
         } else {
             
             UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"No connection!" message:@"Please check your internet connection!" preferredStyle:UIAlertControllerStyleAlert];

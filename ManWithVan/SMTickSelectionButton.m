@@ -11,11 +11,6 @@
 
 @implementation SMTickSelectionButton
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-
-    
-}
 
 - (void)layoutSubviews {
     [super layoutSubviews];

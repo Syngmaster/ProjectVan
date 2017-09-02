@@ -6,13 +6,18 @@
 //  Copyright © 2017 Syngmaster. All rights reserved.
 //
 
+#import <FirebaseDatabase/FirebaseDatabase.h>
+#import <AFNetworking/AFNetworking.h>
+
 #import "SMDataManager.h"
 #import "SMSetUpLocationData.h"
 #import "SMQuoteData.h"
 
-#import <AFNetworking/AFNetworking.h>
+
 
 @interface SMDataManager ()
+
+@property (strong, nonatomic) FIRDatabaseReference *ref;
 
 @end
 
@@ -26,9 +31,6 @@
     dispatch_once(&onceToken, ^{
         sharedManager = [[SMDataManager alloc] init];
         sharedManager.baseColor = [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:185.0/255.0 alpha:1.0];
-        
-        UIImage *placeHolder = [UIImage imageNamed:@"ImagePlaceholder.png"];
-        sharedManager.placeHolder = placeHolder;
         
         UIImage *image1 = [UIImage imageNamed:@"home_icon.png"];
         //UIImage *image2 = [UIImage imageNamed:@"SignInIcon.png"];
@@ -145,13 +147,9 @@
         if ([self.geoCoder isGeocoding]) {
             [self.geoCoder cancelGeocode];
         }
-        
-        //NSString *locationAddress = [NSString stringWithFormat:@"%@ %@ %@ %@", address.houseApartmentNumber, address.streetName, address.cityName, address.countyName];
-        
+
         [self.geoCoder geocodeAddressString:address.fullAddress completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
             
-            NSLog(@"fullAddress : %@", address.fullAddress);
-
             if (placemarks) {
                 
                 CLPlacemark* placemark = [placemarks firstObject];
@@ -184,11 +182,11 @@
     
     if (quote.movingType == MovingTypeSmall || quote.movingType == MovingTypeHeavy) {
         
-        if (quote.startLocation.buildingType == 0 && quote.endLocation.buildingType == 0) {
+        if (quote.startLocation.buildingType == BuildingTypeHouse && quote.endLocation.buildingType == BuildingTypeHouse) {
             
             (quote.movingType == MovingTypeSmall) ? (price = 50) : (price = 130);
             
-        } else if (quote.startLocation.buildingType == 1 && quote.endLocation.buildingType == 1) {
+        } else if (quote.startLocation.buildingType == BuildingTypeApartment && quote.endLocation.buildingType == BuildingTypeApartment) {
             
             if (quote.startLocation.liftAvailable && quote.endLocation.liftAvailable) {
                 
@@ -212,7 +210,7 @@
             
             (quote.movingType == MovingTypeSmall) ? (price = 50) : (price = 130);
             
-            if (quote.startLocation.buildingType == 1 || quote.startLocation.buildingType == 2) {
+            if (quote.startLocation.buildingType == BuildingTypeApartment || quote.startLocation.buildingType == BuildingTypeOther) {
                 
                 if (quote.startLocation.liftAvailable) {
                     (quote.movingType == MovingTypeSmall) ? (price = 60) : (price = 140);
@@ -222,7 +220,7 @@
                 
             }
             
-            if (quote.endLocation.buildingType == 1 || quote.endLocation.buildingType == 2) {
+            if (quote.endLocation.buildingType == BuildingTypeApartment || quote.endLocation.buildingType == BuildingTypeOther) {
                 
                 if (quote.endLocation.liftAvailable) {
                     price = 60;
@@ -236,7 +234,7 @@
         
         quote.startLocation.loadingTime = quote.endLocation.loadingTime = 0.5;
 
-        if (quote.startLocation.buildingType == 1 && quote.endLocation.buildingType == 1) {
+        if (quote.startLocation.buildingType == BuildingTypeApartment && quote.endLocation.buildingType == BuildingTypeApartment) {
             
             if (!quote.startLocation.liftAvailable) {
                 price = [self updatePrice:price ofQuote:quote withPickUpFloor:quote.startLocation];
@@ -252,7 +250,7 @@
             
         } else {
             
-            if (quote.startLocation.buildingType == 1 || quote.startLocation.buildingType == 2) {
+            if (quote.startLocation.buildingType == BuildingTypeApartment || quote.startLocation.buildingType == BuildingTypeOther) {
                 
                 if (!quote.startLocation.liftAvailable) {
                     price = [self updatePrice:price ofQuote:quote withPickUpFloor:quote.startLocation];
@@ -262,7 +260,7 @@
                 
             }
             
-            if (quote.endLocation.buildingType == 1 || quote.endLocation.buildingType == 2) {
+            if (quote.endLocation.buildingType == BuildingTypeApartment || quote.endLocation.buildingType == BuildingTypeOther) {
                 
                 if (!quote.endLocation.liftAvailable) {
                     price = [self updatePrice:price ofQuote:quote withPickUpFloor:quote.endLocation];
@@ -270,8 +268,6 @@
                     quote.endLocation.loadingTime = 1.0;
 
                 }
-
-
             }
         }
         
@@ -332,7 +328,6 @@
                     completionHandler(0, error);
                     [self.geoCoder cancelGeocode];
 
-
                 }
                 
             }];
@@ -361,8 +356,6 @@
     float estHoursOfWork = 0.0;
     estHoursOfWork = estHoursOfWork + workingDistance/(60000);
     
-    //NSLog(@"Working distance hours : %f", workingDistance/(60.0*1000));
-    
     if (distanceFromOfficeToStartPoint > 9000) {
         
         NSInteger result;
@@ -371,8 +364,6 @@
         estHoursOfWork = estHoursOfWork + result/60.0;
     }
     
-    //NSLog(@"Hours :  %f", estHoursOfWork);
-
     
     if (quote.twoPeople) {
         
@@ -393,7 +384,6 @@
         result = biggerDistance/1000;
         result = result - 9;
         price = price + result;
-        //NSLog(@"Price is %i", (int)price);
     }
     
     NSInteger roundedResult = ceil((float)price / 5) * 5;
@@ -423,11 +413,8 @@
         if (response) {
             
             MKRoute *shortestRoute = response.routes[0];
-            //NSLog(@"Number of routes: %u", [response.routes count]);
             
             for (MKRoute *route in response.routes) {
-                //NSLog(@"Driving distance : %f", route.distance);
-                //NSLog(@"Travel time : %f", route.expectedTravelTime);
                 
                 if (shortestRoute.expectedTravelTime > route.expectedTravelTime) {
                     shortestRoute = route;
@@ -479,6 +466,17 @@
     }
 
     return price;
+}
+
+- (void)saveQuoteToFIRDatabase:(SMQuoteData *)quote {
+    
+    self.ref = [[FIRDatabase database] reference];
+    
+    [[[self.ref child:@"Sent quotes"] child:[NSString stringWithFormat:@"New quote %@", [NSDate date]]]
+            setValue:@{@"Price" : @(quote.price),
+                       @"Moving type" : quote.movingType == 0 ? @"Small" : (quote.movingType == 1 ? @"Big" : @"Heavy"),
+                       @"Data" : [NSString stringWithFormat:@"%@",[NSDate date]]}];
+    
 }
 
 

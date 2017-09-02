@@ -11,11 +11,6 @@
 
 @implementation SMCustomView
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    
-}
-
 - (void)layoutSubviews {
     [super layoutSubviews];
     

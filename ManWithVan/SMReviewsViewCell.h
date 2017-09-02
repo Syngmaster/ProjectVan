@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SMReviewsModel.h"
+
+@class SMReviewsModel;
 
 @interface SMReviewsViewCell : UITableViewCell
 

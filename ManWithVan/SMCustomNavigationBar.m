@@ -17,25 +17,20 @@
     self.backgroundColor = [UIColor whiteColor];
     self.tintColor = [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:185.0/255.0 alpha:1.0];
     self.titleTextAttributes = @{ NSFontAttributeName : [UIFont fontWithName:@"Avenir-Heavy" size:20], NSForegroundColorAttributeName : [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:185.0/255.0 alpha:1.0] };
-
-    UINavigationController *navVC = (UINavigationController *)[UIApplication sharedApplication].windows.firstObject.rootViewController;
     
-    if (![navVC.viewControllers.lastObject isMemberOfClass:[SMMapViewController class]]) {
-        
-        UIBarButtonItem *flipButton = [[UIBarButtonItem alloc]
-                                       initWithTitle:@""
-                                       style:UIBarButtonItemStylePlain
-                                       target:self
-                                       action:@selector(flipViews:)];
-        
-        [flipButton setImage:[[UIImage imageNamed:@"CallUsButton"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-        
-        self.topItem.rightBarButtonItem = flipButton;
-    }
+    UIBarButtonItem *callUsButton = [[UIBarButtonItem alloc]
+                                   initWithTitle:@""
+                                   style:UIBarButtonItemStylePlain
+                                   target:self
+                                   action:@selector(callUsAction:)];
+    
+    [callUsButton setImage:[[UIImage imageNamed:@"CallUsButton"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    
+    self.topItem.rightBarButtonItem = callUsButton;
 }
 
 
-- (void)flipViews:(UIButton *)sender {
+- (void)callUsAction:(UIButton *)sender {
     
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://0851119555"] options:@{} completionHandler:nil];
 

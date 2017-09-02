@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface SMDescriptionViewCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UITextField *descriptionTextField;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "SMReviewsViewCell.h"
+#import "SMReviewsModel.h"
 
 @implementation SMReviewsViewCell
 

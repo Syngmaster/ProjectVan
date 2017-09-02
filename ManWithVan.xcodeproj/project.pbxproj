@@ -43,6 +43,7 @@
 		DC8B27941F1E3589008710D1 /* ManWithVan.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DC8B27921F1E3589008710D1 /* ManWithVan.xcdatamodeld */; };
 		DC8B27961F1E3589008710D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC8B27951F1E3589008710D1 /* Assets.xcassets */; };
 		DC8B27991F1E3589008710D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC8B27971F1E3589008710D1 /* LaunchScreen.storyboard */; };
+		DCBCD3461F573DAD008134A1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DCBCD3451F573DAD008134A1 /* GoogleService-Info.plist */; };
 		DCD208931F2A015000548C36 /* SMPin.m in Sources */ = {isa = PBXBuildFile; fileRef = DCD208921F2A015000548C36 /* SMPin.m */; };
 		DCD208961F2A380A00548C36 /* SMLocationAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = DCD208951F2A380A00548C36 /* SMLocationAddress.m */; };
 		DCD208991F2B2F7100548C36 /* SMLocationSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCD208981F2B2F7100548C36 /* SMLocationSettingsViewController.m */; };
@@ -55,7 +56,6 @@
 		DCE0DFC21F44AFDB00AAB030 /* SMReviewsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE0DFC11F44AFDB00AAB030 /* SMReviewsViewCell.m */; };
 		DCE0DFC51F45D9F800AAB030 /* SMGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE0DFC41F45D9F800AAB030 /* SMGalleryViewController.m */; };
 		DCE0DFC81F45DAFE00AAB030 /* SMGalleryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE0DFC71F45DAFE00AAB030 /* SMGalleryViewCell.m */; };
-		DCE0DFCB1F4623C100AAB030 /* SMKeyboardHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE0DFCA1F4623C100AAB030 /* SMKeyboardHandler.m */; };
 		DCE0DFF11F48A4DD00AAB030 /* SMInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE0DFF01F48A4DD00AAB030 /* SMInteractor.m */; };
 		DCE0DFF71F49B43200AAB030 /* SMCustomNavBarWithoutBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE0DFF61F49B43200AAB030 /* SMCustomNavBarWithoutBtn.m */; };
 		DCF9F8211F210C97001E790A /* SMCustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF9F8201F210C97001E790A /* SMCustomTextField.m */; };
@@ -132,6 +132,7 @@
 		DC8B27951F1E3589008710D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DC8B27981F1E3589008710D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DC8B279A1F1E3589008710D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DCBCD3451F573DAD008134A1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DCD208911F2A015000548C36 /* SMPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPin.h; sourceTree = "<group>"; };
 		DCD208921F2A015000548C36 /* SMPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMPin.m; sourceTree = "<group>"; };
 		DCD208941F2A380A00548C36 /* SMLocationAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMLocationAddress.h; sourceTree = "<group>"; };
@@ -154,8 +155,6 @@
 		DCE0DFC41F45D9F800AAB030 /* SMGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMGalleryViewController.m; sourceTree = "<group>"; };
 		DCE0DFC61F45DAFE00AAB030 /* SMGalleryViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMGalleryViewCell.h; sourceTree = "<group>"; };
 		DCE0DFC71F45DAFE00AAB030 /* SMGalleryViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMGalleryViewCell.m; sourceTree = "<group>"; };
-		DCE0DFC91F4623C100AAB030 /* SMKeyboardHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMKeyboardHandler.h; sourceTree = "<group>"; };
-		DCE0DFCA1F4623C100AAB030 /* SMKeyboardHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMKeyboardHandler.m; sourceTree = "<group>"; };
 		DCE0DFEF1F48A4DD00AAB030 /* SMInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMInteractor.h; sourceTree = "<group>"; };
 		DCE0DFF01F48A4DD00AAB030 /* SMInteractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMInteractor.m; sourceTree = "<group>"; };
 		DCE0DFF51F49B43200AAB030 /* SMCustomNavBarWithoutBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCustomNavBarWithoutBtn.h; sourceTree = "<group>"; };
@@ -250,8 +249,6 @@
 				DCD208951F2A380A00548C36 /* SMLocationAddress.m */,
 				DCE0DFBA1F44A88400AAB030 /* SMReviewsModel.h */,
 				DCE0DFBB1F44A88400AAB030 /* SMReviewsModel.m */,
-				DCE0DFC91F4623C100AAB030 /* SMKeyboardHandler.h */,
-				DCE0DFCA1F4623C100AAB030 /* SMKeyboardHandler.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -354,6 +351,7 @@
 				DC8B27951F1E3589008710D1 /* Assets.xcassets */,
 				DC8B27971F1E3589008710D1 /* LaunchScreen.storyboard */,
 				DC8B279A1F1E3589008710D1 /* Info.plist */,
+				DCBCD3451F573DAD008134A1 /* GoogleService-Info.plist */,
 				DC8B27921F1E3589008710D1 /* ManWithVan.xcdatamodeld */,
 				DC8B27861F1E3589008710D1 /* Supporting Files */,
 			);
@@ -402,8 +400,8 @@
 				TargetAttributes = {
 					DC8B27821F1E3589008710D1 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 4PMQKT6K8N;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = RLMXU9393M;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -431,6 +429,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC8B27991F1E3589008710D1 /* LaunchScreen.storyboard in Resources */,
+				DCBCD3461F573DAD008134A1 /* GoogleService-Info.plist in Resources */,
 				DC8B27961F1E3589008710D1 /* Assets.xcassets in Resources */,
 				DC8B27911F1E3589008710D1 /* Main.storyboard in Resources */,
 			);
@@ -506,7 +505,6 @@
 				DC8527441F263BC70057D92B /* SMSegueButton.m in Sources */,
 				DC6EA4F81F1F8C150067C851 /* SMMainViewController.m in Sources */,
 				DC85271F1F221C1A0057D92B /* SMCustomLabel.m in Sources */,
-				DCE0DFCB1F4623C100AAB030 /* SMKeyboardHandler.m in Sources */,
 				DCF9F8241F21134A001E790A /* SMAboutUsViewController.m in Sources */,
 				DCE0DFC51F45D9F800AAB030 /* SMGalleryViewController.m in Sources */,
 				DC8B27941F1E3589008710D1 /* ManWithVan.xcdatamodeld in Sources */,
@@ -584,6 +582,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -633,6 +632,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -659,11 +659,16 @@
 			baseConfigurationReference = 246BC91866446648B724B77E /* Pods-ManWithVan.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 4PMQKT6K8N;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Maksim Artemov (YGBSDM6QAT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = RLMXU9393M;
 				INFOPLIST_FILE = ManWithVan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ios.ManWithVan;
+				PRODUCT_BUNDLE_IDENTIFIER = "XC-com-ManWithVan";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "eb2c369f-aec0-4db5-8bec-bdbf73fb2b39";
+				PROVISIONING_PROFILE_SPECIFIER = ManWithVanDevelopment;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -672,11 +677,16 @@
 			baseConfigurationReference = 0E327D297DFB6C5688BEA6F9 /* Pods-ManWithVan.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 4PMQKT6K8N;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Maksim Artemov (RLMXU9393M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = RLMXU9393M;
 				INFOPLIST_FILE = ManWithVan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ios.ManWithVan;
+				PRODUCT_BUNDLE_IDENTIFIER = "XC-com-ManWithVan";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "97847d31-97c0-4c2f-beaf-df48c7d87bb3";
+				PROVISIONING_PROFILE_SPECIFIER = ManWithVanDistribution;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -27,7 +27,6 @@ typedef NS_ENUM (NSInteger, MovingType) {
 @property (strong, nonatomic) NSArray *iconNameArray;
 @property (strong, nonatomic) CLLocation *centerDublinLocation;
 @property (strong, nonatomic) CLLocation *officeDublinLocation;
-@property (strong, nonatomic) UIImage *placeHolder;
 @property (strong, nonatomic) CLGeocoder *geoCoder;
 
 + (SMDataManager *)sharedInstance;
@@ -39,5 +38,7 @@ typedef NS_ENUM (NSInteger, MovingType) {
 - (void)calculationOfQuote:(SMQuoteData *) quote onComplete:(void(^)(NSInteger price, NSError *error)) completionHandler;
 
 - (void)getPhotosFromGooglePlusAccountOnComplete:(void(^)(NSArray *array, NSError *error)) completionHandler;
+
+- (void)saveQuoteToFIRDatabase:(SMQuoteData *)quote;
 
 @end

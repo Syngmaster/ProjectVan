@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>GoogleToolboxForMac.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-ManWithVan.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>07C1B214BC49A85412B7658AAC292251</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>9E033EDB5EC0819481B0546434FA577B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A1088DB154B2054C3196F749C97A2E5E</key>
+		<key>E1BBB76ADBF2EF4EF2CE5DF6BBC77296</key>
 		<dict>
 			<key>primary</key>
 			<true/>

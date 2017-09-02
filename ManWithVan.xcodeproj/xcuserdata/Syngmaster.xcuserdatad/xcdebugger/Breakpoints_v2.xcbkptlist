@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ManWithVan/SMCustomView.m"
-            timestampString = "522329187.926178"
+            timestampString = "525878903.721763"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
             landmarkName = "-layoutSubviews"
             landmarkType = "7">
          </BreakpointContent>
@@ -121,28 +121,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ManWithVan/SMCustomView.m"
-            timestampString = "522329171.96284"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "15"
-            endingLineNumber = "15"
-            landmarkName = "-awakeFromNib"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "ManWithVan/SMDataManager.h"
-            timestampString = "525460789.358243"
+            timestampString = "525878903.721763"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "-calculationOfQuote:onComplete:"
             landmarkType = "6">
          </BreakpointContent>
@@ -154,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ManWithVan/SMDataManager.m"
-            timestampString = "525638296.466999"
+            timestampString = "525878903.721763"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "530"
-            endingLineNumber = "530">
+            startingLineNumber = "528"
+            endingLineNumber = "528">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -168,11 +152,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ManWithVan/SMDataManager.m"
-            timestampString = "525462093.18758"
+            timestampString = "525878903.721763"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "-getAddressFromCoordinates:onComplete:"
             landmarkType = "7">
          </BreakpointContent>
@@ -184,11 +168,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ManWithVan/SMDataManager.m"
-            timestampString = "525462093.18758"
+            timestampString = "525878903.721763"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
             landmarkName = "-getAddressFromCoordinates:onComplete:"
             landmarkType = "7">
          </BreakpointContent>
@@ -200,11 +184,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ManWithVan/SMDataManager.m"
-            timestampString = "525638296.466999"
+            timestampString = "525878903.721763"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "531"
-            endingLineNumber = "531">
+            startingLineNumber = "529"
+            endingLineNumber = "529">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -214,11 +198,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ManWithVan/SMMapViewController.m"
-            timestampString = "525801671.086257"
+            timestampString = "525878903.721763"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
             landmarkName = "-mapView:didAddAnnotationViews:"
             landmarkType = "7">
          </BreakpointContent>
@@ -230,11 +214,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ManWithVan/SMMapViewController.m"
-            timestampString = "525801671.086257"
+            timestampString = "525878903.721763"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
             landmarkName = "-mapView:didAddAnnotationViews:"
             landmarkType = "7">
             <Locations>
@@ -278,11 +262,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ManWithVan/SMDataManager.m"
-            timestampString = "525638296.466999"
+            timestampString = "525878903.721763"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "366"
-            endingLineNumber = "366"
+            startingLineNumber = "359"
+            endingLineNumber = "359"
             landmarkName = "-updatePrice:ofQuote:basedOnStartCoordinates:andEndCoordinates:"
             landmarkType = "7">
          </BreakpointContent>
@@ -294,11 +278,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ManWithVan/SMDataManager.m"
-            timestampString = "525638296.466999"
+            timestampString = "525878903.721763"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "383"
-            endingLineNumber = "383"
+            startingLineNumber = "374"
+            endingLineNumber = "374"
             landmarkName = "-updatePrice:ofQuote:basedOnStartCoordinates:andEndCoordinates:"
             landmarkType = "7">
          </BreakpointContent>
@@ -310,11 +294,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ManWithVan/SMDataManager.m"
-            timestampString = "525638296.466999"
+            timestampString = "525878903.721763"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "410"
-            endingLineNumber = "410"
+            startingLineNumber = "400"
+            endingLineNumber = "400"
             landmarkName = "-getDistanceBetweenStartPoint:andEndPoint:onComplete:"
             landmarkType = "7">
          </BreakpointContent>
@@ -326,11 +310,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ManWithVan/SMDataManager.m"
-            timestampString = "525638296.466999"
+            timestampString = "525878903.721763"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "427"
-            endingLineNumber = "427"
+            startingLineNumber = "416"
+            endingLineNumber = "416"
             landmarkName = "-getDistanceBetweenStartPoint:andEndPoint:onComplete:"
             landmarkType = "7">
          </BreakpointContent>
@@ -342,11 +326,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ManWithVan/SMDataManager.m"
-            timestampString = "525638296.466999"
+            timestampString = "525878903.721763"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "468"
-            endingLineNumber = "468"
+            startingLineNumber = "455"
+            endingLineNumber = "455"
             landmarkName = "-totalPriceOfQuote:basedOn:"
             landmarkType = "7">
          </BreakpointContent>
@@ -358,11 +342,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ManWithVan/SMDataManager.m"
-            timestampString = "525637984.58426"
+            timestampString = "525878903.721763"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "241"
-            endingLineNumber = "241"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
             landmarkName = "-calculationOfQuote:onComplete:"
             landmarkType = "7">
          </BreakpointContent>
@@ -374,11 +358,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ManWithVan/SMReviewsViewController.m"
-            timestampString = "525700979.405555"
+            timestampString = "525877112.269903"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
