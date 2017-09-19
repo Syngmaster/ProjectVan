@@ -36,7 +36,7 @@
 		DC8527501F2899640057D92B /* SMQuoteData.m in Sources */ = {isa = PBXBuildFile; fileRef = DC85274F1F2899640057D92B /* SMQuoteData.m */; };
 		DC8527521F289AD10057D92B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC8527511F289AD10057D92B /* CoreLocation.framework */; };
 		DC8527551F28A0990057D92B /* SMSetUpLocationData.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8527541F28A0990057D92B /* SMSetUpLocationData.m */; };
-		DC8527571F28F7C70057D92B /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC8527561F28F7C70057D92B /* MessageUI.framework */; };
+		DC8527571F28F7C70057D92B /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC8527561F28F7C70057D92B /* MessageUI.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		DC8B27881F1E3589008710D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8B27871F1E3589008710D1 /* main.m */; };
 		DC8B278B1F1E3589008710D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8B278A1F1E3589008710D1 /* AppDelegate.m */; };
 		DC8B27911F1E3589008710D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC8B278F1F1E3589008710D1 /* Main.storyboard */; };
@@ -602,7 +602,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -646,7 +646,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -663,6 +663,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = RLMXU9393M;
 				INFOPLIST_FILE = ManWithVan/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "XC-com-ManWithVan";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -681,6 +682,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = RLMXU9393M;
 				INFOPLIST_FILE = ManWithVan/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "XC-com-ManWithVan";
 				PRODUCT_NAME = "$(TARGET_NAME)";

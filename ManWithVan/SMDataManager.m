@@ -14,7 +14,6 @@
 #import "SMQuoteData.h"
 
 
-
 @interface SMDataManager ()
 
 @property (strong, nonatomic) FIRDatabaseReference *ref;
@@ -58,7 +57,7 @@
         
         sharedManager.centerDublinLocation = [[CLLocation alloc] initWithLatitude:53.338082 longitude:-6.259117];
         sharedManager.officeDublinLocation = [[CLLocation alloc] initWithLatitude:53.349325 longitude:-6.290251];
-        
+
     });
     
     return sharedManager;
@@ -67,9 +66,7 @@
 
 - (void)getPhotosFromGooglePlusAccountOnComplete:(void(^)(NSArray *array, NSError *error)) completionHandler {
     NSString *url = @"https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJDVjn_zMMZ0gRrNRZRFz0UM8&key=AIzaSyCRh3rshLN9sWCL4Oy8HffknYOTTqu8puU";
-    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    
     [manager GET:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         if (responseObject) {
@@ -101,11 +98,9 @@
 }
 
 - (void)getAddressFromCoordinates:(CLLocationCoordinate2D) coordinates onComplete:(void(^)(CLPlacemark *placemark, NSString *error)) completionHandler {
-    
     CLLocationCoordinate2D coordinate = coordinates;
-    
     self.geoCoder = [[CLGeocoder alloc] init];
-    
+
     CLLocation *location = [[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
     
     if ([self.geoCoder isGeocoding]) {
@@ -393,8 +388,8 @@
 
 - (void)getDistanceBetweenStartPoint:(CLLocationCoordinate2D) startPoint andEndPoint:(CLLocationCoordinate2D) endPoint onComplete:(void(^)(MKRoute *resultRoute, NSError *error)) completionHandler {
     
-    MKPlacemark *startPlacemark = [[MKPlacemark alloc] initWithCoordinate:startPoint];
-    MKPlacemark *endPlacemark = [[MKPlacemark alloc] initWithCoordinate:endPoint];
+    MKPlacemark *startPlacemark = [[MKPlacemark alloc] initWithCoordinate:startPoint addressDictionary:nil];
+    MKPlacemark *endPlacemark = [[MKPlacemark alloc] initWithCoordinate:endPoint addressDictionary:nil];
     
     MKMapItem *startItem = [[MKMapItem alloc] initWithPlacemark:startPlacemark];
     MKMapItem *endItem = [[MKMapItem alloc] initWithPlacemark:endPlacemark];

@@ -11,6 +11,7 @@
 
 @interface SMSideMenuViewController () <UITableViewDelegate, UITableViewDataSource>
 
+
 @end
 
 @implementation SMSideMenuViewController
@@ -23,6 +24,7 @@
 
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
     [self.view addGestureRecognizer:pan];
+    
 
 }
 

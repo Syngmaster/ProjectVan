@@ -47,23 +47,45 @@ typedef NS_ENUM(NSInteger, SocialLink) {
     switch (sender.tag) {
         case SocialLinkFacebook:
             url = [NSURL URLWithString:@"https://www.facebook.com/vipvandublin/"];
-            [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+            
+            if ([UIDevice currentDevice].systemVersion.floatValue < 10.0) {
+                [[UIApplication sharedApplication] openURL:url];
+            } else {
+                [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+            }
+            
             break;
         case SocialLinkGooglePlus:
             url = [NSURL URLWithString:@"https://g.co/kgs/9UmsMm"];
-            [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+            if ([UIDevice currentDevice].systemVersion.floatValue < 10.0) {
+                [[UIApplication sharedApplication] openURL:url];
+            } else {
+                [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+            }
             break;
         case SocialLinkTwitter:
             url = [NSURL URLWithString:@"https://twitter.com/MANandVANdublin?s=09"];
-            [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+            if ([UIDevice currentDevice].systemVersion.floatValue < 10.0) {
+                [[UIApplication sharedApplication] openURL:url];
+            } else {
+                [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+            }
             break;
         case SocialLinkYoutube:
             url = [NSURL URLWithString:@"https://www.youtube.com/channel/UC2nqLYfTE1k-mSBfqzrpTbg"];
-            [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+            if ([UIDevice currentDevice].systemVersion.floatValue < 10.0) {
+                [[UIApplication sharedApplication] openURL:url];
+            } else {
+                [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+            }
             break;
         case SocialLinkWebsite:
             url = [NSURL URLWithString:@"http://vipvan.ie/"];
-            [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+            if ([UIDevice currentDevice].systemVersion.floatValue < 10.0) {
+                [[UIApplication sharedApplication] openURL:url];
+            } else {
+                [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+            }
             break;
 
     }

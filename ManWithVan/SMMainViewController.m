@@ -53,6 +53,7 @@ typedef NS_ENUM(NSInteger, Direction) {
 
     self.interactor = [[SMInteractor alloc] init];
     
+
 }
 
 - (IBAction)openMenuAction:(UIButton *)sender {

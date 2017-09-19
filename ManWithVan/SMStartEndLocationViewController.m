@@ -251,7 +251,16 @@
             
         }];
         UIAlertAction *callUsAction = [UIAlertAction actionWithTitle:@"Call Us" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://0851119555"] options:@{} completionHandler:nil];
+            
+            if ([UIDevice currentDevice].systemVersion.floatValue < 10.0) {
+                
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://0851119555"]];
+                
+            } else {
+                
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://0851119555"] options:@{} completionHandler:nil];
+            }
+            
         }];
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
         [controller addAction:cancelAction];

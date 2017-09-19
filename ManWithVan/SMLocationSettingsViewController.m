@@ -18,7 +18,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.navigationItem.title = @"Location settings";
     self.buildingTypeSegment.tintColor = [SMDataManager sharedInstance].baseColor;
     self.floorLabel.text = [NSString stringWithFormat:@"%i",(int)self.locationData.pickUpFloor];

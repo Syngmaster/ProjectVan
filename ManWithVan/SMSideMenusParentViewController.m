@@ -23,7 +23,6 @@
 #import "SMInteractor.h"
 
 @interface SMSideMenusParentViewController () <UIViewControllerTransitioningDelegate, SMSideMenuDelegate>
-
 @property (strong, nonatomic) SMInteractor *interactor;
 
 @end
@@ -33,7 +32,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     UIScreenEdgePanGestureRecognizer *panRecognizer = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(edgePanGesture:)];
     panRecognizer.edges = UIRectEdgeLeft;
     [self.view addGestureRecognizer:panRecognizer];

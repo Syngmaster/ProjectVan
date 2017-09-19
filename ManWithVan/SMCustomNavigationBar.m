@@ -32,7 +32,18 @@
 
 - (void)callUsAction:(UIButton *)sender {
     
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://0851119555"] options:@{} completionHandler:nil];
+    if ([UIDevice currentDevice].systemVersion.floatValue < 10.0) {
+        
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://0851119555"]];
+        NSLog(@"9");
+    } else {
+    
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://0851119555"] options:@{} completionHandler:nil];
+        NSLog(@"10");
+
+    }
+    
+
 
 }
 

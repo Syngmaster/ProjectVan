@@ -20,6 +20,8 @@ typedef NS_ENUM (NSInteger, MovingType) {
 
 @interface SMMovingTypeViewController ()
 
+@property (nonatomic, weak) NSString *test;
+
 @end
 
 @implementation SMMovingTypeViewController
@@ -31,12 +33,14 @@ typedef NS_ENUM (NSInteger, MovingType) {
 
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem.title=@"";
+
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UIButton *)sender {
     

@@ -13,8 +13,6 @@
 
 @interface AppDelegate ()
 
-@property (strong, nonatomic) UINavigationController *navVC;
-
 @end
 
 @implementation AppDelegate
@@ -22,13 +20,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
-    /*UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *startingVC = [storyboard instantiateViewControllerWithIdentifier:@"SMMainViewController"];
-    UINavigationController *navVC = [[UINavigationController alloc] initWithNavigationBarClass:[SMCustomNavigationBar class] toolbarClass:nil];
-    [navVC setViewControllers:@[startingVC]];
-    self.window.rootViewController = navVC;
-    self.navVC = navVC;*/
     
     [FIRApp configure];
 
@@ -61,10 +52,10 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
-    [self saveContext];
+    //[self saveContext];
 }
 
-
+/*
 #pragma mark - Core Data stack
 
 @synthesize persistentContainer = _persistentContainer;
@@ -79,14 +70,14 @@
                     // Replace this implementation with code to handle the error appropriately.
                     // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                     
-                    /*
+                    
                      Typical reasons for an error here include:
                      * The parent directory does not exist, cannot be created, or disallows writing.
                      * The persistent store is not accessible, due to permissions or data protection when the device is locked.
                      * The device is out of space.
                      * The store could not be migrated to the current model version.
                      Check the error message to determine what the actual problem was.
-                    */
+ 
                     NSLog(@"Unresolved error %@, %@", error, error.userInfo);
                     abort();
                 }
@@ -109,5 +100,6 @@
         abort();
     }
 }
+*/
 
 @end
