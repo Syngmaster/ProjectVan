@@ -53,6 +53,7 @@
 		DCD208C61F40C3D100548C36 /* SMCustomActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = DCD208C51F40C3D100548C36 /* SMCustomActivityIndicator.m */; };
 		DCD61B241FC879E000C64075 /* SMBaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCD61B231FC879E000C64075 /* SMBaseTabBarController.m */; };
 		DCD61B281FC87C7800C64075 /* SMMainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCD61B271FC87C7800C64075 /* SMMainTabBarController.m */; };
+		DCD61B2A1FC889F700C64075 /* Gotham Book Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = DCD61B291FC889F600C64075 /* Gotham Book Regular.otf */; };
 		DCE0DFBC1F44A88400AAB030 /* SMReviewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE0DFBB1F44A88400AAB030 /* SMReviewsModel.m */; };
 		DCE0DFBF1F44AC9700AAB030 /* SMReviewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE0DFBE1F44AC9700AAB030 /* SMReviewsViewController.m */; };
 		DCE0DFC21F44AFDB00AAB030 /* SMReviewsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE0DFC11F44AFDB00AAB030 /* SMReviewsViewCell.m */; };
@@ -151,6 +152,7 @@
 		DCD61B231FC879E000C64075 /* SMBaseTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMBaseTabBarController.m; sourceTree = "<group>"; };
 		DCD61B261FC87C7800C64075 /* SMMainTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMMainTabBarController.h; sourceTree = "<group>"; };
 		DCD61B271FC87C7800C64075 /* SMMainTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMMainTabBarController.m; sourceTree = "<group>"; };
+		DCD61B291FC889F600C64075 /* Gotham Book Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham Book Regular.otf"; sourceTree = "<group>"; };
 		DCE0DFBA1F44A88400AAB030 /* SMReviewsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMReviewsModel.h; sourceTree = "<group>"; };
 		DCE0DFBB1F44A88400AAB030 /* SMReviewsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMReviewsModel.m; sourceTree = "<group>"; };
 		DCE0DFBD1F44AC9700AAB030 /* SMReviewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMReviewsViewController.h; sourceTree = "<group>"; };
@@ -368,6 +370,7 @@
 		DC8B27861F1E3589008710D1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DCD61B291FC889F600C64075 /* Gotham Book Regular.otf */,
 				DC8B27871F1E3589008710D1 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -446,6 +449,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCD61B2A1FC889F700C64075 /* Gotham Book Regular.otf in Resources */,
 				DC8B27991F1E3589008710D1 /* LaunchScreen.storyboard in Resources */,
 				DCBCD3461F573DAD008134A1 /* GoogleService-Info.plist in Resources */,
 				DC8B27961F1E3589008710D1 /* Assets.xcassets in Resources */,

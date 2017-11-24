@@ -14,14 +14,10 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    self.layer.borderColor = [SMDataManager sharedInstance].baseColor.CGColor;
-    self.layer.borderWidth = 1.0;
-    self.layer.cornerRadius = CGRectGetWidth(self.frame)/10;
-    
     self.backgroundColor = [UIColor whiteColor];
     
     self.layer.shadowOffset = CGSizeMake(1.0, 1.0);
-    self.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.layer.shadowColor = [UIColor grayColor].CGColor;
     self.layer.shadowOpacity = 0.7;
     self.layer.shadowRadius = 1.0;
     

@@ -28,7 +28,6 @@
     [super viewWillAppear:animated];
     UIImage *image = [UIImage imageNamed:@"quote_tab_icon.png"];
     [self addRaisedCenterButtonWithImage:image highlightedImage:nil andOffset:-3.0];
-    self.tabBar
 }
 
 @end
