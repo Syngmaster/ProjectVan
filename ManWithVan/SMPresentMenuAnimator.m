@@ -49,7 +49,7 @@
         snapshot.center = CGPointMake(snapshot.center.x + CGRectGetWidth([UIScreen mainScreen].bounds) , snapshot.center.y);
         fromVC.view.hidden = NO;
         [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
-
+        
     }
 
 }

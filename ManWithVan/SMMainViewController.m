@@ -32,7 +32,7 @@ typedef NS_ENUM(NSInteger, Direction) {
 };
 
 
-@interface SMMainViewController () <UIViewControllerTransitioningDelegate, SMSideMenuDelegate, UINavigationControllerDelegate>
+@interface SMMainViewController () <UIViewControllerTransitioningDelegate, SMSideMenuDelegate>
 
 @property (strong, nonatomic) SMInteractor *interactor;
 
@@ -43,7 +43,6 @@ typedef NS_ENUM(NSInteger, Direction) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.navigationController.delegate = self;
     UIScreenEdgePanGestureRecognizer *panRecognizer = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(edgePanGesture:)];
     panRecognizer.edges = UIRectEdgeLeft;
     [self.view addGestureRecognizer:panRecognizer];

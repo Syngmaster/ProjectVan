@@ -367,7 +367,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "14"
             endingLineNumber = "14"
-            landmarkName = "main()"
+            landmarkName = "main"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -378,7 +378,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ManWithVan/SMMainViewController.m"
-            timestampString = "527263275.351895"
+            timestampString = "532270113.964338"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "60"
