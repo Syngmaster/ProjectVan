@@ -51,6 +51,8 @@
 		DCD208C21F3CC66F00548C36 /* SMAddPhotoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DCD208C11F3CC66F00548C36 /* SMAddPhotoViewCell.m */; };
 		DCD208C31F40A51D00548C36 /* SMDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6EA5031F1FBBC20067C851 /* SMDataManager.m */; };
 		DCD208C61F40C3D100548C36 /* SMCustomActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = DCD208C51F40C3D100548C36 /* SMCustomActivityIndicator.m */; };
+		DCD61B241FC879E000C64075 /* SMBaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCD61B231FC879E000C64075 /* SMBaseTabBarController.m */; };
+		DCD61B281FC87C7800C64075 /* SMMainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCD61B271FC87C7800C64075 /* SMMainTabBarController.m */; };
 		DCE0DFBC1F44A88400AAB030 /* SMReviewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE0DFBB1F44A88400AAB030 /* SMReviewsModel.m */; };
 		DCE0DFBF1F44AC9700AAB030 /* SMReviewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE0DFBE1F44AC9700AAB030 /* SMReviewsViewController.m */; };
 		DCE0DFC21F44AFDB00AAB030 /* SMReviewsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE0DFC11F44AFDB00AAB030 /* SMReviewsViewCell.m */; };
@@ -145,6 +147,10 @@
 		DCD208C11F3CC66F00548C36 /* SMAddPhotoViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddPhotoViewCell.m; sourceTree = "<group>"; };
 		DCD208C41F40C3D100548C36 /* SMCustomActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCustomActivityIndicator.h; sourceTree = "<group>"; };
 		DCD208C51F40C3D100548C36 /* SMCustomActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCustomActivityIndicator.m; sourceTree = "<group>"; };
+		DCD61B221FC879E000C64075 /* SMBaseTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMBaseTabBarController.h; sourceTree = "<group>"; };
+		DCD61B231FC879E000C64075 /* SMBaseTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMBaseTabBarController.m; sourceTree = "<group>"; };
+		DCD61B261FC87C7800C64075 /* SMMainTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMMainTabBarController.h; sourceTree = "<group>"; };
+		DCD61B271FC87C7800C64075 /* SMMainTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMMainTabBarController.m; sourceTree = "<group>"; };
 		DCE0DFBA1F44A88400AAB030 /* SMReviewsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMReviewsModel.h; sourceTree = "<group>"; };
 		DCE0DFBB1F44A88400AAB030 /* SMReviewsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMReviewsModel.m; sourceTree = "<group>"; };
 		DCE0DFBD1F44AC9700AAB030 /* SMReviewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMReviewsViewController.h; sourceTree = "<group>"; };
@@ -256,6 +262,7 @@
 		DC6EA5111F20E2390067C851 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				DCD61B251FC87C1C00C64075 /* TabBarControllers */,
 				DC6EA4ED1F1F8BFC0067C851 /* Animators */,
 				DC8527201F2220CB0057D92B /* SMSideMenusParentViewController.h */,
 				DC8527211F2220CB0057D92B /* SMSideMenusParentViewController.m */,
@@ -364,6 +371,17 @@
 				DC8B27871F1E3589008710D1 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DCD61B251FC87C1C00C64075 /* TabBarControllers */ = {
+			isa = PBXGroup;
+			children = (
+				DCD61B221FC879E000C64075 /* SMBaseTabBarController.h */,
+				DCD61B231FC879E000C64075 /* SMBaseTabBarController.m */,
+				DCD61B261FC87C7800C64075 /* SMMainTabBarController.h */,
+				DCD61B271FC87C7800C64075 /* SMMainTabBarController.m */,
+			);
+			name = TabBarControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -520,6 +538,7 @@
 				DC8513E71F570380005A0007 /* SMMapButton.m in Sources */,
 				DCF9F8211F210C97001E790A /* SMCustomTextField.m in Sources */,
 				DCD208991F2B2F7100548C36 /* SMLocationSettingsViewController.m in Sources */,
+				DCD61B241FC879E000C64075 /* SMBaseTabBarController.m in Sources */,
 				DCD208931F2A015000548C36 /* SMPin.m in Sources */,
 				DC6EA4F91F1F8C150067C851 /* SMSideMenuViewController.m in Sources */,
 				DC8513DE1F52B6AD005A0007 /* SMProfileViewCell.m in Sources */,
@@ -531,6 +550,7 @@
 				DCE0DFF11F48A4DD00AAB030 /* SMInteractor.m in Sources */,
 				DC85273B1F2618B70057D92B /* SMMapViewController.m in Sources */,
 				DC32C6861F43775E00009AD2 /* SMSocialLinksViewController.m in Sources */,
+				DCD61B281FC87C7800C64075 /* SMMainTabBarController.m in Sources */,
 				DCD208C21F3CC66F00548C36 /* SMAddPhotoViewCell.m in Sources */,
 				DC8527381F2612180057D92B /* SMStartEndLocationViewController.m in Sources */,
 				DC8B27881F1E3589008710D1 /* main.m in Sources */,
