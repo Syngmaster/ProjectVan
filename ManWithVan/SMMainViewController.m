@@ -7,30 +7,6 @@
 //
 
 #import "SMMainViewController.h"
-#import "SMSideMenuViewController.h"
-#import "SMSignInViewController.h"
-#import "SMAboutUsViewController.h"
-#import "SMRequestCallbackViewController.h"
-#import "SMSocialLinksViewController.h"
-#import "SMReviewsViewController.h"
-#import "SMGalleryViewController.h"
-#import "SMMovingTypeViewController.h"
-
-#import "SMPresentMenuAnimator.h"
-#import "SMDismissMenuAnimator.h"
-#import "SMCustomNavigationBar.h"
-#import "SMInteractor.h"
-
-
-typedef NS_ENUM(NSInteger, Direction) {
-    
-    DirectionUp,
-    DirectionDown,
-    DirectionLeft,
-    DirectionRight
-    
-};
-
 
 @interface SMMainViewController ()
 

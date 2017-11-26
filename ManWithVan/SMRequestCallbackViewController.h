@@ -6,9 +6,9 @@
 //  Copyright © 2017 Syngmaster. All rights reserved.
 //
 
-#import "SMSideMenusParentViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface SMRequestCallbackViewController : SMSideMenusParentViewController
+@interface SMRequestCallbackViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *phoneTextField;

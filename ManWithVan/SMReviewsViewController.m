@@ -31,7 +31,6 @@
 
 - (IBAction)openMenu:(UIButton *)sender {
     
-    [self showMenu];
     
 }
 

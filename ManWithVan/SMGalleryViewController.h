@@ -6,9 +6,9 @@
 //  Copyright © 2017 Syngmaster. All rights reserved.
 //
 
-#import "SMSideMenusParentViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface SMGalleryViewController : SMSideMenusParentViewController
+@interface SMGalleryViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;

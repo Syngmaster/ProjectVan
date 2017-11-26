@@ -6,9 +6,9 @@
 //  Copyright © 2017 Syngmaster. All rights reserved.
 //
 
-#import "SMSideMenusParentViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface SMSocialLinksViewController : SMSideMenusParentViewController
+@interface SMSocialLinksViewController : UIViewController
 
 - (IBAction)openMenu:(UIButton *)sender;
 - (IBAction)socialLinkAction:(UIButton *)sender;

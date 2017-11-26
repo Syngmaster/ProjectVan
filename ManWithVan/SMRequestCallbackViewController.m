@@ -6,13 +6,8 @@
 //  Copyright © 2017 Syngmaster. All rights reserved.
 //
 
-#import <MessageUI/MessageUI.h>
-
 #import "SMRequestCallbackViewController.h"
-#import "SMSideMenuViewController.h"
-#import "SMSignInViewController.h"
-#import "SMAboutUsViewController.h"
-
+#import <MessageUI/MessageUI.h>
 
 @interface SMRequestCallbackViewController () <UITextFieldDelegate, MFMailComposeViewControllerDelegate>
 

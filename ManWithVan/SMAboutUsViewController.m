@@ -7,15 +7,6 @@
 //
 
 #import "SMAboutUsViewController.h"
-#import "SMSideMenuViewController.h"
-#import "SMRequestCallbackViewController.h"
-#import "SMSignInViewController.h"
-
-
-@interface SMAboutUsViewController ()
-
-
-@end
 
 @implementation SMAboutUsViewController
 

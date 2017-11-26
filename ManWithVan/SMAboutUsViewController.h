@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SMSideMenusParentViewController.h"
 
-@interface SMAboutUsViewController : SMSideMenusParentViewController
+@interface SMAboutUsViewController : UIViewController
 
 - (IBAction)requestCallbackAction:(UIButton *)sender;
 

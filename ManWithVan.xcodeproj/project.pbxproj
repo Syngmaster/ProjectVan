@@ -10,22 +10,16 @@
 		619ADF74C14846DCF0E26E94 /* libPods-ManWithVan.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E711842A4405FE2D4818D0 /* libPods-ManWithVan.a */; };
 		DC32C6861F43775E00009AD2 /* SMSocialLinksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC32C6851F43775E00009AD2 /* SMSocialLinksViewController.m */; };
 		DC64D60E1FC892C7005CEA91 /* SMCustomViewWithCutout.m in Sources */ = {isa = PBXBuildFile; fileRef = DC64D60D1FC892C7005CEA91 /* SMCustomViewWithCutout.m */; };
-		DC6EA4F61F1F8C150067C851 /* SMPresentMenuAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6EA4EF1F1F8C150067C851 /* SMPresentMenuAnimator.m */; };
-		DC6EA4F71F1F8C150067C851 /* SMDismissMenuAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6EA4F11F1F8C150067C851 /* SMDismissMenuAnimator.m */; };
 		DC6EA4F81F1F8C150067C851 /* SMMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6EA4F31F1F8C150067C851 /* SMMainViewController.m */; };
-		DC6EA4F91F1F8C150067C851 /* SMSideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6EA4F51F1F8C150067C851 /* SMSideMenuViewController.m */; };
 		DC6EA4FD1F1F91150067C851 /* SMCustomNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6EA4FC1F1F91150067C851 /* SMCustomNavigationBar.m */; };
 		DC6EA5001F1FBA590067C851 /* SMCustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6EA4FF1F1FBA590067C851 /* SMCustomButton.m */; };
-		DC6EA5071F1FDE770067C851 /* SMSideMenuViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6EA5061F1FDE770067C851 /* SMSideMenuViewCell.m */; };
 		DC6EA5101F20D1960067C851 /* SMCustomTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6EA50F1F20D1960067C851 /* SMCustomTableView.m */; };
-		DC6EA5141F20E2530067C851 /* SMSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6EA5131F20E2530067C851 /* SMSignInViewController.m */; };
 		DC6EA5171F2107DD0067C851 /* SMCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6EA5161F2107DD0067C851 /* SMCustomView.m */; };
 		DC8513DE1F52B6AD005A0007 /* SMProfileViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8513DD1F52B6AD005A0007 /* SMProfileViewCell.m */; };
 		DC8513E11F52D656005A0007 /* SMDescriptionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8513E01F52D656005A0007 /* SMDescriptionViewCell.m */; };
 		DC8513E41F5491A9005A0007 /* SMYourQuoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8513E31F5491A9005A0007 /* SMYourQuoteViewController.m */; };
 		DC8513E71F570380005A0007 /* SMMapButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8513E61F570380005A0007 /* SMMapButton.m */; };
 		DC85271F1F221C1A0057D92B /* SMCustomLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = DC85271E1F221C1A0057D92B /* SMCustomLabel.m */; };
-		DC8527221F2220CB0057D92B /* SMSideMenusParentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8527211F2220CB0057D92B /* SMSideMenusParentViewController.m */; };
 		DC8527251F2226510057D92B /* SMRequestCallbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8527241F2226510057D92B /* SMRequestCallbackViewController.m */; };
 		DC8527301F222DE40057D92B /* SMGetQuoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC85272F1F222DE40057D92B /* SMGetQuoteViewController.m */; };
 		DC8527351F260DC80057D92B /* SMTickSelectionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8527341F260DC80057D92B /* SMTickSelectionButton.m */; };
@@ -60,10 +54,11 @@
 		DCE0DFC21F44AFDB00AAB030 /* SMReviewsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE0DFC11F44AFDB00AAB030 /* SMReviewsViewCell.m */; };
 		DCE0DFC51F45D9F800AAB030 /* SMGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE0DFC41F45D9F800AAB030 /* SMGalleryViewController.m */; };
 		DCE0DFC81F45DAFE00AAB030 /* SMGalleryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE0DFC71F45DAFE00AAB030 /* SMGalleryViewCell.m */; };
-		DCE0DFF11F48A4DD00AAB030 /* SMInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE0DFF01F48A4DD00AAB030 /* SMInteractor.m */; };
 		DCE0DFF71F49B43200AAB030 /* SMCustomNavBarWithoutBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE0DFF61F49B43200AAB030 /* SMCustomNavBarWithoutBtn.m */; };
 		DCF9F8211F210C97001E790A /* SMCustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF9F8201F210C97001E790A /* SMCustomTextField.m */; };
 		DCF9F8241F21134A001E790A /* SMAboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF9F8231F21134A001E790A /* SMAboutUsViewController.m */; };
+		DCFC60401FCB2EA70024369D /* SMMoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFC603F1FCB2EA70024369D /* SMMoreViewController.m */; };
+		DCFC60431FCB2FE40024369D /* SMMoreViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFC60421FCB2FE40024369D /* SMMoreViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,26 +69,16 @@
 		DC32C6851F43775E00009AD2 /* SMSocialLinksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSocialLinksViewController.m; sourceTree = "<group>"; };
 		DC64D60C1FC892C7005CEA91 /* SMCustomViewWithCutout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMCustomViewWithCutout.h; sourceTree = "<group>"; };
 		DC64D60D1FC892C7005CEA91 /* SMCustomViewWithCutout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMCustomViewWithCutout.m; sourceTree = "<group>"; };
-		DC6EA4EE1F1F8C150067C851 /* SMPresentMenuAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPresentMenuAnimator.h; sourceTree = "<group>"; };
-		DC6EA4EF1F1F8C150067C851 /* SMPresentMenuAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMPresentMenuAnimator.m; sourceTree = "<group>"; };
-		DC6EA4F01F1F8C150067C851 /* SMDismissMenuAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDismissMenuAnimator.h; sourceTree = "<group>"; };
-		DC6EA4F11F1F8C150067C851 /* SMDismissMenuAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDismissMenuAnimator.m; sourceTree = "<group>"; };
 		DC6EA4F21F1F8C150067C851 /* SMMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMainViewController.h; sourceTree = "<group>"; };
 		DC6EA4F31F1F8C150067C851 /* SMMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMainViewController.m; sourceTree = "<group>"; };
-		DC6EA4F41F1F8C150067C851 /* SMSideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSideMenuViewController.h; sourceTree = "<group>"; };
-		DC6EA4F51F1F8C150067C851 /* SMSideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSideMenuViewController.m; sourceTree = "<group>"; };
 		DC6EA4FB1F1F91150067C851 /* SMCustomNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCustomNavigationBar.h; sourceTree = "<group>"; };
 		DC6EA4FC1F1F91150067C851 /* SMCustomNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCustomNavigationBar.m; sourceTree = "<group>"; };
 		DC6EA4FE1F1FBA590067C851 /* SMCustomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCustomButton.h; sourceTree = "<group>"; };
 		DC6EA4FF1F1FBA590067C851 /* SMCustomButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCustomButton.m; sourceTree = "<group>"; };
 		DC6EA5021F1FBBC20067C851 /* SMDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDataManager.h; sourceTree = "<group>"; };
 		DC6EA5031F1FBBC20067C851 /* SMDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDataManager.m; sourceTree = "<group>"; };
-		DC6EA5051F1FDE770067C851 /* SMSideMenuViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSideMenuViewCell.h; sourceTree = "<group>"; };
-		DC6EA5061F1FDE770067C851 /* SMSideMenuViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSideMenuViewCell.m; sourceTree = "<group>"; };
 		DC6EA50E1F20D1960067C851 /* SMCustomTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCustomTableView.h; sourceTree = "<group>"; };
 		DC6EA50F1F20D1960067C851 /* SMCustomTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCustomTableView.m; sourceTree = "<group>"; };
-		DC6EA5121F20E2530067C851 /* SMSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSignInViewController.h; sourceTree = "<group>"; };
-		DC6EA5131F20E2530067C851 /* SMSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSignInViewController.m; sourceTree = "<group>"; };
 		DC6EA5151F2107DD0067C851 /* SMCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCustomView.h; sourceTree = "<group>"; };
 		DC6EA5161F2107DD0067C851 /* SMCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCustomView.m; sourceTree = "<group>"; };
 		DC8513DC1F52B6AD005A0007 /* SMProfileViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMProfileViewCell.h; sourceTree = "<group>"; };
@@ -106,8 +91,6 @@
 		DC8513E61F570380005A0007 /* SMMapButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMapButton.m; sourceTree = "<group>"; };
 		DC85271D1F221C1A0057D92B /* SMCustomLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCustomLabel.h; sourceTree = "<group>"; };
 		DC85271E1F221C1A0057D92B /* SMCustomLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCustomLabel.m; sourceTree = "<group>"; };
-		DC8527201F2220CB0057D92B /* SMSideMenusParentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSideMenusParentViewController.h; sourceTree = "<group>"; };
-		DC8527211F2220CB0057D92B /* SMSideMenusParentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSideMenusParentViewController.m; sourceTree = "<group>"; };
 		DC8527231F2226510057D92B /* SMRequestCallbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRequestCallbackViewController.h; sourceTree = "<group>"; };
 		DC8527241F2226510057D92B /* SMRequestCallbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRequestCallbackViewController.m; sourceTree = "<group>"; };
 		DC85272E1F222DE40057D92B /* SMGetQuoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMGetQuoteViewController.h; sourceTree = "<group>"; };
@@ -166,14 +149,16 @@
 		DCE0DFC41F45D9F800AAB030 /* SMGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMGalleryViewController.m; sourceTree = "<group>"; };
 		DCE0DFC61F45DAFE00AAB030 /* SMGalleryViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMGalleryViewCell.h; sourceTree = "<group>"; };
 		DCE0DFC71F45DAFE00AAB030 /* SMGalleryViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMGalleryViewCell.m; sourceTree = "<group>"; };
-		DCE0DFEF1F48A4DD00AAB030 /* SMInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMInteractor.h; sourceTree = "<group>"; };
-		DCE0DFF01F48A4DD00AAB030 /* SMInteractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMInteractor.m; sourceTree = "<group>"; };
 		DCE0DFF51F49B43200AAB030 /* SMCustomNavBarWithoutBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCustomNavBarWithoutBtn.h; sourceTree = "<group>"; };
 		DCE0DFF61F49B43200AAB030 /* SMCustomNavBarWithoutBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCustomNavBarWithoutBtn.m; sourceTree = "<group>"; };
 		DCF9F81F1F210C97001E790A /* SMCustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCustomTextField.h; sourceTree = "<group>"; };
 		DCF9F8201F210C97001E790A /* SMCustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCustomTextField.m; sourceTree = "<group>"; };
 		DCF9F8221F21134A001E790A /* SMAboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAboutUsViewController.h; sourceTree = "<group>"; };
 		DCF9F8231F21134A001E790A /* SMAboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAboutUsViewController.m; sourceTree = "<group>"; };
+		DCFC603E1FCB2EA60024369D /* SMMoreViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMMoreViewController.h; sourceTree = "<group>"; };
+		DCFC603F1FCB2EA70024369D /* SMMoreViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMMoreViewController.m; sourceTree = "<group>"; };
+		DCFC60411FCB2FE40024369D /* SMMoreViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMMoreViewCell.h; sourceTree = "<group>"; };
+		DCFC60421FCB2FE40024369D /* SMMoreViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMMoreViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,19 +183,6 @@
 				0E327D297DFB6C5688BEA6F9 /* Pods-ManWithVan.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		DC6EA4ED1F1F8BFC0067C851 /* Animators */ = {
-			isa = PBXGroup;
-			children = (
-				DC6EA4EE1F1F8C150067C851 /* SMPresentMenuAnimator.h */,
-				DC6EA4EF1F1F8C150067C851 /* SMPresentMenuAnimator.m */,
-				DC6EA4F01F1F8C150067C851 /* SMDismissMenuAnimator.h */,
-				DC6EA4F11F1F8C150067C851 /* SMDismissMenuAnimator.m */,
-				DCE0DFEF1F48A4DD00AAB030 /* SMInteractor.h */,
-				DCE0DFF01F48A4DD00AAB030 /* SMInteractor.m */,
-			);
-			name = Animators;
 			sourceTree = "<group>";
 		};
 		DC6EA4FA1F1F91000067C851 /* View */ = {
@@ -270,19 +242,14 @@
 			isa = PBXGroup;
 			children = (
 				DCD61B251FC87C1C00C64075 /* TabBarControllers */,
-				DC6EA4ED1F1F8BFC0067C851 /* Animators */,
-				DC8527201F2220CB0057D92B /* SMSideMenusParentViewController.h */,
-				DC8527211F2220CB0057D92B /* SMSideMenusParentViewController.m */,
-				DC6EA5121F20E2530067C851 /* SMSignInViewController.h */,
-				DC6EA5131F20E2530067C851 /* SMSignInViewController.m */,
+				DCD61B261FC87C7800C64075 /* SMMainTabBarController.h */,
+				DCD61B271FC87C7800C64075 /* SMMainTabBarController.m */,
 				DCF9F8221F21134A001E790A /* SMAboutUsViewController.h */,
 				DCF9F8231F21134A001E790A /* SMAboutUsViewController.m */,
-				DC6EA4F21F1F8C150067C851 /* SMMainViewController.h */,
-				DC6EA4F31F1F8C150067C851 /* SMMainViewController.m */,
-				DC6EA4F41F1F8C150067C851 /* SMSideMenuViewController.h */,
-				DC6EA4F51F1F8C150067C851 /* SMSideMenuViewController.m */,
 				DC8527231F2226510057D92B /* SMRequestCallbackViewController.h */,
 				DC8527241F2226510057D92B /* SMRequestCallbackViewController.m */,
+				DCFC603E1FCB2EA60024369D /* SMMoreViewController.h */,
+				DCFC603F1FCB2EA70024369D /* SMMoreViewController.m */,
 				DCE0DFBD1F44AC9700AAB030 /* SMReviewsViewController.h */,
 				DCE0DFBE1F44AC9700AAB030 /* SMReviewsViewController.m */,
 				DCE0DFC31F45D9F800AAB030 /* SMGalleryViewController.h */,
@@ -308,8 +275,8 @@
 		DC8513DB1F52B670005A0007 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				DC6EA5051F1FDE770067C851 /* SMSideMenuViewCell.h */,
-				DC6EA5061F1FDE770067C851 /* SMSideMenuViewCell.m */,
+				DCFC60411FCB2FE40024369D /* SMMoreViewCell.h */,
+				DCFC60421FCB2FE40024369D /* SMMoreViewCell.m */,
 				DCD208C01F3CC66F00548C36 /* SMAddPhotoViewCell.h */,
 				DCD208C11F3CC66F00548C36 /* SMAddPhotoViewCell.m */,
 				DCE0DFC01F44AFDB00AAB030 /* SMReviewsViewCell.h */,
@@ -384,10 +351,10 @@
 		DCD61B251FC87C1C00C64075 /* TabBarControllers */ = {
 			isa = PBXGroup;
 			children = (
+				DC6EA4F21F1F8C150067C851 /* SMMainViewController.h */,
+				DC6EA4F31F1F8C150067C851 /* SMMainViewController.m */,
 				DCD61B221FC879E000C64075 /* SMBaseTabBarController.h */,
 				DCD61B231FC879E000C64075 /* SMBaseTabBarController.m */,
-				DCD61B261FC87C7800C64075 /* SMMainTabBarController.h */,
-				DCD61B271FC87C7800C64075 /* SMMainTabBarController.m */,
 			);
 			name = TabBarControllers;
 			sourceTree = "<group>";
@@ -518,16 +485,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC6EA5101F20D1960067C851 /* SMCustomTableView.m in Sources */,
+				DCFC60431FCB2FE40024369D /* SMMoreViewCell.m in Sources */,
 				DC8513E11F52D656005A0007 /* SMDescriptionViewCell.m in Sources */,
 				DC8527251F2226510057D92B /* SMRequestCallbackViewController.m in Sources */,
 				DC8527301F222DE40057D92B /* SMGetQuoteViewController.m in Sources */,
-				DC6EA5141F20E2530067C851 /* SMSignInViewController.m in Sources */,
 				DCE0DFF71F49B43200AAB030 /* SMCustomNavBarWithoutBtn.m in Sources */,
 				DC8527351F260DC80057D92B /* SMTickSelectionButton.m in Sources */,
 				DCD2089C1F2B479800548C36 /* SMMovingTypeViewController.m in Sources */,
 				DC6EA5001F1FBA590067C851 /* SMCustomButton.m in Sources */,
-				DC6EA4F71F1F8C150067C851 /* SMDismissMenuAnimator.m in Sources */,
-				DC8527221F2220CB0057D92B /* SMSideMenusParentViewController.m in Sources */,
 				DCE0DFC81F45DAFE00AAB030 /* SMGalleryViewCell.m in Sources */,
 				DC8527441F263BC70057D92B /* SMSegueButton.m in Sources */,
 				DC6EA4F81F1F8C150067C851 /* SMMainViewController.m in Sources */,
@@ -537,7 +502,6 @@
 				DC8B27941F1E3589008710D1 /* ManWithVan.xcdatamodeld in Sources */,
 				DC8527551F28A0990057D92B /* SMSetUpLocationData.m in Sources */,
 				DC6EA5171F2107DD0067C851 /* SMCustomView.m in Sources */,
-				DC6EA4F61F1F8C150067C851 /* SMPresentMenuAnimator.m in Sources */,
 				DC8527501F2899640057D92B /* SMQuoteData.m in Sources */,
 				DC6EA4FD1F1F91150067C851 /* SMCustomNavigationBar.m in Sources */,
 				DCE0DFBC1F44A88400AAB030 /* SMReviewsModel.m in Sources */,
@@ -547,16 +511,14 @@
 				DC8513E71F570380005A0007 /* SMMapButton.m in Sources */,
 				DCF9F8211F210C97001E790A /* SMCustomTextField.m in Sources */,
 				DCD208991F2B2F7100548C36 /* SMLocationSettingsViewController.m in Sources */,
+				DCFC60401FCB2EA70024369D /* SMMoreViewController.m in Sources */,
 				DCD61B241FC879E000C64075 /* SMBaseTabBarController.m in Sources */,
 				DCD208931F2A015000548C36 /* SMPin.m in Sources */,
-				DC6EA4F91F1F8C150067C851 /* SMSideMenuViewController.m in Sources */,
 				DC8513DE1F52B6AD005A0007 /* SMProfileViewCell.m in Sources */,
 				DCE0DFC21F44AFDB00AAB030 /* SMReviewsViewCell.m in Sources */,
-				DC6EA5071F1FDE770067C851 /* SMSideMenuViewCell.m in Sources */,
 				DCD208C61F40C3D100548C36 /* SMCustomActivityIndicator.m in Sources */,
 				DCD208961F2A380A00548C36 /* SMLocationAddress.m in Sources */,
 				DC8B278B1F1E3589008710D1 /* AppDelegate.m in Sources */,
-				DCE0DFF11F48A4DD00AAB030 /* SMInteractor.m in Sources */,
 				DC85273B1F2618B70057D92B /* SMMapViewController.m in Sources */,
 				DC64D60E1FC892C7005CEA91 /* SMCustomViewWithCutout.m in Sources */,
 				DC32C6861F43775E00009AD2 /* SMSocialLinksViewController.m in Sources */,
