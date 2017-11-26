@@ -27,7 +27,9 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     UIImage *image = [UIImage imageNamed:@"quote_tab_icon.png"];
-    [self addRaisedCenterButtonWithImage:image highlightedImage:nil andOffset:-3.0];
+    UIImage *highlightedImage = [UIImage imageNamed:@"quote_tab_icon_pressed.png"];
+
+    [self addRaisedCenterButtonWithImage:image highlightedImage:highlightedImage andOffset:-3.0];
 }
 
 @end

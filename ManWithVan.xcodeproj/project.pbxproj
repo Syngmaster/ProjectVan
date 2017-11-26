@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		619ADF74C14846DCF0E26E94 /* libPods-ManWithVan.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E711842A4405FE2D4818D0 /* libPods-ManWithVan.a */; };
 		DC32C6861F43775E00009AD2 /* SMSocialLinksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC32C6851F43775E00009AD2 /* SMSocialLinksViewController.m */; };
+		DC64D60E1FC892C7005CEA91 /* SMCustomViewWithCutout.m in Sources */ = {isa = PBXBuildFile; fileRef = DC64D60D1FC892C7005CEA91 /* SMCustomViewWithCutout.m */; };
 		DC6EA4F61F1F8C150067C851 /* SMPresentMenuAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6EA4EF1F1F8C150067C851 /* SMPresentMenuAnimator.m */; };
 		DC6EA4F71F1F8C150067C851 /* SMDismissMenuAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6EA4F11F1F8C150067C851 /* SMDismissMenuAnimator.m */; };
 		DC6EA4F81F1F8C150067C851 /* SMMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6EA4F31F1F8C150067C851 /* SMMainViewController.m */; };
@@ -71,6 +72,8 @@
 		A4E711842A4405FE2D4818D0 /* libPods-ManWithVan.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ManWithVan.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC32C6841F43775E00009AD2 /* SMSocialLinksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSocialLinksViewController.h; sourceTree = "<group>"; };
 		DC32C6851F43775E00009AD2 /* SMSocialLinksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSocialLinksViewController.m; sourceTree = "<group>"; };
+		DC64D60C1FC892C7005CEA91 /* SMCustomViewWithCutout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMCustomViewWithCutout.h; sourceTree = "<group>"; };
+		DC64D60D1FC892C7005CEA91 /* SMCustomViewWithCutout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMCustomViewWithCutout.m; sourceTree = "<group>"; };
 		DC6EA4EE1F1F8C150067C851 /* SMPresentMenuAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPresentMenuAnimator.h; sourceTree = "<group>"; };
 		DC6EA4EF1F1F8C150067C851 /* SMPresentMenuAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMPresentMenuAnimator.m; sourceTree = "<group>"; };
 		DC6EA4F01F1F8C150067C851 /* SMDismissMenuAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDismissMenuAnimator.h; sourceTree = "<group>"; };
@@ -238,6 +241,8 @@
 				DCD208C51F40C3D100548C36 /* SMCustomActivityIndicator.m */,
 				DC8513E51F570380005A0007 /* SMMapButton.h */,
 				DC8513E61F570380005A0007 /* SMMapButton.m */,
+				DC64D60C1FC892C7005CEA91 /* SMCustomViewWithCutout.h */,
+				DC64D60D1FC892C7005CEA91 /* SMCustomViewWithCutout.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -553,6 +558,7 @@
 				DC8B278B1F1E3589008710D1 /* AppDelegate.m in Sources */,
 				DCE0DFF11F48A4DD00AAB030 /* SMInteractor.m in Sources */,
 				DC85273B1F2618B70057D92B /* SMMapViewController.m in Sources */,
+				DC64D60E1FC892C7005CEA91 /* SMCustomViewWithCutout.m in Sources */,
 				DC32C6861F43775E00009AD2 /* SMSocialLinksViewController.m in Sources */,
 				DCD61B281FC87C7800C64075 /* SMMainTabBarController.m in Sources */,
 				DCD208C21F3CC66F00548C36 /* SMAddPhotoViewCell.m in Sources */,

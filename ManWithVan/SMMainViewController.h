@@ -10,9 +10,7 @@
 
 @interface SMMainViewController : UIViewController
 
-@property (assign, nonatomic) NSInteger indexPathRow;
-
-- (IBAction)openMenuAction:(UIButton *)sender;
+- (IBAction)getStartedAction:(UIButton *)sender;
 
 @end
 
