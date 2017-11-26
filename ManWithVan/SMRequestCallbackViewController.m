@@ -31,14 +31,6 @@
 }
 
 
-
-- (IBAction)openMenuAction:(UIButton *)sender {
-    
-    [self showMenu];
-    
-}
-
-
 - (IBAction)sendRequestAction:(UIButton *)sender {
     
     //check if either of textFields are empty
@@ -52,13 +44,10 @@
         
         //send data to the administrator email address
         [self sendCallBackWithName:self.nameTextField.text andPhoneNumber:self.phoneTextField.text];
-        
     }
-
 }
 
 #pragma mark - UITextFieldDelegate
-
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     
@@ -72,12 +61,8 @@
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    
     return [self validationCheckOfCharactersAgeFieldFrom:textField inString:string];
-    
 }
-
-
 
 #pragma mark - Validation Check for TextField
 
@@ -89,13 +74,9 @@
         NSArray *words = [string componentsSeparatedByCharactersInSet:set];
         
         if ([words count] > 1) {
-            
             return NO;
-            
         }
-        
     }
-    
     return YES;
     
 }

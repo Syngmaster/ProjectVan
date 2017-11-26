@@ -30,18 +30,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)openMenuAction:(UIButton *)sender {
-    
-    [self showMenu];
-    
-}
 
 - (IBAction)requestCallbackAction:(UIButton *)sender {
     
-    SMRequestCallbackViewController *reqVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SMRequestCallbackViewController"];
-    UINavigationController *navVC = (UINavigationController *)[UIApplication sharedApplication].windows.firstObject.rootViewController;
-    [self.navigationController popViewControllerAnimated:NO];
-    [navVC pushViewController:reqVC animated:NO];
+    self.tabBarController.selectedIndex = 3;
     
 }
 

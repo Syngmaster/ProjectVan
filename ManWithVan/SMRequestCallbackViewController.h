@@ -10,8 +10,6 @@
 
 @interface SMRequestCallbackViewController : SMSideMenusParentViewController
 
-- (IBAction)openMenuAction:(UIButton *)sender;
-
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
 

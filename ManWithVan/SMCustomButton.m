@@ -17,7 +17,7 @@
 
     [UIView setAnimationsEnabled:NO];
     
-    CGFloat fontSize = CGRectGetHeight(self.frame)*0.5;
+    CGFloat fontSize = CGRectGetHeight(self.frame)*0.45;
     UIFont *font = [UIFont fontWithName:@"Gotham-Book" size:fontSize];
     UIColor *textColor = [UIColor whiteColor];
     NSDictionary *attributes = @{NSForegroundColorAttributeName : textColor, NSFontAttributeName : font};

@@ -21,7 +21,7 @@
                                      target:self
                                      action:@selector(callUsAction:)];
     
-    [callUsButton setImage:[[UIImage imageNamed:@"CallUsButton"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    [callUsButton setImage:[[UIImage imageNamed:@"call_button_icon.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     
     self.topItem.rightBarButtonItem = callUsButton;
 }

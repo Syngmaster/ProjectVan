@@ -11,7 +11,6 @@
 
 @interface SMAboutUsViewController : SMSideMenusParentViewController
 
-- (IBAction)openMenuAction:(UIButton *)sender;
 - (IBAction)requestCallbackAction:(UIButton *)sender;
 
 @end
