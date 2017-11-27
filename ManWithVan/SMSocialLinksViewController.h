@@ -10,7 +10,5 @@
 
 @interface SMSocialLinksViewController : UIViewController
 
-- (IBAction)openMenu:(UIButton *)sender;
-- (IBAction)socialLinkAction:(UIButton *)sender;
 
 @end

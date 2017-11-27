@@ -7,18 +7,19 @@
 //
 
 #import "SMSocialLinksViewController.h"
+#import "SMSocialLinksViewCell.h"
 
 typedef NS_ENUM(NSInteger, SocialLink) {
     
     SocialLinkFacebook,
-    SocialLinkGooglePlus,
     SocialLinkTwitter,
+    SocialLinkGooglePlus,
     SocialLinkYoutube,
     SocialLinkWebsite
     
 };
 
-@interface SMSocialLinksViewController ()
+@interface SMSocialLinksViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @end
 
@@ -34,28 +35,42 @@ typedef NS_ENUM(NSInteger, SocialLink) {
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)openMenu:(UIButton *)sender {
+#pragma mark - UITableViewDataSource
+
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
+    SMSocialLinksViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    if (!cell) {
+        cell = [[SMSocialLinksViewCell alloc] init];
+    }
+    [cell configureCellAtRow:indexPath.row];
+    return cell;
     
 }
 
-- (IBAction)socialLinkAction:(UIButton *)sender {
-    
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 5;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+ 
     NSURL *url;
     
-    switch (sender.tag) {
+    switch (indexPath.row) {
         case SocialLinkFacebook:
             url = [NSURL URLWithString:@"https://www.facebook.com/vipvandublin/"];
             [self openURLwithURL:url];
             break;
             
-        case SocialLinkGooglePlus:
-            url = [NSURL URLWithString:@"https://g.co/kgs/9UmsMm"];
+        case SocialLinkTwitter:
+            url = [NSURL URLWithString:@"https://twitter.com/MANandVANdublin?s=09"];
             [self openURLwithURL:url];
             break;
             
-        case SocialLinkTwitter:
-            url = [NSURL URLWithString:@"https://twitter.com/MANandVANdublin?s=09"];
+        case SocialLinkGooglePlus:
+            url = [NSURL URLWithString:@"https://g.co/kgs/9UmsMm"];
             [self openURLwithURL:url];
             break;
             
@@ -68,10 +83,17 @@ typedef NS_ENUM(NSInteger, SocialLink) {
             url = [NSURL URLWithString:@"http://vipvan.ie/"];
             [self openURLwithURL:url];
             break;
-
+            
     }
     
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 80.0;
+}
+
 
 - (void)openURLwithURL:(NSURL *)url {
     if ([UIDevice currentDevice].systemVersion.floatValue < 10.0) {
@@ -80,6 +102,5 @@ typedef NS_ENUM(NSInteger, SocialLink) {
         [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
     }
 }
-
 
 @end

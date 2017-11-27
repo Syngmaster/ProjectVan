@@ -10,7 +10,7 @@
 #import "SMGalleryViewCell.h"
 #import "SMDataManager.h"
 
-@interface SMGalleryViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface SMGalleryViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (strong, nonatomic) NSArray *photosArray;
 
@@ -79,6 +79,10 @@
     [cell configureCell:self.photosArray atIndexPath:indexPath];
     
     return cell;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(self.view.bounds.size.width, self.view.bounds.size.width);
 }
 
 

@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -26,10 +27,16 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
     UIImage *image = [UIImage imageNamed:@"quote_tab_icon.png"];
     UIImage *highlightedImage = [UIImage imageNamed:@"quote_tab_icon_pressed.png"];
-
     [self addRaisedCenterButtonWithImage:image highlightedImage:highlightedImage andOffset:-3.0];
+
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
 }
 
 @end

@@ -59,6 +59,7 @@
 		DCF9F8241F21134A001E790A /* SMAboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF9F8231F21134A001E790A /* SMAboutUsViewController.m */; };
 		DCFC60401FCB2EA70024369D /* SMMoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFC603F1FCB2EA70024369D /* SMMoreViewController.m */; };
 		DCFC60431FCB2FE40024369D /* SMMoreViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFC60421FCB2FE40024369D /* SMMoreViewCell.m */; };
+		DCFC60461FCC53850024369D /* SMSocialLinksViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFC60451FCC53850024369D /* SMSocialLinksViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -159,6 +160,8 @@
 		DCFC603F1FCB2EA70024369D /* SMMoreViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMMoreViewController.m; sourceTree = "<group>"; };
 		DCFC60411FCB2FE40024369D /* SMMoreViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMMoreViewCell.h; sourceTree = "<group>"; };
 		DCFC60421FCB2FE40024369D /* SMMoreViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMMoreViewCell.m; sourceTree = "<group>"; };
+		DCFC60441FCC53850024369D /* SMSocialLinksViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMSocialLinksViewCell.h; sourceTree = "<group>"; };
+		DCFC60451FCC53850024369D /* SMSocialLinksViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMSocialLinksViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,8 +245,8 @@
 			isa = PBXGroup;
 			children = (
 				DCD61B251FC87C1C00C64075 /* TabBarControllers */,
-				DCD61B261FC87C7800C64075 /* SMMainTabBarController.h */,
-				DCD61B271FC87C7800C64075 /* SMMainTabBarController.m */,
+				DC6EA4F21F1F8C150067C851 /* SMMainViewController.h */,
+				DC6EA4F31F1F8C150067C851 /* SMMainViewController.m */,
 				DCF9F8221F21134A001E790A /* SMAboutUsViewController.h */,
 				DCF9F8231F21134A001E790A /* SMAboutUsViewController.m */,
 				DC8527231F2226510057D92B /* SMRequestCallbackViewController.h */,
@@ -277,6 +280,8 @@
 			children = (
 				DCFC60411FCB2FE40024369D /* SMMoreViewCell.h */,
 				DCFC60421FCB2FE40024369D /* SMMoreViewCell.m */,
+				DCFC60441FCC53850024369D /* SMSocialLinksViewCell.h */,
+				DCFC60451FCC53850024369D /* SMSocialLinksViewCell.m */,
 				DCD208C01F3CC66F00548C36 /* SMAddPhotoViewCell.h */,
 				DCD208C11F3CC66F00548C36 /* SMAddPhotoViewCell.m */,
 				DCE0DFC01F44AFDB00AAB030 /* SMReviewsViewCell.h */,
@@ -351,10 +356,10 @@
 		DCD61B251FC87C1C00C64075 /* TabBarControllers */ = {
 			isa = PBXGroup;
 			children = (
-				DC6EA4F21F1F8C150067C851 /* SMMainViewController.h */,
-				DC6EA4F31F1F8C150067C851 /* SMMainViewController.m */,
 				DCD61B221FC879E000C64075 /* SMBaseTabBarController.h */,
 				DCD61B231FC879E000C64075 /* SMBaseTabBarController.m */,
+				DCD61B261FC87C7800C64075 /* SMMainTabBarController.h */,
+				DCD61B271FC87C7800C64075 /* SMMainTabBarController.m */,
 			);
 			name = TabBarControllers;
 			sourceTree = "<group>";
@@ -493,6 +498,7 @@
 				DC8527351F260DC80057D92B /* SMTickSelectionButton.m in Sources */,
 				DCD2089C1F2B479800548C36 /* SMMovingTypeViewController.m in Sources */,
 				DC6EA5001F1FBA590067C851 /* SMCustomButton.m in Sources */,
+				DCFC60461FCC53850024369D /* SMSocialLinksViewCell.m in Sources */,
 				DCE0DFC81F45DAFE00AAB030 /* SMGalleryViewCell.m in Sources */,
 				DC8527441F263BC70057D92B /* SMSegueButton.m in Sources */,
 				DC6EA4F81F1F8C150067C851 /* SMMainViewController.m in Sources */,

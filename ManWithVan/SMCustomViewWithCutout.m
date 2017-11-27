@@ -15,31 +15,30 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-
-    
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
     
     self.backgroundColor = [UIColor clearColor];
-//    CGFloat radius = 40;
-//    float startAngle = -180 * M_PI / 180;
-//    float endAngle = -0 * M_PI / 180;
+    
+    if ((int)[self.layer.sublayers count] < 2) {
+        [self addShadowLayer];
+    }
 
-//    UIBezierPath *path = [UIBezierPath bezierPathWithRect:self.bounds];
-//
-//    [path moveToPoint:CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMaxY(self.bounds)+radius/1.8)];
-//    [path addArcWithCenter:CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMaxY(self.bounds)+radius/1.8) radius:radius startAngle:startAngle endAngle:endAngle clockwise:YES];
+}
+
+- (void)addShadowLayer {
+    
     UIColor* fillColor = [UIColor colorWithRed: 1 green: 1 blue: 1 alpha: 1];
     UIBezierPath* path = [UIBezierPath bezierPath];
     
     CGFloat rightPointX = 0.0;
-    
     CGFloat leftPointX = 0.0;
     
     CGFloat leftCurvePointX = 0.0;
     CGFloat leftCurvePointY = 0.0;
+    
     CGFloat leftCurveControlPoint1X = 0.0;
     CGFloat leftCurveControlPoint1Y = 0.0;
     CGFloat leftCurveControlPoint2X = 0.0;
@@ -82,7 +81,7 @@
         rightCurveControlPoint1Y = leftCurvePointY;
         rightCurveControlPoint2X = 206.8;
         rightCurveControlPoint2Y = 533.96;
-
+        
     } else if ([UIScreen mainScreen].bounds.size.width == 414) {
         rightPointX = 236.22;
         
@@ -113,7 +112,7 @@
     path.usesEvenOddFillRule = YES;
     [fillColor setFill];
     [path fill];
-
+    
     CAShapeLayer *shadowLayer = [[CAShapeLayer alloc] init];
     shadowLayer.frame = self.bounds;
     shadowLayer.path = path.CGPath;
@@ -124,28 +123,10 @@
     shadowLayer.shadowOffset = CGSizeMake(1.5, 1.5);
     shadowLayer.fillRule = kCAFillRuleEvenOdd;
     shadowLayer.fillColor = [UIColor whiteColor].CGColor;
-
     [self.layer addSublayer:shadowLayer];
-
-    //self.layer.mask = shadowLayer;
-
-
-//    self.clipsToBounds = YES;
-//    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
-//    maskLayer.frame = self.bounds;
-//    maskLayer.masksToBounds = NO;
-//    maskLayer.path = path.CGPath;
-//    maskLayer.fillRule = kCAFillRuleEvenOdd;
-//    maskLayer.fillColor = [UIColor whiteColor].CGColor;
-//    UIView *view = [[UIView alloc] initWithFrame:self.bounds];
-//    view.backgroundColor = [UIColor whiteColor];
-//    //view.clipsToBounds = YES;
-//    view.layer.mask = maskLayer;
-//    //[view.layer addSublayer:maskLayer];
-//    //[self addSubview:view];
-    
     UIView *view = self.subviews[0];
     [self bringSubviewToFront:view];
+    
     
 }
 

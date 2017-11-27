@@ -22,9 +22,6 @@ typedef NS_ENUM (NSInteger, MovingType) {
 @interface SMDataManager : NSObject
 
 @property (strong, nonatomic) UIColor *baseColor;
-@property (strong, nonatomic) NSArray *iconArray;
-@property (strong, nonatomic) NSArray *pressedIconArray;
-@property (strong, nonatomic) NSArray *iconNameArray;
 @property (strong, nonatomic) CLLocation *centerDublinLocation;
 @property (strong, nonatomic) CLLocation *officeDublinLocation;
 @property (strong, nonatomic) CLGeocoder *geoCoder;
