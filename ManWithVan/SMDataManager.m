@@ -39,7 +39,7 @@
 {
     self = [super init];
     if (self) {
-        _baseColor = [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:185.0/255.0 alpha:1.0];
+        _baseColor = [UIColor colorWithRed:240.0/255.0 green:98.0/255.0 blue:0.0/255.0 alpha:1.0];
         _centerDublinLocation = [[CLLocation alloc] initWithLatitude:53.338082 longitude:-6.259117];
         _officeDublinLocation = [[CLLocation alloc] initWithLatitude:53.349325 longitude:-6.290251];
     }

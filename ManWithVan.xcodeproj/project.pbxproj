@@ -19,7 +19,6 @@
 		DC8513E11F52D656005A0007 /* SMDescriptionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8513E01F52D656005A0007 /* SMDescriptionViewCell.m */; };
 		DC8513E41F5491A9005A0007 /* SMYourQuoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8513E31F5491A9005A0007 /* SMYourQuoteViewController.m */; };
 		DC8513E71F570380005A0007 /* SMMapButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8513E61F570380005A0007 /* SMMapButton.m */; };
-		DC85271F1F221C1A0057D92B /* SMCustomLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = DC85271E1F221C1A0057D92B /* SMCustomLabel.m */; };
 		DC8527251F2226510057D92B /* SMRequestCallbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8527241F2226510057D92B /* SMRequestCallbackViewController.m */; };
 		DC8527301F222DE40057D92B /* SMGetQuoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC85272F1F222DE40057D92B /* SMGetQuoteViewController.m */; };
 		DC8527351F260DC80057D92B /* SMTickSelectionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8527341F260DC80057D92B /* SMTickSelectionButton.m */; };
@@ -55,7 +54,6 @@
 		DCE0DFC51F45D9F800AAB030 /* SMGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE0DFC41F45D9F800AAB030 /* SMGalleryViewController.m */; };
 		DCE0DFC81F45DAFE00AAB030 /* SMGalleryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE0DFC71F45DAFE00AAB030 /* SMGalleryViewCell.m */; };
 		DCE0DFF71F49B43200AAB030 /* SMCustomNavBarWithoutBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE0DFF61F49B43200AAB030 /* SMCustomNavBarWithoutBtn.m */; };
-		DCF9F8211F210C97001E790A /* SMCustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF9F8201F210C97001E790A /* SMCustomTextField.m */; };
 		DCF9F8241F21134A001E790A /* SMAboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF9F8231F21134A001E790A /* SMAboutUsViewController.m */; };
 		DCFC60401FCB2EA70024369D /* SMMoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFC603F1FCB2EA70024369D /* SMMoreViewController.m */; };
 		DCFC60431FCB2FE40024369D /* SMMoreViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFC60421FCB2FE40024369D /* SMMoreViewCell.m */; };
@@ -90,8 +88,6 @@
 		DC8513E31F5491A9005A0007 /* SMYourQuoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMYourQuoteViewController.m; sourceTree = "<group>"; };
 		DC8513E51F570380005A0007 /* SMMapButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMapButton.h; sourceTree = "<group>"; };
 		DC8513E61F570380005A0007 /* SMMapButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMapButton.m; sourceTree = "<group>"; };
-		DC85271D1F221C1A0057D92B /* SMCustomLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCustomLabel.h; sourceTree = "<group>"; };
-		DC85271E1F221C1A0057D92B /* SMCustomLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCustomLabel.m; sourceTree = "<group>"; };
 		DC8527231F2226510057D92B /* SMRequestCallbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRequestCallbackViewController.h; sourceTree = "<group>"; };
 		DC8527241F2226510057D92B /* SMRequestCallbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRequestCallbackViewController.m; sourceTree = "<group>"; };
 		DC85272E1F222DE40057D92B /* SMGetQuoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMGetQuoteViewController.h; sourceTree = "<group>"; };
@@ -152,8 +148,6 @@
 		DCE0DFC71F45DAFE00AAB030 /* SMGalleryViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMGalleryViewCell.m; sourceTree = "<group>"; };
 		DCE0DFF51F49B43200AAB030 /* SMCustomNavBarWithoutBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCustomNavBarWithoutBtn.h; sourceTree = "<group>"; };
 		DCE0DFF61F49B43200AAB030 /* SMCustomNavBarWithoutBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCustomNavBarWithoutBtn.m; sourceTree = "<group>"; };
-		DCF9F81F1F210C97001E790A /* SMCustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCustomTextField.h; sourceTree = "<group>"; };
-		DCF9F8201F210C97001E790A /* SMCustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCustomTextField.m; sourceTree = "<group>"; };
 		DCF9F8221F21134A001E790A /* SMAboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAboutUsViewController.h; sourceTree = "<group>"; };
 		DCF9F8231F21134A001E790A /* SMAboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAboutUsViewController.m; sourceTree = "<group>"; };
 		DCFC603E1FCB2EA60024369D /* SMMoreViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMMoreViewController.h; sourceTree = "<group>"; };
@@ -202,10 +196,6 @@
 				DC6EA50F1F20D1960067C851 /* SMCustomTableView.m */,
 				DC6EA5151F2107DD0067C851 /* SMCustomView.h */,
 				DC6EA5161F2107DD0067C851 /* SMCustomView.m */,
-				DCF9F81F1F210C97001E790A /* SMCustomTextField.h */,
-				DCF9F8201F210C97001E790A /* SMCustomTextField.m */,
-				DC85271D1F221C1A0057D92B /* SMCustomLabel.h */,
-				DC85271E1F221C1A0057D92B /* SMCustomLabel.m */,
 				DC8527331F260DC80057D92B /* SMTickSelectionButton.h */,
 				DC8527341F260DC80057D92B /* SMTickSelectionButton.m */,
 				DC85273F1F2632480057D92B /* SMSectionLabel.h */,
@@ -502,7 +492,6 @@
 				DCE0DFC81F45DAFE00AAB030 /* SMGalleryViewCell.m in Sources */,
 				DC8527441F263BC70057D92B /* SMSegueButton.m in Sources */,
 				DC6EA4F81F1F8C150067C851 /* SMMainViewController.m in Sources */,
-				DC85271F1F221C1A0057D92B /* SMCustomLabel.m in Sources */,
 				DCF9F8241F21134A001E790A /* SMAboutUsViewController.m in Sources */,
 				DCE0DFC51F45D9F800AAB030 /* SMGalleryViewController.m in Sources */,
 				DC8B27941F1E3589008710D1 /* ManWithVan.xcdatamodeld in Sources */,
@@ -515,7 +504,6 @@
 				DC8513E41F5491A9005A0007 /* SMYourQuoteViewController.m in Sources */,
 				DC8527411F2632480057D92B /* SMSectionLabel.m in Sources */,
 				DC8513E71F570380005A0007 /* SMMapButton.m in Sources */,
-				DCF9F8211F210C97001E790A /* SMCustomTextField.m in Sources */,
 				DCD208991F2B2F7100548C36 /* SMLocationSettingsViewController.m in Sources */,
 				DCFC60401FCB2EA70024369D /* SMMoreViewController.m in Sources */,
 				DCD61B241FC879E000C64075 /* SMBaseTabBarController.m in Sources */,

@@ -8,7 +8,6 @@
 
 #import "SMMoreViewController.h"
 #import "SMMoreViewCell.h"
-#import "SMMainTabBarController.h"
 
 @interface SMMoreViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -34,18 +33,23 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewWillLayoutSubviews {
-    [super viewWillLayoutSubviews];
-    SMMainTabBarController *rootVC = (SMMainTabBarController *)[UIApplication sharedApplication].windows.firstObject.rootViewController;
+- (void)setCentralButtonHidden:(BOOL)isHidden {
+    
+    UITabBarController *rootVC = (UITabBarController *)[UIApplication sharedApplication].windows.firstObject.rootViewController;
     
     for (UIView *view in rootVC.view.subviews) {
         if (view.tag == 1) {
             UIButton *button = (UIButton *)view;
-            button.hidden = NO;
-            button.enabled = YES;
+            button.hidden = isHidden ? YES : NO;
+            button.enabled = isHidden ? NO : YES;
             [rootVC.view bringSubviewToFront:view];
         }
     }
+}
+
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    [self setCentralButtonHidden:NO];
 }
 
 - (IBAction)callUsAction:(UIButton *)sender {
@@ -86,15 +90,8 @@
     }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
-    SMMainTabBarController *rootVC = (SMMainTabBarController *)[UIApplication sharedApplication].windows.firstObject.rootViewController;
+    [self setCentralButtonHidden:YES];
 
-    for (UIView *view in rootVC.view.subviews) {
-        if (view.tag == 1) {
-            UIButton *button = (UIButton *)view;
-            button.hidden = YES;
-            button.enabled = NO;
-        }
-    }
 }
 
 #pragma mark - UITableViewDelegate

@@ -16,7 +16,6 @@
     [super awakeFromNib];
     self.layer.borderColor = [SMDataManager sharedInstance].baseColor.CGColor;
     self.layer.borderWidth = 1.0;
-    self.layer.cornerRadius = CGRectGetHeight(self.frame)*0.2;
 
 }
 
@@ -24,7 +23,7 @@
     
     if (row == 0) {
         
-        self.imageView.image = [UIImage imageNamed:@"add_photo.png"];
+        self.imageView.image = [UIImage imageNamed:@"add_photo_img.png"];
         
     } else {
         

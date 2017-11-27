@@ -13,24 +13,28 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    self.layer.borderWidth = 1.0;
-    self.layer.borderColor = [UIColor colorWithRed:239.0/255.0 green:239.0/255.0 blue:244.0/255.0 alpha:1.0].CGColor;
-    
-    CGFloat fontSize = 16;
-    
-    UIFont *font = [UIFont fontWithName:@"Avenir-Heavy" size:fontSize];
-    
-    UIColor *textColor = [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:185.0/255.0 alpha:1.0];
+    UIFont *font = [UIFont fontWithName:@"Gotham-Book" size:14];
+    UIColor *textColor = [UIColor blackColor];
     NSDictionary *attributes = @{NSForegroundColorAttributeName : textColor, NSFontAttributeName : font};
-    
     NSAttributedString *attr = [[NSAttributedString alloc] initWithString:self.text attributes:attributes];
-    
     self.attributedText = attr;
 }
 
 - (void)drawTextInRect:(CGRect)rect {
-    UIEdgeInsets insets = {0, 15, 0, 0};
+    UIEdgeInsets insets = {0, 10, 0, 0};
     [super drawTextInRect:UIEdgeInsetsInsetRect(rect, insets)];
+}
+
+- (void)drawRect:(CGRect)rect {
+    [super drawRect:rect];
+
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetLineWidth(context, 2.0);
+    CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:244.0/255.0 green:244.0/255.0 blue:244.0/255.0 alpha:1.0].CGColor);
+    CGContextMoveToPoint(context, rect.origin.x, rect.origin.y);
+    CGContextAddLineToPoint(context, rect.size.width, rect.origin.y);
+    CGContextStrokePath(context);
+
 }
 
 @end

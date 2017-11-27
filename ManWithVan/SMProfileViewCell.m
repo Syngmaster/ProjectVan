@@ -25,17 +25,17 @@
     
     switch (indexPath.row) {
         case 0: self.profileLabel.text = @"*Your name:";
-                self.profileTextField.placeholder = @"Your name";
+                self.profileTextField.placeholder = @" Enter your name";
                 self.profileTextField.returnKeyType = UIReturnKeyDone;
                 self.profileTextField.autocapitalizationType = UITextAutocapitalizationTypeWords;
             break;
         case 1: self.profileLabel.text = @"*Your phone number:";
-                self.profileTextField.placeholder = @"Your phone number";
+                self.profileTextField.placeholder = @" Enter your phone";
                 self.profileTextField.returnKeyType = UIReturnKeyDone;
                 self.profileTextField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
             break;
         case 2: self.profileLabel.text = @"*Your email address:";
-                self.profileTextField.placeholder = @"Your email address";
+                self.profileTextField.placeholder = @" Enter your email";
                 self.profileTextField.returnKeyType = UIReturnKeyDone;
                 self.profileTextField.keyboardType = UIKeyboardTypeEmailAddress;
                 self.profileTextField.autocorrectionType = UITextAutocorrectionTypeNo;
