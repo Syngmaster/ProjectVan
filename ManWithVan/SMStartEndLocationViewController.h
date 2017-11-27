@@ -16,8 +16,9 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *locationFromTextField;
 @property (weak, nonatomic) IBOutlet UITextField *locationToTextField;
-@property (weak, nonatomic) IBOutlet UIImageView *tickImageView;
+
 @property (weak, nonatomic) IBOutlet UITextField *addInfoTextField;
+@property (weak, nonatomic) IBOutlet UIButton *twoPeopleButton;
 
 
 - (IBAction)showMapAction:(UIButton *)sender;

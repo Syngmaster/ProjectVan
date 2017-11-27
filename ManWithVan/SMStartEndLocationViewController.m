@@ -173,12 +173,18 @@
     if (!self.quote.twoPeople) {
         
         self.quote.twoPeople = YES;
-        self.tickImageView.image = [UIImage imageNamed:@"Tick.png"];
+        self.twoPeopleButton.backgroundColor = [SMDataManager sharedInstance].baseColor;
+        //self.twoPeopleButton.titleLabel.textColor = [UIColor whiteColor];
+        [self.twoPeopleButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        self.twoPeopleButton.layer.borderColor = [UIColor clearColor].CGColor;
         
     } else {
         
         self.quote.twoPeople = NO;
-        self.tickImageView.image = [UIImage imageNamed:@"Tick_inactive.png"];
+        self.twoPeopleButton.backgroundColor = [UIColor whiteColor];
+        [self.twoPeopleButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        self.twoPeopleButton.layer.borderColor = [UIColor colorWithRed:244.0/255.0 green:244.0/255.0 blue:244.0/255.0 alpha:1.0].CGColor;
+
     }
     
 }

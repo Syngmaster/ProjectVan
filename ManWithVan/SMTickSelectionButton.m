@@ -25,11 +25,12 @@
 
     CGFloat fontSize = CGRectGetHeight(self.frame)*0.35;
     UIFont *font = [UIFont fontWithName:@"Avenir-Black" size:fontSize];
-    UIColor *textColor = [UIColor blackColor];
-    NSDictionary *attributes = @{NSForegroundColorAttributeName : textColor, NSFontAttributeName : font};
-    NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:self.titleLabel.text attributes:attributes];
+    UIColor *textColorNormal = [UIColor blackColor];
+    NSDictionary *attributesNormal = @{NSForegroundColorAttributeName : textColorNormal, NSFontAttributeName : font, NSBackgroundColorAttributeName : [UIColor whiteColor]};
+    NSAttributedString *attrStringNormal = [[NSAttributedString alloc] initWithString:self.titleLabel.text attributes:attributesNormal];
+    [self setAttributedTitle:attrStringNormal forState:UIControlStateNormal];
     
-    [self setAttributedTitle:attrString forState:UIControlStateNormal];
+    
     
     [self layoutIfNeeded];
     [UIView setAnimationsEnabled:YES];

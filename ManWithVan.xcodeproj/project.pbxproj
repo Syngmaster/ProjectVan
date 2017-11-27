@@ -38,6 +38,7 @@
 		DC8B27961F1E3589008710D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC8B27951F1E3589008710D1 /* Assets.xcassets */; };
 		DC8B27991F1E3589008710D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC8B27971F1E3589008710D1 /* LaunchScreen.storyboard */; };
 		DCBCD3461F573DAD008134A1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DCBCD3451F573DAD008134A1 /* GoogleService-Info.plist */; };
+		DCC3B1891FCC9F00008D5717 /* SMTwoPeopleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DCC3B1881FCC9F00008D5717 /* SMTwoPeopleButton.m */; };
 		DCD208931F2A015000548C36 /* SMPin.m in Sources */ = {isa = PBXBuildFile; fileRef = DCD208921F2A015000548C36 /* SMPin.m */; };
 		DCD208961F2A380A00548C36 /* SMLocationAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = DCD208951F2A380A00548C36 /* SMLocationAddress.m */; };
 		DCD208991F2B2F7100548C36 /* SMLocationSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCD208981F2B2F7100548C36 /* SMLocationSettingsViewController.m */; };
@@ -119,6 +120,8 @@
 		DC8B27981F1E3589008710D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DC8B279A1F1E3589008710D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DCBCD3451F573DAD008134A1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DCC3B1871FCC9F00008D5717 /* SMTwoPeopleButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMTwoPeopleButton.h; sourceTree = "<group>"; };
+		DCC3B1881FCC9F00008D5717 /* SMTwoPeopleButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMTwoPeopleButton.m; sourceTree = "<group>"; };
 		DCD208911F2A015000548C36 /* SMPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPin.h; sourceTree = "<group>"; };
 		DCD208921F2A015000548C36 /* SMPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMPin.m; sourceTree = "<group>"; };
 		DCD208941F2A380A00548C36 /* SMLocationAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMLocationAddress.h; sourceTree = "<group>"; };
@@ -208,6 +211,8 @@
 				DC8513E61F570380005A0007 /* SMMapButton.m */,
 				DC64D60C1FC892C7005CEA91 /* SMCustomViewWithCutout.h */,
 				DC64D60D1FC892C7005CEA91 /* SMCustomViewWithCutout.m */,
+				DCC3B1871FCC9F00008D5717 /* SMTwoPeopleButton.h */,
+				DCC3B1881FCC9F00008D5717 /* SMTwoPeopleButton.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -483,6 +488,7 @@
 				DCFC60431FCB2FE40024369D /* SMMoreViewCell.m in Sources */,
 				DC8513E11F52D656005A0007 /* SMDescriptionViewCell.m in Sources */,
 				DC8527251F2226510057D92B /* SMRequestCallbackViewController.m in Sources */,
+				DCC3B1891FCC9F00008D5717 /* SMTwoPeopleButton.m in Sources */,
 				DC8527301F222DE40057D92B /* SMGetQuoteViewController.m in Sources */,
 				DCE0DFF71F49B43200AAB030 /* SMCustomNavBarWithoutBtn.m in Sources */,
 				DC8527351F260DC80057D92B /* SMTickSelectionButton.m in Sources */,
