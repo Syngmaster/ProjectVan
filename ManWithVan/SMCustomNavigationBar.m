@@ -12,9 +12,8 @@
 
 @implementation SMCustomNavigationBar
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    
+- (void)layoutSubviews {
+    [super layoutSubviews];
     UIBarButtonItem *callUsButton = [[UIBarButtonItem alloc]
                                      initWithTitle:@""
                                      style:UIBarButtonItemStylePlain

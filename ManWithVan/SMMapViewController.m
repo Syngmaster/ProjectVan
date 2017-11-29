@@ -94,7 +94,7 @@
         pin = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
         
         pin.draggable = YES;
-        pin.image = [UIImage imageNamed:@"Map_pin.png"];
+        pin.image = [UIImage imageNamed:@"map_pin_img.png"];
     } else {
         pin.annotation = annotation;
     }

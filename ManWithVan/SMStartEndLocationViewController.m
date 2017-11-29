@@ -21,7 +21,6 @@
 
 #import "SMCustomActivityIndicator.h"
 #import "SMCustomNavigationBar.h"
-#import "SMCustomNavBarWithoutBtn.h"
 
 
 @interface SMStartEndLocationViewController () <UITextFieldDelegate, SMLocationSettingsDelegate, SMMapViewDelegate, MFMailComposeViewControllerDelegate>
@@ -161,10 +160,7 @@
         locationSettingsVC.locationData = self.quote.endLocation;
     }
     
-    UINavigationController *navVC = [[UINavigationController alloc] initWithNavigationBarClass:[SMCustomNavBarWithoutBtn class] toolbarClass:nil];
-    [navVC setViewControllers:@[locationSettingsVC]];
-    
-    [self presentViewController:navVC animated:YES completion:nil];
+    [self presentViewController:locationSettingsVC animated:YES completion:nil];
     
 }
 
@@ -174,7 +170,6 @@
         
         self.quote.twoPeople = YES;
         self.twoPeopleButton.backgroundColor = [SMDataManager sharedInstance].baseColor;
-        //self.twoPeopleButton.titleLabel.textColor = [UIColor whiteColor];
         [self.twoPeopleButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         self.twoPeopleButton.layer.borderColor = [UIColor clearColor].CGColor;
         
@@ -195,9 +190,11 @@
     self.quote.endLocation.fullAddress = self.locationToTextField.text;
     self.quote.addInfoText = self.addInfoTextField.text;
     
-    SMCustomActivityIndicator *ind = [[SMCustomActivityIndicator alloc] initWithFrame:self.view.frame];
-    
+    SMCustomActivityIndicator *ind = [[SMCustomActivityIndicator alloc] initWithFrame:self.view.bounds];
+
     [self.view addSubview:ind];
+
+
     
     [[SMDataManager sharedInstance] calculationOfQuote:self.quote onComplete:^(NSInteger price, NSError *error) {
         

@@ -18,21 +18,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"Location settings";
-    self.buildingTypeSegment.tintColor = [SMDataManager sharedInstance].baseColor;
+
     self.floorLabel.text = [NSString stringWithFormat:@"%i",(int)self.locationData.pickUpFloor];
     self.buildingTypeSegment.selectedSegmentIndex = self.locationData.buildingType;
     
     if (self.buildingTypeSegment.selectedSegmentIndex == 0) {
         
-        self.minusButton.enabled = NO;
-        self.minusButton.alpha = 0.5;
-        
-        self.plusButton.enabled = NO;
-        self.plusButton.alpha = 0.5;
-        
-        self.liftButton.enabled = NO;
-        self.liftButton.alpha = 0.5;
+        [self setButtonsEnabled:NO];
         
         self.floorLabel.text = @"";
         
@@ -41,15 +33,44 @@
         self.floorLabel.text = [NSString stringWithFormat:@"%i",(int)self.locationData.pickUpFloor];
 
         if (self.locationData.liftAvailable) {
-            self.tickImageView.image = [UIImage imageNamed:@"Tick.png"];
+            [self setLiftButtonActive:YES];
         }
     }
 
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)setButtonsEnabled:(BOOL)isEnabled {
+    if (isEnabled) {
+        self.minusButton.enabled = YES;
+        self.minusButton.alpha = 1.0;
+        
+        self.plusButton.enabled = YES;
+        self.plusButton.alpha = 1.0;
+        
+        self.liftButton.enabled = YES;
+        self.liftButton.alpha = 1.0;
+    } else {
+        self.minusButton.enabled = NO;
+        self.minusButton.alpha = 0.5;
+        
+        self.plusButton.enabled = NO;
+        self.plusButton.alpha = 0.5;
+        
+        self.liftButton.enabled = NO;
+        self.liftButton.alpha = 0.5;
+    }
+}
+
+- (void)setLiftButtonActive:(BOOL)isActive {
+    if (isActive) {
+        self.liftButton.backgroundColor = [SMDataManager sharedInstance].baseColor;
+        [self.liftButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        self.liftButton.layer.borderColor = [UIColor clearColor].CGColor;
+    } else {
+        self.liftButton.backgroundColor = [UIColor whiteColor];
+        [self.liftButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        self.liftButton.layer.borderColor = [UIColor colorWithRed:244.0/255.0 green:244.0/255.0 blue:244.0/255.0 alpha:1.0].CGColor;
+    }
 }
 
 #pragma mark - Actions
@@ -67,33 +88,17 @@
     
     if (sender.selectedSegmentIndex == 0) {
         
-        self.minusButton.enabled = NO;
-        self.minusButton.alpha = 0.5;
-
-        self.plusButton.enabled = NO;
-        self.plusButton.alpha = 0.5;
-
-        self.liftButton.enabled = NO;
-        self.liftButton.alpha = 0.5;
+        [self setButtonsEnabled:NO];
         
         self.floorLabel.text = @"";
         self.locationData.pickUpFloor = 0;
         self.locationData.liftAvailable = NO;
-        self.tickImageView.image = [UIImage imageNamed:@"Tick_inactive.png"];
+        [self setLiftButtonActive:NO];
 
     } else {
         
         self.floorLabel.alpha = 1.0;
-        
-        self.minusButton.enabled = YES;
-        self.minusButton.alpha = 1.0;
-        
-        self.plusButton.enabled = YES;
-        self.plusButton.alpha = 1.0;
-        
-        self.liftButton.enabled = YES;
-        self.liftButton.alpha = 1.0;
-        
+        [self setButtonsEnabled:YES];
         self.floorLabel.text = [NSString stringWithFormat:@"%i", (int)self.locationData.pickUpFloor];
     }
     
@@ -128,15 +133,17 @@
     if (!self.locationData.liftAvailable) {
         
         self.locationData.liftAvailable = YES;
-        self.tickImageView.image = [UIImage imageNamed:@"Tick.png"];
+        [self setLiftButtonActive:YES];
         
     } else {
         
         self.locationData.liftAvailable = NO;
-        self.tickImageView.image = [UIImage imageNamed:@"Tick_inactive.png"];
+        [self setLiftButtonActive:NO];
+
     }
     
 }
+
 
 - (IBAction)saveAction:(UIButton *)sender {
     
