@@ -27,6 +27,10 @@
 
 - (void)addRaisedCenterButtonWithImage:(UIImage *)image highlightedImage:(UIImage *)highlightedImage andOffset:(CGFloat)offset {
     
+    if ([UIScreen mainScreen].bounds.size.height == 812) {
+        offset = offset - 42;
+    }
+    
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin;
     button.frame = CGRectMake(0.0, 0.0, image.size.width, image.size.height);

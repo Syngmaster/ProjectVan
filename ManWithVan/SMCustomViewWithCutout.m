@@ -67,20 +67,40 @@
         rightCurveControlPoint2Y = 434.77;
         
     } else if ([UIScreen mainScreen].bounds.size.width == 375) {
-        rightPointX = 213.42;
-        leftPointX = 151.58;
         
-        leftCurvePointX = 182.5;
-        leftCurvePointY = 527.33;
-        leftCurveControlPoint1X = 158.2;
-        leftCurveControlPoint1Y = 533.96;
-        leftCurveControlPoint2X = 169.57;
-        leftCurveControlPoint2Y = leftCurvePointY;
-        
-        rightCurveControlPoint1X = 195.43;
-        rightCurveControlPoint1Y = leftCurvePointY;
-        rightCurveControlPoint2X = 206.8;
-        rightCurveControlPoint2Y = 533.96;
+        if ([UIScreen mainScreen].bounds.size.height == 812) {
+            //*** for iPhone X
+            rightPointX = 219.16;
+            leftPointX = 145.84;
+            
+            leftCurvePointX = 182.5;
+            leftCurvePointY = 606.89;
+            leftCurveControlPoint1X = 153.59;
+            leftCurveControlPoint1Y = 616.5;
+            leftCurveControlPoint2X = 167.12;
+            leftCurveControlPoint2Y = leftCurvePointY;
+            
+            rightCurveControlPoint1X = 197.88;
+            rightCurveControlPoint1Y = leftCurvePointY;
+            rightCurveControlPoint2X = 211.41;
+            rightCurveControlPoint2Y = 616.5;
+        } else {
+            rightPointX = 213.42;
+            leftPointX = 151.58;
+            
+            leftCurvePointX = 182.5;
+            leftCurvePointY = 527.33;
+            leftCurveControlPoint1X = 158.2;
+            leftCurveControlPoint1Y = 533.96;
+            leftCurveControlPoint2X = 169.57;
+            leftCurveControlPoint2Y = leftCurvePointY;
+            
+            rightCurveControlPoint1X = 195.43;
+            rightCurveControlPoint1Y = leftCurvePointY;
+            rightCurveControlPoint2X = 206.8;
+            rightCurveControlPoint2Y = 533.96;
+        }
+
         
     } else if ([UIScreen mainScreen].bounds.size.width == 414) {
         rightPointX = 236.22;

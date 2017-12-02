@@ -5,7 +5,7 @@
 //  Created by Syngmaster on 21/07/2017.
 //  Copyright © 2017 Syngmaster. All rights reserved.
 //
-
+#import <Photos/Photos.h>
 #import "SMGetQuoteViewController.h"
 #import "SMStartEndLocationViewController.h"
 
@@ -37,6 +37,9 @@
 
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem.title=@"";
+    
+    [self requestPermission];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -267,7 +270,7 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
-    UIImage *image = info[UIImagePickerControllerEditedImage];
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
     [self.quote.photosArray addObject:image];
     [self dismissViewControllerAnimated:YES completion:nil];
     
@@ -311,6 +314,25 @@
     } else {
         [self removePhotoAtIndexPath:indexPath];
     }
+}
+
+- (void)requestPermission {
+    [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+        switch (status) {
+            case PHAuthorizationStatusAuthorized:
+                NSLog(@"PHAuthorizationStatusAuthorized");
+                break;
+            case PHAuthorizationStatusDenied:
+                NSLog(@"PHAuthorizationStatusDenied");
+                break;
+            case PHAuthorizationStatusNotDetermined:
+                NSLog(@"PHAuthorizationStatusNotDetermined");
+                break;
+            case PHAuthorizationStatusRestricted:
+                NSLog(@"PHAuthorizationStatusRestricted");
+                break;
+        }
+    }];
 }
 
 - (void)addPhoto {
