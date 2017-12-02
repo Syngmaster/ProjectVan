@@ -5,7 +5,7 @@
 //  Created by Syngmaster on 21/07/2017.
 //  Copyright © 2017 Syngmaster. All rights reserved.
 //
-
+#import <Photos/Photos.h>
 #import "SMGetQuoteViewController.h"
 #import "SMStartEndLocationViewController.h"
 
@@ -14,7 +14,6 @@
 #import "SMProfileViewCell.h"
 #import "SMCustomActivityIndicator.h"
 #import "SMSectionLabel.h"
-#import "SMCustomLabel.h"
 
 #import "SMQuoteData.h"
 #import "SMDataManager.h"
@@ -35,10 +34,12 @@
     quote.movingType = self.movingType;
     self.quote = quote;
     self.hasAtSign = YES;
-    
+
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem.title=@"";
     
+    [self requestPermission];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -46,7 +47,6 @@
     [self.photoCollectionView reloadData];
 
 }
-
 
 #pragma mark - UITableViewDataSource
 
@@ -95,22 +95,22 @@
 #pragma mark - UITableViewDelegate 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 28.0;
+    return 35.0;
 }
 
 - (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
-    CGRect headerFrame = CGRectMake(0, 0, tableView.frame.size.width, 28);
+    CGRect headerFrame = CGRectMake(0, 0, tableView.frame.size.width, 35);
 
     UIView *headerView = [[UIView alloc] initWithFrame:headerFrame];
     
-    headerView.backgroundColor = [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0];
+    headerView.backgroundColor = [UIColor whiteColor];
     
     SMSectionLabel *headerTextLabel = [[SMSectionLabel alloc] initWithFrame:headerFrame];
     headerTextLabel.textAlignment = NSTextAlignmentLeft;
     [headerView addSubview:headerTextLabel];
     
-    (section == 0) ? (headerTextLabel.text = @"Personal details") : (headerTextLabel.text = @"Description");
+    (section == 0) ? (headerTextLabel.text = @"Personal details:") : (headerTextLabel.text = @"Description:");
     
     return headerView;
     
@@ -270,12 +270,13 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
-    UIImage *image = info[UIImagePickerControllerEditedImage];
-
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
     [self.quote.photosArray addObject:image];
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
+
+
 
 #pragma mark - UICollectionViewDataSource
 
@@ -300,7 +301,7 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    return CGSizeMake(CGRectGetHeight(collectionView.bounds)* 0.8, CGRectGetHeight(collectionView.bounds) * 0.8);
+    return CGSizeMake(CGRectGetHeight(collectionView.bounds)* 0.7, CGRectGetHeight(collectionView.bounds) * 0.7);
     
 }
 
@@ -313,6 +314,25 @@
     } else {
         [self removePhotoAtIndexPath:indexPath];
     }
+}
+
+- (void)requestPermission {
+    [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+        switch (status) {
+            case PHAuthorizationStatusAuthorized:
+                NSLog(@"PHAuthorizationStatusAuthorized");
+                break;
+            case PHAuthorizationStatusDenied:
+                NSLog(@"PHAuthorizationStatusDenied");
+                break;
+            case PHAuthorizationStatusNotDetermined:
+                NSLog(@"PHAuthorizationStatusNotDetermined");
+                break;
+            case PHAuthorizationStatusRestricted:
+                NSLog(@"PHAuthorizationStatusRestricted");
+                break;
+        }
+    }];
 }
 
 - (void)addPhoto {

@@ -22,7 +22,6 @@
 @property (strong, nonatomic) SMSetUpLocationData *locationData;
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *buildingTypeSegment;
-@property (weak, nonatomic) IBOutlet UIImageView *tickImageView;
 @property (weak, nonatomic) IBOutlet UILabel *floorLabel;
 @property (weak, nonatomic) IBOutlet UIButton *minusButton;
 @property (weak, nonatomic) IBOutlet UIButton *plusButton;

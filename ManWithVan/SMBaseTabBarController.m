@@ -24,7 +24,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+
 - (void)addRaisedCenterButtonWithImage:(UIImage *)image highlightedImage:(UIImage *)highlightedImage andOffset:(CGFloat)offset {
+    
+    if ([UIScreen mainScreen].bounds.size.height == 812) {
+        offset = offset - 42;
+    }
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin;
@@ -47,7 +52,7 @@
     }
     
     [button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
-    
+    button.tag = 1;
     [self.view addSubview:button];
     
 }

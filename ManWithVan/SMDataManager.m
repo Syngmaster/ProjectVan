@@ -29,39 +29,21 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedManager = [[SMDataManager alloc] init];
-        sharedManager.baseColor = [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:185.0/255.0 alpha:1.0];
-        
-        UIImage *image1 = [UIImage imageNamed:@"home_icon.png"];
-        //UIImage *image2 = [UIImage imageNamed:@"SignInIcon.png"];
-        UIImage *image3 = [UIImage imageNamed:@"about_us.png"];
-        UIImage *image4 = [UIImage imageNamed:@"callback-icon.png"];
-        UIImage *image5 = [UIImage imageNamed:@"reviews_icon.png"];
-        UIImage *image6 = [UIImage imageNamed:@"gallery.png"];
-        UIImage *image7 = [UIImage imageNamed:@"social_links.png"];
-        UIImage *image8 = [UIImage imageNamed:@"quote_icon.png"];
-        
-        sharedManager.iconArray = @[image1, /*image2,*/ image3, image4, image5, image6, image7, image8];
-        
-        UIImage *image11 = [UIImage imageNamed:@"home_icon_pressed.png"];
-        //UIImage *image21 = [UIImage imageNamed:@"SignInIcon_pressed.png"];
-        UIImage *image31 = [UIImage imageNamed:@"about_us_pressed.png"];
-        UIImage *image41 = [UIImage imageNamed:@"callback-icon_pressed.png"];
-        UIImage *image51 = [UIImage imageNamed:@"reviews_icon_pressed.png"];
-        UIImage *image61 = [UIImage imageNamed:@"gallery_pressed.png"];
-        UIImage *image71 = [UIImage imageNamed:@"social_links_pressed.png"];
-        UIImage *image81 = [UIImage imageNamed:@"quote_icon_pressed.png"];
-
-        sharedManager.pressedIconArray = @[image11, /*image21,*/ image31, image41, image51, image61, image71, image81];
-        
-        sharedManager.iconNameArray = @[@"Home",/*@"Sign in",*/ @"About us", @"Callback", @"Reviews", @"Gallery", @"Social links", @"Quote"];
-        
-        sharedManager.centerDublinLocation = [[CLLocation alloc] initWithLatitude:53.338082 longitude:-6.259117];
-        sharedManager.officeDublinLocation = [[CLLocation alloc] initWithLatitude:53.349325 longitude:-6.290251];
-
     });
     
     return sharedManager;
     
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _baseColor = [UIColor colorWithRed:240.0/255.0 green:98.0/255.0 blue:0.0/255.0 alpha:1.0];
+        _centerDublinLocation = [[CLLocation alloc] initWithLatitude:53.338082 longitude:-6.259117];
+        _officeDublinLocation = [[CLLocation alloc] initWithLatitude:53.349325 longitude:-6.290251];
+    }
+    return self;
 }
 
 - (void)getPhotosFromGooglePlusAccountOnComplete:(void(^)(NSArray *array, NSError *error)) completionHandler {

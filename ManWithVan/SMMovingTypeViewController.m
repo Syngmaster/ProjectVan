@@ -33,6 +33,10 @@ typedef NS_ENUM (NSInteger, MovingType) {
 
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem.title=@"";
+    
+    UIImage *backButtonImage = [[UIImage imageNamed:@"back_button_img.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    self.navigationController.navigationBar.backIndicatorImage = backButtonImage;
+    self.navigationController.navigationBar.backIndicatorTransitionMaskImage = backButtonImage;
 
 }
 
@@ -41,6 +45,24 @@ typedef NS_ENUM (NSInteger, MovingType) {
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    [self setCentralButtonHidden:NO];
+}
+
+- (void)setCentralButtonHidden:(BOOL)isHidden {
+    
+    UITabBarController *rootVC = (UITabBarController *)[UIApplication sharedApplication].windows.firstObject.rootViewController;
+    
+    for (UIView *view in rootVC.view.subviews) {
+        if (view.tag == 1) {
+            UIButton *button = (UIButton *)view;
+            button.hidden = isHidden ? YES : NO;
+            button.enabled = isHidden ? NO : YES;
+            isHidden? [rootVC.view insertSubview:view atIndex:0]: [rootVC.view bringSubviewToFront:view];
+        }
+    }
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UIButton *)sender {
     
@@ -58,6 +80,7 @@ typedef NS_ENUM (NSInteger, MovingType) {
             break;
 
     }
+    [self setCentralButtonHidden:YES];
     
 }
 
